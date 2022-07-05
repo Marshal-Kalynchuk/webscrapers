@@ -84,7 +84,6 @@ export async function generateEmails(contacts){
 
   /**Cycle through list of contacts */
   for (let contact of contacts){
-    console.log(contact)
     let format, domain, template = undefined
     if(contact.email == undefined){
       /**TODO - Search database for template */
@@ -93,7 +92,8 @@ export async function generateEmails(contacts){
       }
       /**Use EmailBot to search for email template */
       else{
-        template = await bot.findEmailFormat(contact.company)
+        template = await bot.find(contact.company)
+        console.log(template)
         if(template != undefined){
           console.log(`Email formate found for: ${contact}`)
 
@@ -110,14 +110,15 @@ export async function generateEmails(contacts){
 
           contact.email = format + "@" + domain
 
-          /**TODO - Add templat to database */
-
+          /**TODO - Add template to database */
+          /**TODO - Update contact database */
         }
         else{
           console.log(`Could not find email format for: ${contact}`)
         }
       }
     }
+    
   }
   return contacts
 };

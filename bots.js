@@ -162,7 +162,7 @@ export class Puppet {
   async scrapePage() {
   }
 }
-
+;
 export class GoogleBot extends Puppet {
   constructor(devMode = false) {
     const config = {
@@ -171,48 +171,47 @@ export class GoogleBot extends Puppet {
       card_fields: {
         url: ["div.NJo7tc.Z26q7c.jGGQ5e > div > a", "href"],
         title: ["div.NJo7tc.Z26q7c.jGGQ5e > div > a > h3", "innerText"],
-        description: ["div.NJo7tc.Z26q7c.uUuwM > div", "innerText"]
+        description: ["div.NJo7tc.Z26q7c.uUuwM > div.VwiC3b", "innerText"]
       }
     }
     super(config, devMode)
   }
-}
+  async scrape(field_1){
+    let results = await this.scrapeSearch(field_1)
+    /**Custom Script for Google Banners etc... */
+    return results
+  }
+};
+
+function extractEmails(text){
+  return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);
+};
 
 export class EmailBot extends GoogleBot {
   constructor(devMode=false) {
     super(devMode)
   }
-  async findEmailFormat(query) {
-
-    const results = await this.scrapeSearch(query)
-
-    for (let i = 0; i < results.length; i++) {
-      if (results[i].url.includes("rocketreach") && results[i].title.includes("Email Format")) {
-        let format = "";
-        let raw_format = "";
-        if (results[i].description.includes("email format is")) {
-          raw_format = results[i].description.split("email format is")[1].split("(")[0]
-        } else if (results[i].description.includes("email formats:")) {
-          let split = results[i].description.split("@")
-          raw_format = split.split(" ")[split.split(" ").length - 1];
-        }
-        if (raw_format.includes("first_initial")) {
-          format = "first_initial";
-        } else if (raw_format.includes("first")) {
-          format = "first_name";
-        }
-        if (raw_format.includes("last_initial")) {
-          format = format + "last_initial";
-        } else if (raw_format.includes("last")) {
-          format = format + "last_name";
-        }
-        return format + "@" + split[1];
+  async find(company_name){
+    const search_query = company_name.replace(' ', '+') + '+email+format'
+    const search_results = await this.scrape(search_query)
+    let emails = []
+    for (let res of search_results){
+      if (res.title.toUpperCase().includes(company_name.toUpperCase())){
+        emails = emails.concat(extractEmails(res.description))
       }
     }
-    return undefined
+    emails = emails.filter(a=>a)
+    const formatted_emails = emails.map(a=>a
+      //.replace("l", "lastInitial")
+      //.replace("f", "firstInitial")
+      .replace("doe", "lastName")
+      .replace("jane", "firstName")
+      .replace("john", "firstName")
+      .replace("j", "firstInitial")
+      .replace("d", "lastInitial"))
+    return formatted_emails[0]
   }
-
-}
+};
 
 export class LinkedinScraper extends Puppet {
   constructor(devMode = false) {
@@ -229,7 +228,7 @@ export class LinkedinScraper extends Puppet {
     }
     super(config, devMode)
   }
-}
+};
 
 function delay(time) {
   return new Promise(function (resolve) {
