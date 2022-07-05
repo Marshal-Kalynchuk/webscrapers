@@ -1,6 +1,7 @@
 import fs from 'fs';
-import uuidv4 from 'uuid';
-import {EmailBot} from './bots';
+//import uuidv4 from 'uuid';
+import {EmailBot} from './bots.js';
+function uuidv4(){return undefined}
 
 class Company {
   constructor(companyName, industry, location, size, linkedinUrl=undefined, websiteUrl=undefined, phone=undefined, email=undefined, template=undefined){
@@ -78,20 +79,21 @@ export async function processContacts(txtData){
 export async function generateEmails(contacts){
 
   /**Create Email bot instance */
-  const bot = new EmailBot()
+  const bot = new EmailBot(true)
   await bot.init()
 
   /**Cycle through list of contacts */
-  contacts.forEach(contact => {
+  for (let contact of contacts){
+    console.log(contact)
     let format, domain, template = undefined
-    if(contact.email != undefined){
+    if(contact.email == undefined){
       /**TODO - Search database for template */
       if(false){
         /**TODO - Generate email off database template */
       }
       /**Use EmailBot to search for email template */
       else{
-        template = bot.findEmailFormat(contact.company)
+        template = await bot.findEmailFormat(contact.company)
         if(template != undefined){
           console.log(`Email formate found for: ${contact}`)
 
@@ -116,7 +118,7 @@ export async function generateEmails(contacts){
         }
       }
     }
-  })
+  }
   return contacts
 };
 
@@ -309,6 +311,7 @@ async function filterCompanies(companiesFile, good, bad){
   await save(badCompanies, bad)
 };
 
+/**
 async function run(){
   const contactsTxtFile = "txt-files/contacts.txt"
   const contactsFile = "json-files/contacts.json"
@@ -368,7 +371,7 @@ async function run(){
 
 run()
 
-
+*/
 
 
 

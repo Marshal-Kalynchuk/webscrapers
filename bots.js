@@ -179,8 +179,8 @@ export class GoogleBot extends Puppet {
 }
 
 export class EmailBot extends GoogleBot {
-  constructor() {
-    super()
+  constructor(devMode=false) {
+    super(devMode)
   }
   async findEmailFormat(query) {
 
