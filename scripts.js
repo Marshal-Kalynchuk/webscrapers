@@ -39,15 +39,12 @@ class UrlSet{
   }
 }
 
-async function processContacts(contactsTxtFile, contactsFile){
+/**Takes in a copy pasted text from the linkedin sales navigator 
+ * leads list and turns it into a list of contacts objects */
+export async function processContacts(txtData){
 
   console.log("Processing contacts...")
-
-  const txtData = fs.readFileSync(contactsTxtFile).toString().split("\r\n");
-
-  let contacts = JSON.parse(fs.readFileSync(contactsFile))
-  let contactNames = contacts.map(a => a.firstName)
-
+  let contacts = []
   let firstName, middleName, lastName = undefined
 
   for (var i=0; i<txtData.length; i++) {
@@ -69,18 +66,11 @@ async function processContacts(contactsTxtFile, contactsFile){
         geography = txtData[i+5].split("\t")[0],
       )
       middleName = undefined
-      if (contactNames.includes(contact.firstName)){
-
-        continue
-      }
-      else{
-        console.log("Adding New Contact:", contact)
-        contacts.push(contact)
-      }
+      contacts.push(contact)
     }
   }
-  await save(contacts, contactsFile)
   console.log("Finished")
+  return contacts
 };
 
 async function generateEmails(contactsFile, companiesFile){
