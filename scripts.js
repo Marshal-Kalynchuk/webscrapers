@@ -1,8 +1,5 @@
-
-const fs = require('fs');
-const prompt = require('prompt-sync')();
-const axios = require('axios');
-const {v4: uuidv4} = require('uuid');
+import fs from 'fs';
+import uuidv4 from 'uuid';
 
 class Company {
   constructor(companyName, industry, location, size, linkedinUrl=undefined, websiteUrl=undefined, phone=undefined, email=undefined, template=undefined){
