@@ -1,5 +1,6 @@
 import fs from 'fs';
 import uuidv4 from 'uuid';
+import {EmailBot} from './bots';
 
 class Company {
   constructor(companyName, industry, location, size, linkedinUrl=undefined, websiteUrl=undefined, phone=undefined, email=undefined, template=undefined){
@@ -73,23 +74,22 @@ export async function processContacts(txtData){
   return contacts
 };
 
-async function generateEmails(contactsFile, companiesFile){
-  
-  let contacts = JSON.parse(fs.readFileSync(contactsFile))
-  const companies = JSON.parse(fs.readFileSync(companiesFile))
-  var counter = 0
-  for (var i = 0; i< companies.length;i++){
-    const company = companies[i]
+/**Takes in a list of contacts and tries to generate emails for them */
+export async function generateEmails(contacts){
 
-    if (company.template == undefined || !(company.template).includes("@")){
-      console.log("Template is undefined, Skipping")
-      continue
-    }
-    for (var j=0; j<contacts.length;j++){
-      let contact = contacts[j]
+  /**Create Email bot instance */
+  const bot = new EmailBot()
+  await bot.init()
 
-      if (contact.company == company.company){
-
+  contacts.forEach(contact => {
+    let format, domain = undefined
+    if(contact.email != undefined){
+      /**Implement database searching for template */
+      if(false){
+        /**Generate email off database template */
+      }
+      /**Use email bot to search for email template */
+      else{
         const domain = (company.template).split("@")[1]
         let format = (company.template).split("@")[0]
 
@@ -99,12 +99,10 @@ async function generateEmails(contactsFile, companiesFile){
         format = format.replace("last_initial", contact.lastName[0])
         
         contact.email = format + "@" + domain
-        counter = counter + 1
+
       }
     }
-  }
-  console.log(counter)
-  save(contacts, contactsFile);
+  })
 };
 
 async function processCompanies(companiesTxtFile, companiesFile){

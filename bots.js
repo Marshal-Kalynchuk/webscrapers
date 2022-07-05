@@ -193,8 +193,8 @@ export class EmailBot extends GoogleBot {
         if (results[i].description.includes("email format is")) {
           raw_format = results[i].description.split("email format is")[1].split("(")[0]
         } else if (results[i].description.includes("email formats:")) {
-          let temp = results[i].description.split("@")[0];
-          raw_format = temp.split(" ")[temp.split(" ").length - 1];
+          let split = results[i].description.split("@")
+          raw_format = split.split(" ")[split.split(" ").length - 1];
         }
         if (raw_format.includes("first_initial")) {
           format = "first_initial";
@@ -206,7 +206,7 @@ export class EmailBot extends GoogleBot {
         } else if (raw_format.includes("last")) {
           format = format + "last_name";
         }
-        return format;
+        return format + "@" + split[1];
       }
     }
     return undefined
