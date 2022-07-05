@@ -117,6 +117,7 @@ export async function generateEmails(contacts){
       }
     }
   })
+  return contacts
 };
 
 async function processCompanies(companiesTxtFile, companiesFile){
