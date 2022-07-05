@@ -81,25 +81,39 @@ export async function generateEmails(contacts){
   const bot = new EmailBot()
   await bot.init()
 
+  /**Cycle through list of contacts */
   contacts.forEach(contact => {
-    let format, domain = undefined
+    let format, domain, template = undefined
     if(contact.email != undefined){
-      /**Implement database searching for template */
+      /**TODO - Search database for template */
       if(false){
-        /**Generate email off database template */
+        /**TODO - Generate email off database template */
       }
-      /**Use email bot to search for email template */
+      /**Use EmailBot to search for email template */
       else{
-        const domain = (company.template).split("@")[1]
-        let format = (company.template).split("@")[0]
+        template = bot.findEmailFormat(contact.company)
+        if(template != undefined){
+          console.log(`Email formate found for: ${contact}`)
 
-        format = format.replace("first_name", contact.firstName)
-        format = format.replace("first_initial", contact.firstName[0])
-        format = format.replace("last_name", contact.lastName)
-        format = format.replace("last_initial", contact.lastName[0])
-        
-        contact.email = format + "@" + domain
+          /**Generate email template */
+          const split = template.split("@");
+          format = split[0]; 
+          domain = split[1];
 
+          format = format
+          .replace("first_name", contact.firstName)
+          .replace("first_initial", contact.firstName[0])
+          .replace("last_name", contact.lastName)
+          .replace("last_initial", contact.lastName[0])
+
+          contact.email = format + "@" + domain
+
+          /**TODO - Add templat to database */
+
+        }
+        else{
+          console.log(`Could not find email format for: ${contact}`)
+        }
       }
     }
   })
