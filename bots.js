@@ -1,6 +1,6 @@
-import puppeteer from 'puppeteer'
+const puppeteer = require('puppeteer')
 
-export class Puppet {
+class Puppet {
 
   constructor(config, devMode = false) {
     /**Configuration of puppeteer */
@@ -163,7 +163,7 @@ export class Puppet {
   }
 }
 ;
-export class GoogleBot extends Puppet {
+class GoogleBot extends Puppet {
   constructor(devMode = false) {
     const config = {
       search_url: "https://google.com/search?q=field_1",
@@ -187,7 +187,7 @@ function extractEmails(text){
   return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);
 };
 
-export class EmailBot extends GoogleBot {
+module.exports = class EmailBot extends GoogleBot {
   constructor(devMode=false) {
     super(devMode)
   }
@@ -213,7 +213,7 @@ export class EmailBot extends GoogleBot {
   }
 };
 
-export class LinkedinScraper extends Puppet {
+module.exports = class LinkedinScraper extends Puppet {
   constructor(devMode = false) {
     const config = {
       search_url: "https://www.linkedin.com/jobs/search?keywords=field_1&location=field_2",
@@ -235,3 +235,5 @@ function delay(time) {
     setTimeout(resolve, time)
   });
 };
+
+

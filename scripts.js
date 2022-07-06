@@ -1,6 +1,7 @@
-import fs from 'fs';
-//import uuidv4 from 'uuid';
-import {EmailBot} from './bots.js';
+const fs = require('fs');
+const EmailBot = require('./bots.js');
+const prompt = require('prompt-sync')();
+
 function uuidv4(){return undefined}
 
 class Company {
@@ -148,7 +149,7 @@ async function processCompanies(text_data){
       new_companies.push(company)
     }
   }
-  return companies
+  return new_companies
 };
 
 /**Processes the linkedin match results and returns a list of linkedin 
@@ -161,6 +162,7 @@ async function processUrls(linkedin_match_data){
   }
   return url_sets
 };
+
 
 async function zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile=undefined, contactTemplateFile=undefined, companyContactFile=undefined){
 
@@ -289,31 +291,36 @@ async function filterCompanies(companiesFile, good, bad){
 
 const files = {
 
-  companies_save_file: "",
-  companies_text_file: "",
+  companies_save_file: "./files/companies_save_file.json",
+  companies_text_file: "./files/companies_text_file.txt",
 
-  contacts_save_file: "",
-  contacts_text_file: "",
+  contacts_save_file: "./files/contacts_save_file.json",
+  contacts_text_file: "./files/contacts_text_file.txt",
+
+  linkedin_match_results: "./files/linkedinMatchResults.json"
 }
 
 async function main(){
   let loop = true
   while (loop) {
 
-    const saved_companies = JSON.parse(fs.readFileSync(files[companies_save_file]))
-    const saved_contacts = JSON.parse(fs.readFileSync(files[contacts_save_file]))
+    const saved_companies = JSON.parse(fs.readFileSync(files.companies_save_file))
+    const saved_contacts = JSON.parse(fs.readFileSync(files.contacts_save_file))
 
     let saved_company_names = saved_companies.map(a => a.company)
     let saved_contact_company_names = saved_contacts.map(a => a.name)
 
-    const input = prompt("Select Action: ")
+    const input = prompt("Select Action: ", function(err, res){
+      return
+    })
 
     switch(input){
       case "help":
         console.log("The avalible commands are:\nprocess companies\nprocesss urls\nprocess contacts\ngenerate emails")
+        break
       case "process companies":
         /** Processing company text data:*/
-        const company_text_data = fs.readFileSync(files[companies_text_file]).toString().split("\r\n");
+        const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\r\n");
         const processed_companies = await processCompanies(company_text_data)
         const new_companies = processed_companies.filter(company => {
             if(!saved_company_names.includes[company.company]){
@@ -321,11 +328,11 @@ async function main(){
               return company
             }
         })
-        await save(saved_companies.concat(new_companies), files[companies_save_file])
+        await save(saved_companies.concat(new_companies), files.companies_save_file)
         break
       case "process contacts":
         /** Processing contact text data */
-        const contact_text_data = fs.readFileSync(files[contacts_text_file]).toString().split("\r\n");
+        const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\r\n");
         const processed_contacts = await processContacts(contact_text_data)
         const new_contacts = processed_contacts.filter(contact => {
           if(!saved_contact_company_names.includes[contact.name]){
@@ -333,13 +340,13 @@ async function main(){
             return contact
           }
         })
-        await save(saved_contacts.concat(new_contacts), files[contacts_save_file])
+        await save(saved_contacts.concat(new_contacts), files.contacts_save_file)
         break
       case "generate emails":
           /**Add logic... */
         break
       case "process urls" :
-        const linkedin_match_data = JSON.parse(fs.readFileSync(files[linkedin_match_file]))
+        const linkedin_match_data = JSON.parse(fs.readFileSync(files.linkedin_match_file))
         const processed_urls = await processUrls(linkedin_match_data)
         for (let url_set of processed_urls){
           for (let contact of saved_contacts){
@@ -354,7 +361,7 @@ async function main(){
           }
           /**Add code to add urls to the companies */
         }
-        await save(saved_contacts, files[contacts_save_file])
+        await save(saved_contacts, files.contacts_save_file)
         break
       case "exit":
         loop = false
