@@ -1,0 +1,10 @@
+[{}, {
+    "company_name": "Affinity",
+    "email_template": "first_name@affinity.co"
+}, {
+    "company_name": "MyHEAT",
+    "email_template": "first_name@myheat.ca"
+}, {
+    "company_name": "OneVest",
+    "email_template": "first@onevest.de"
+}]

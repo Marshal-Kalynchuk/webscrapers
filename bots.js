@@ -191,23 +191,29 @@ class EmailBot extends GoogleBot {
     super(devMode)
   }
   async find(company_name){
-    const search_query = company_name.replace(' ', '+') + '+email+format'
+    const search_query = company_name.replace(' ', '+') + '+email+format+rocketreach'
     const search_results = await this.scrape(search_query)
     let emails = []
+
+    /** To-Do Impliment domain checking over name checking. 
+    * The current solution does not account for addmore vs. addmore group.
+    * Temporary solution is to only get emails from rocket reach.
+    * this solves the issue of weirdly formatted emails like j.d@domain.com*/
     for (let res of search_results){
-      if (res.title.toUpperCase().includes(company_name.toUpperCase())){
+      if (res.title.toUpperCase().includes(company_name.toUpperCase()) 
+      && res.title.toUpperCase().includes("ROCKETREACH")){
         emails = emails.concat(extractEmails(res.description))
       }
     }
+
+    // To-Do - Impliment logic for email fomatting (issues with j isntead of john etc.)
     emails = emails.filter(a=>a)
     const formatted_emails = emails.map(a=>a
-      //.replace("l", "lastInitial")
-      //.replace("f", "firstInitial")
-      .replace("doe", "lastName")
-      .replace("jane", "firstName")
-      .replace("john", "firstName")
-      .replace("j", "firstInitial")
-      .replace("d", "lastInitial"))
+      .replace("last", "last_name")
+      .replace("first", "first_name")
+      .replace("doe", "last_name")
+      .replace("jane", "first_name")
+      .replace("john", "first_name"))
     return formatted_emails[0]
   }
 };
