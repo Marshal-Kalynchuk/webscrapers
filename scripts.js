@@ -1,45 +1,126 @@
+/** Defines imports required for the functions */
 const fs = require('fs');
 const EmailBot = require('./bots.js');
 const prompt = require('prompt-sync')();
 
-function uuidv4(){return undefined}
-
+/** Used to define the data structure of the companies*/
 class Company {
-  constructor(companyName, industry, location, size, linkedinUrl=undefined, websiteUrl=undefined, phone=undefined, email=undefined, template=undefined){
-    this.id = uuidv4(),
-    this.company = companyName,
+  constructor(company_name, industry, location, size, linkedin_url=undefined, 
+    website_url=undefined, phone=undefined, email=undefined) {
+    this.company_name = company_name,
     this.industry = industry,
     this.location = location, 
     this.size = size,
-    this.linkedinUrl = linkedinUrl,
-    this.websiteUrl = websiteUrl,
+    this.linkedin_url = linkedin_url,
+    this.website_url = website_url,
     this.phone = phone,
-    this.email = email,
-    this.template = template
-  }
-}
+    this.email = email
+  };
+};
 
+/** Used to define the data structure of the contacts*/
 class Contact{
-  constructor(company, firstName, middleName = undefined, lastName, role, geography, email=undefined, number=undefined) {
-    this.id = uuidv4(),
-    this.company = company, 
-    this.firstName = firstName,
-    this.middleName = middleName,
-    this.lastName = lastName,
+  constructor(company_name, first_name, middle_name = undefined, 
+    last_name, role, geography, email=undefined, number=undefined) {
+    this.company_name = company_name, 
+    this.first_name = first_name,
+    this.middle_name = middle_name,
+    this.last_name = last_name,
     this.role = role,
     this.email = email,
     this.number = number ,
     this.geography = geography
-  }
+  };
 };
 
+/** Use to defined the data structure of the url sets*/
 class UrlSet{
-  constructor(companyName, linkedinUrl, websiteUrl){
-    this.id = uuidv4(),
-    this.company = companyName,
-    this.linkedinUrl = linkedinUrl,
-    this.websiteUrl = websiteUrl
+  constructor(company_name, linkedin_url, website_url){
+    this.company_name = company_name,
+    this.linkedin_url = linkedin_url,
+    this.website_url = website_url
+  };
+};
+
+/** Defines the file locations*/
+const files = {
+
+  companies_save_file: "./files/companies_save_file.json",
+  companies_text_file: "./files/companies_text_file.txt",
+
+  contacts_save_file: "./files/contacts_save_file.json",
+  contacts_text_file: "./files/contacts_text_file.txt",
+
+  linkedin_match_results: "./files/linkedinMatchResults.json"
+}
+
+/**Main CLI function. Runs all other functions and manages the data */
+async function main(){
+  let loop = true
+  let saved_companies = JSON.parse(fs.readFileSync(files.companies_save_file))
+  let saved_contacts = JSON.parse(fs.readFileSync(files.contacts_save_file))
+
+  let saved_company_names = saved_companies.map(a => a.company)
+  let saved_contact_company_names = saved_contacts.map(a => a.name)
+
+  while (loop) {
+
+    const input = prompt("Select Action: ")
+
+    switch(input){
+      case "help":
+        console.log("The avalible commands are:\nprocess companies\nprocesss urls\nprocess contacts\ngenerate emails")
+        break
+      case "process companies":
+        /** Processing company text data:*/
+        const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\n");
+        console.log(company_text_data)
+        const processed_companies = await processCompanies(company_text_data)
+        const new_companies = processed_companies.filter(company => {
+            !saved_company_names.includes[company.company_name]})
+        saved_company_names = saved_company_names.concat(new_companies.map(a=>a.company_name))
+        console.log(`Adding ${new_companies.length} new companies to the save file`)
+        saved_companies = saved_companies.concat(new_companies)
+        break
+      case "process contacts":
+        /** Processing contact text data */
+        const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
+        const processed_contacts = await processContacts(contact_text_data)
+        const new_contacts = processed_contacts.filter(contact => {
+          !saved_contact_company_names.includes[contact.company_name]
+        })
+        saved_contact_company_names = saved_contact_company_names.concat(new_contacts.map(a=>a.company_name))
+        saved_contacts = saved_contacts.concat(new_contacts)
+        break
+      case "generate emails":
+          /**Add logic... */
+        break
+      case "process urls" :
+        const linkedin_match_data = JSON.parse(fs.readFileSync(files.linkedin_match_file))
+        const processed_urls = await processUrls(linkedin_match_data)
+        for (let url_set of processed_urls){
+          for (let contact of saved_contacts){
+            if(contact.company == url_set.company){
+              if (contact.website_url == undefined){
+                contact.website_url = url_set.website_url
+              }
+              if (contact.linkedin_url == undefined){
+                contact.linkedin_url = url_set.linkedin_url
+              }
+            }
+          }
+          /**Add code to add urls to the companies */
+        }
+        break
+      case "exit":
+        loop = false
+        break
+      default:
+        console.log("Invalid Input. For help type help")
+    }
   }
+  await save(saved_companies, files.companies_save_file)
+  await save(saved_contacts, files.contacts_save_file)
 }
 
 /**Takes in a raw text from the linkedin sales navigator contact leads 
@@ -92,7 +173,7 @@ async function generateEmails(contacts){
       }
       /**Use EmailBot to search for email template */
       else{
-        template = await bot.find(contact.company)
+        template = await bot.find(contact.company_name)
         console.log(template)
         if(template != undefined){
           console.log(`Email formate found for: ${contact}`)
@@ -103,10 +184,10 @@ async function generateEmails(contacts){
           domain = split[1];
 
           format = format
-          .replace("first_name", contact.firstName)
-          .replace("first_initial", contact.firstName[0])
-          .replace("last_name", contact.lastName)
-          .replace("last_initial", contact.lastName[0])
+          .replace("first_name", contact.first_name)
+          .replace("first_initial", contact.first_name[0])
+          .replace("last_name", contact.last_name)
+          .replace("last_initial", contact.last_name[0])
 
           contact.email = format + "@" + domain
 
@@ -162,7 +243,45 @@ async function processUrls(linkedin_match_data){
   return url_sets
 };
 
+/** Filters the companies based of a given criteria */
+async function filterCompanies(companiesFile, good, bad){
+  const data = JSON.parse(fs.readFileSync(companiesFile))
+  let goodCompanies = []
+  let badCompanies = []
+  const alwaysExclude = ["Civil Engineering", "Construction", "Law Practice", "Wellness and Fitness Services", "Motor Vehicle Manufacturing",
+  "Online Audio and Video Media", "Motor Vehicle Manufacturing", "E-Learning Providers", "Real Estate", "Travel Arrangements", "Printing Services",
+  "Government Relations Services", "Food and Beverage Services", "Wholesale", "Appliances, Electrical, and Electronics Manufacturing",
+  "Automation Machinery Manufacturing", 'Computer Hardware Manufacturing', 'Manufacturing', 'Hospitality', 'Furniture and Home Furnishings Manufacturing',
+  'Fundraising',   'Musicians', 'Aviation and Aerospace Component Manufacturing', 'Measuring and Control Instrument Manufacturing',]
 
+  const alwaysInclude = ["Human Resources Services", "Staffing and Recruiting"]
+
+  for (var i=0;i<data.length;i++){
+    if ((parseInt(data[i].size.replace(",", ""))<150 || alwaysInclude.includes(data[i].indusrty)) && !alwaysExclude.includes(data[i].industry)){
+      goodCompanies.push(data[i])
+    }
+    else{
+      badCompanies.push(data[i])
+    }
+  }
+  await save(goodCompanies, good)
+  await save(badCompanies, bad)
+};
+
+/** Saves data to json at the specified path */
+async function save(data, path) {
+
+  let jsonData = JSON.stringify(data);
+  fs.writeFile(path, jsonData, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+};
+
+
+
+/**Depreciated code: */
 async function zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile=undefined, contactTemplateFile=undefined, companyContactFile=undefined){
 
   console.log("Zipping company info, urls, templates and general contact info")
@@ -247,128 +366,11 @@ async function zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile=un
     await save(completeCompanies, companiesCompleteFile)
   }
 };
-
-async function save(data, path) {
-
-  let jsonData = JSON.stringify(data);
-  fs.writeFile(path, jsonData, function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
-};
-
 async function zipAndProcess(companiesTxtFile, companiesFile, linkedinMatchFile, urlsFile, contactTemplateFile, companyContactFile){
   await processCompanies(companiesTxtFile, companiesFile)
   await processUrls(linkedinMatchFile, urlsFile)
   await zipCompanyFiles(companiesFile, companyContactFile, urlsFile, contactTemplateFile)
 };
-
-async function filterCompanies(companiesFile, good, bad){
-  const data = JSON.parse(fs.readFileSync(companiesFile))
-  let goodCompanies = []
-  let badCompanies = []
-  const alwaysExclude = ["Civil Engineering", "Construction", "Law Practice", "Wellness and Fitness Services", "Motor Vehicle Manufacturing",
-  "Online Audio and Video Media", "Motor Vehicle Manufacturing", "E-Learning Providers", "Real Estate", "Travel Arrangements", "Printing Services",
-  "Government Relations Services", "Food and Beverage Services", "Wholesale", "Appliances, Electrical, and Electronics Manufacturing",
-  "Automation Machinery Manufacturing", 'Computer Hardware Manufacturing', 'Manufacturing', 'Hospitality', 'Furniture and Home Furnishings Manufacturing',
-  'Fundraising',   'Musicians', 'Aviation and Aerospace Component Manufacturing', 'Measuring and Control Instrument Manufacturing',]
-
-  const alwaysInclude = ["Human Resources Services", "Staffing and Recruiting"]
-
-  for (var i=0;i<data.length;i++){
-    if ((parseInt(data[i].size.replace(",", ""))<150 || alwaysInclude.includes(data[i].indusrty)) && !alwaysExclude.includes(data[i].industry)){
-      goodCompanies.push(data[i])
-    }
-    else{
-      badCompanies.push(data[i])
-    }
-  }
-  await save(goodCompanies, good)
-  await save(badCompanies, bad)
-};
-
-const files = {
-
-  companies_save_file: "./files/companies_save_file.json",
-  companies_text_file: "./files/companies_text_file.txt",
-
-  contacts_save_file: "./files/contacts_save_file.json",
-  contacts_text_file: "./files/contacts_text_file.txt",
-
-  linkedin_match_results: "./files/linkedinMatchResults.json"
-}
-
-async function main(){
-  let loop = true
-  let saved_companies = JSON.parse(fs.readFileSync(files.companies_save_file))
-  let saved_contacts = JSON.parse(fs.readFileSync(files.contacts_save_file))
-
-  let saved_company_names = saved_companies.map(a => a.company)
-  let saved_contact_company_names = saved_contacts.map(a => a.name)
-
-  while (loop) {
-
-    const input = prompt("Select Action: ")
-
-    switch(input){
-      case "help":
-        console.log("The avalible commands are:\nprocess companies\nprocesss urls\nprocess contacts\ngenerate emails")
-        break
-      case "process companies":
-        /** Processing company text data:*/
-        const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\n");
-        console.log(company_text_data)
-        const processed_companies = await processCompanies(company_text_data)
-        const new_companies = processed_companies.filter(company => {
-            !saved_company_names.includes[company.company]})
-        saved_company_names = saved_company_names.concat(new_companies.map(a=>a.company))
-        console.log(`Adding ${new_companies.length} new companies to the save file`)
-        saved_companies = saved_companies.concat(new_companies)
-        break
-      case "process contacts":
-        /** Processing contact text data */
-        const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
-        const processed_contacts = await processContacts(contact_text_data)
-        const new_contacts = processed_contacts.filter(contact => {
-          !saved_contact_company_names.includes[contact.name]
-        })
-        saved_contact_company_names = saved_contact_company_names.concat(new_contacts.map(a=>a.name))
-        saved_contacts = saved_contacts.concat(new_contacts)
-        break
-      case "generate emails":
-          /**Add logic... */
-        break
-      case "process urls" :
-        const linkedin_match_data = JSON.parse(fs.readFileSync(files.linkedin_match_file))
-        const processed_urls = await processUrls(linkedin_match_data)
-        for (let url_set of processed_urls){
-          for (let contact of saved_contacts){
-            if(contact.company == url_set.company){
-              if (contact.website_url == undefined){
-                contact.website_url = url_set.website_url
-              }
-              if (contact.linkedin_url == undefined){
-                contact.linkedin_url = url_set.linkedin_url
-              }
-            }
-          }
-          /**Add code to add urls to the companies */
-        }
-        break
-      case "exit":
-        loop = false
-        break
-      default:
-        console.log("Invalid Input. For help type help")
-    }
-  }
-  await save(saved_companies, files.companies_save_file)
-  await save(saved_contacts, files.contacts_save_file)
-}
+/**Depreciated code ^^^ */
 
 main()
-
-
-
-
