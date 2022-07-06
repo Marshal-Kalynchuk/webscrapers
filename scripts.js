@@ -294,14 +294,9 @@ const files = {
 
   contacts_save_file: "",
   contacts_text_file: "",
-  
 }
 
 async function main(){
-  let contacts = JSON.parse(fs.readFileSync('./json_files/trialContacts.json'))
-  contacts = await generateEmails(contacts)
-  //const emails = await JSON.parse(JSON.stringify(contacts.map(a=>a.email)));
-  //console.log(`The found emails are: ${emails}`)
   let loop = true
   while (loop) {
 
@@ -311,9 +306,11 @@ async function main(){
     let saved_company_names = saved_companies.map(a => a.company)
     let saved_contact_company_names = saved_contacts.map(a => a.name)
 
-    const input = prompt("Select Action (process companies, process urls, zip company files, zip and process company files): ")
+    const input = prompt("Select Action: ")
 
     switch(input){
+      case "help":
+        console.log("The avalible commands are:\nprocess companies\nprocesss urls\nprocess contacts\ngenerate emails")
       case "process companies":
         /** Processing company text data:*/
         const company_text_data = fs.readFileSync(files[companies_text_file]).toString().split("\r\n");
@@ -363,7 +360,7 @@ async function main(){
         loop = false
         break
       default:
-        console.log("Invalid Input")
+        console.log("Invalid Input. For help type help")
     }
   }
 }
