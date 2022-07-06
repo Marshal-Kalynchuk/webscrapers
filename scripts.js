@@ -130,7 +130,7 @@ async function processCompanies(text_data){
   let new_companies = []
   let company_name, industry, location, size = undefined
 
-  for (let i=0; i<text_data.length; i++) {
+  for (let i = 0; i<text_data.length; i++) {
 
     if (text_data[i].includes("Select")){
       company_name = text_data[i+2]
@@ -145,7 +145,6 @@ async function processCompanies(text_data){
     else if (text_data[i].includes("Add note")){
       // Create Company Object
       let company = new Company(company_name, industry, location, size)
-      console.log(company)
       new_companies.push(company)
     }
   }
@@ -302,17 +301,15 @@ const files = {
 
 async function main(){
   let loop = true
+  let saved_companies = JSON.parse(fs.readFileSync(files.companies_save_file))
+  let saved_contacts = JSON.parse(fs.readFileSync(files.contacts_save_file))
+
+  let saved_company_names = saved_companies.map(a => a.company)
+  let saved_contact_company_names = saved_contacts.map(a => a.name)
+
   while (loop) {
 
-    const saved_companies = JSON.parse(fs.readFileSync(files.companies_save_file))
-    const saved_contacts = JSON.parse(fs.readFileSync(files.contacts_save_file))
-
-    let saved_company_names = saved_companies.map(a => a.company)
-    let saved_contact_company_names = saved_contacts.map(a => a.name)
-
-    const input = prompt("Select Action: ", function(err, res){
-      return
-    })
+    const input = prompt("Select Action: ")
 
     switch(input){
       case "help":
@@ -320,7 +317,8 @@ async function main(){
         break
       case "process companies":
         /** Processing company text data:*/
-        const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\r\n");
+        const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\n");
+        console.log(company_text_data)
         const processed_companies = await processCompanies(company_text_data)
         const new_companies = processed_companies.filter(company => {
             if(!saved_company_names.includes[company.company]){
@@ -328,11 +326,12 @@ async function main(){
               return company
             }
         })
-        await save(saved_companies.concat(new_companies), files.companies_save_file)
+        console.log(`Adding ${new_companies.length} new companies to the save file`)
+        saved_companies = saved_companies.concat(new_companies)
         break
       case "process contacts":
         /** Processing contact text data */
-        const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\r\n");
+        const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
         const processed_contacts = await processContacts(contact_text_data)
         const new_contacts = processed_contacts.filter(contact => {
           if(!saved_contact_company_names.includes[contact.name]){
@@ -340,7 +339,7 @@ async function main(){
             return contact
           }
         })
-        await save(saved_contacts.concat(new_contacts), files.contacts_save_file)
+        saved_contacts = saved_contacts.concat(new_contacts)
         break
       case "generate emails":
           /**Add logic... */
@@ -361,7 +360,6 @@ async function main(){
           }
           /**Add code to add urls to the companies */
         }
-        await save(saved_contacts, files.contacts_save_file)
         break
       case "exit":
         loop = false
@@ -370,6 +368,8 @@ async function main(){
         console.log("Invalid Input. For help type help")
     }
   }
+  await save(saved_companies, files.companies_save_file)
+  await save(saved_contacts, files.contacts_save_file)
 }
 
 main()
