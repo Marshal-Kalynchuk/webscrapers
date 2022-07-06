@@ -321,11 +321,8 @@ async function main(){
         console.log(company_text_data)
         const processed_companies = await processCompanies(company_text_data)
         const new_companies = processed_companies.filter(company => {
-            if(!saved_company_names.includes[company.company]){
-              saved_company_names.push(company.company)
-              return company
-            }
-        })
+            !saved_company_names.includes[company.company]})
+        saved_company_names = saved_company_names.concat(new_companies.map(a=>a.company))
         console.log(`Adding ${new_companies.length} new companies to the save file`)
         saved_companies = saved_companies.concat(new_companies)
         break
@@ -334,11 +331,9 @@ async function main(){
         const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
         const processed_contacts = await processContacts(contact_text_data)
         const new_contacts = processed_contacts.filter(contact => {
-          if(!saved_contact_company_names.includes[contact.name]){
-            saved_contact_company_names.push(contact.name)
-            return contact
-          }
+          !saved_contact_company_names.includes[contact.name]
         })
+        saved_contact_company_names = saved_contact_company_names.concat(new_contacts.map(a=>a.name))
         saved_contacts = saved_contacts.concat(new_contacts)
         break
       case "generate emails":
