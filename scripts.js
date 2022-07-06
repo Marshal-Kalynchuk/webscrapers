@@ -1,4 +1,5 @@
 /** Defines imports required for the functions */
+const { fail } = require('assert');
 const fs = require('fs');
 const EmailBot = require('./bots.js');
 const prompt = require('prompt-sync')();
@@ -57,11 +58,12 @@ const files = {
 /**Main CLI function. Runs all other functions and manages the data */
 async function main(){
   let loop = true
-  let saved_companies = JSON.parse(fs.readFileSync(files.companies_save_file))
-  let saved_contacts = JSON.parse(fs.readFileSync(files.contacts_save_file))
 
-  let saved_company_names = saved_companies.map(a => a.company)
-  let saved_contact_company_names = saved_contacts.map(a => a.name)
+  let saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
+  let saved_contacts = await JSON.parse(fs.readFileSync(files.contacts_save_file))
+
+  let saved_company_names = saved_companies.map(a => a.company_name)
+  let saved_contact_company_names = saved_contacts.map(a => a.company_name)
 
   while (loop) {
 
@@ -78,8 +80,8 @@ async function main(){
         const processed_companies = await processCompanies(company_text_data)
         const new_companies = processed_companies.filter(company => {
             !saved_company_names.includes[company.company_name]})
-        saved_company_names = saved_company_names.concat(new_companies.map(a=>a.company_name))
         console.log(`Adding ${new_companies.length} new companies to the save file`)
+        saved_company_names = saved_company_names.concat(new_companies.map(a=>a.company_name))
         saved_companies = saved_companies.concat(new_companies)
         break
       case "process contacts":
@@ -87,8 +89,8 @@ async function main(){
         const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
         const processed_contacts = await processContacts(contact_text_data)
         const new_contacts = processed_contacts.filter(contact => {
-          !saved_contact_company_names.includes[contact.company_name]
-        })
+          !saved_contact_company_names.includes[contact.company_name]})
+        console.log(`Adding ${new_contacts.length} new contacts to the save file`)
         saved_contact_company_names = saved_contact_company_names.concat(new_contacts.map(a=>a.company_name))
         saved_contacts = saved_contacts.concat(new_contacts)
         break
@@ -152,7 +154,6 @@ async function processContacts(text_data){
       new_contacts.push(contact)
     }
   }
-  console.log("Finished")
   return new_contacts
 };
 
