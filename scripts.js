@@ -1,8 +1,9 @@
 /** Defines imports required for the functions */
 const fs = require('fs');
-const EmailBot = require('./bots.js');
 const prompt = require('prompt-sync')();
-const _ = require('lodash')
+
+// Import bots
+const Bots = require('./bots.js');
 
 /** Used to define the data structure of the companies*/
 class Company {
@@ -56,20 +57,30 @@ const files = {
   linkedin_match_file: "./files/linkedinMatchResults.json"
 }
 
+const locations = [
+  "Calgary"
+]
+
+const keywords = [
+  "Front-end Developer"
+]
+
 /**Main CLI function. Runs all other functions and manages the data */
 async function main(){
-  let loop = true
-
+  
+  // initializing the files
   let saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
   let saved_contacts = await JSON.parse(fs.readFileSync(files.contacts_save_file))
   let saved_company_names = saved_companies.map(a => a.company_name)
 
+  let loop = true
   while (loop) {
 
-    let c = 0
-    let b = 0
+    // Counters, no function outside of displaying amounts added:
+    let c, b = 0
     const input = prompt("Select Action: ")
 
+    // Main CLI
     switch(input){
       case "help":
         console.log("The avalible commands are:\nprocess companies\nprocesss urls\nprocess contacts\ngenerate emails")
@@ -131,6 +142,17 @@ async function main(){
         }
         console.log(`${c} website urls added, ${b} linkedin urls added.`)
         break
+      case "scrape linkedin":
+        const linkedin_bot = new Bots.LinkedinBot(true)
+        await linkedin_bot.init()
+        for (let location in locations){
+          for (let keyword in keywords){
+            const results = await linkedin_bot.scrapeSearch(keyword, location)
+            console.log(results)
+            // Todo - Check is in
+          }
+        }
+        break
       case "exit":
         loop = false
         break
@@ -138,6 +160,8 @@ async function main(){
         console.log("Invalid Input. For help type help")
     }
   }
+
+  // Saving the files
   await save(saved_companies, files.companies_save_file)
   await save(saved_contacts, files.contacts_save_file)
 }

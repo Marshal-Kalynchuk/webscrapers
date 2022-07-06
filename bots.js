@@ -125,6 +125,9 @@ class Puppet {
         });
       });
       await page.setCookie()
+      if (this.config.initial_url){
+        await page.goto(this.config.initial_url)
+      }
       this.browser = browser
       this.page = page
     } catch (err) {
@@ -183,11 +186,7 @@ class GoogleBot extends Puppet {
   }
 };
 
-function extractEmails(text){
-  return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);
-};
-
-module.exports = class EmailBot extends GoogleBot {
+class EmailBot extends GoogleBot {
   constructor(devMode=false) {
     super(devMode)
   }
@@ -213,9 +212,11 @@ module.exports = class EmailBot extends GoogleBot {
   }
 };
 
-module.exports = class LinkedinScraper extends Puppet {
+// To-Do - Implement rate limiting feature in config.
+class LinkedinBot extends Puppet {
   constructor(devMode = false) {
     const config = {
+      initial_url: "https://www.linkedin.com",
       search_url: "https://www.linkedin.com/jobs/search?keywords=field_1&location=field_2",
       card_Sel: ".base-card",
       card_fields: {
@@ -230,10 +231,19 @@ module.exports = class LinkedinScraper extends Puppet {
   }
 };
 
+function extractEmails(text){
+  return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);
+};
+
 function delay(time) {
   return new Promise(function (resolve) {
     setTimeout(resolve, time)
   });
 };
+
+module.exports = {
+  EmailBot: EmailBot,
+  LinkedinBot: LinkedinBot
+}
 
 
