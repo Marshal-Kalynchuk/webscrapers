@@ -41,42 +41,41 @@ class UrlSet{
   }
 }
 
-/**Takes in a copy pasted text from the linkedin sales navigator 
- * leads list and turns it into a list of contacts objects */
-export async function processContacts(txtData){
+/**Takes in a raw text from the linkedin sales navigator contact leads 
+ * list and turns it into a list of contacts objects */
+async function processContacts(text_data){
 
-  console.log("Processing contacts...")
-  let contacts = []
-  let firstName, middleName, lastName = undefined
+  let new_contacts = []
+  let first_name, middle_name, last_name = undefined
 
-  for (var i=0; i<txtData.length; i++) {
-    if (txtData[i].includes("Select")){
-      var name = txtData[i+2].split(" ")
-      firstName = name[0]
-      lastName = name[name.length - 1]
+  for (var i=0; i<text_data.length; i++) {
+    if (text_data[i].includes("Select")){
+      var name = text_data[i+2].split(" ")
+      first_name = name[0]
+      last_name = name[name.length - 1]
       if (name.length == 3){
-        middleName = name[1]
+        middle_name = name[1]
       }
     }
-    else if (txtData[i].includes("1 List")){
+    else if (text_data[i].includes("1 List")){
       let contact = new Contact(
-        txtData[i+4], // Company Name
-        firstName,
-        middleName,
-        lastName,
-        role = txtData[i+2],
-        geography = txtData[i+5].split("\t")[0],
+        text_data[i+4], // Company Name
+        first_name,
+        middle_name,
+        last_name,
+        role = text_data[i+2],
+        geography = text_data[i+5].split("\t")[0],
       )
-      middleName = undefined
-      contacts.push(contact)
+      middle_name = undefined
+      new_contacts.push(contact)
     }
   }
   console.log("Finished")
-  return contacts
+  return new_contacts
 };
 
 /**Takes in a list of contacts and tries to generate emails for them */
-export async function generateEmails(contacts){
+async function generateEmails(contacts){
 
   /**Create Email bot instance */
   const bot = new EmailBot(true)
@@ -123,68 +122,44 @@ export async function generateEmails(contacts){
   return contacts
 };
 
-async function processCompanies(companiesTxtFile, companiesFile){
+/**Takes in raw text from the linkedin sales navigator company leads
+ * list and turns it into a list of company objects */
+async function processCompanies(text_data){
 
-  console.log("Processing Companies...")
-  const txtData = fs.readFileSync(companiesTxtFile).toString().split("\r\n");
+  let new_companies = []
+  let company_name, industry, location, size = undefined
 
-  let companies = JSON.parse(fs.readFileSync(companiesFile))
-  let loggedCompanies = companies.map(a => a.company)
+  for (let i=0; i<text_data.length; i++) {
 
-  var companyName, industry, location, size = undefined
-
-  for (var i=0; i<txtData.length; i++) {
-
-    if (txtData[i].includes("Select")){
-      companyName = txtData[i+2]
+    if (text_data[i].includes("Select")){
+      company_name = text_data[i+2]
     }
-    else if (txtData[i].includes("List")){
-      industry = txtData[i+2]
+    else if (text_data[i].includes("List")){
+      industry = text_data[i+2]
     }
-    else if (txtData[i].includes("employees")){
-      size = txtData[i].split(" ")[0]
-      location = txtData[i+1]
-
+    else if (text_data[i].includes("employees")){
+      size = text_data[i].split(" ")[0]
+      location = text_data[i+1]
     }
-    else if (txtData[i].includes("Add note")){
-
+    else if (text_data[i].includes("Add note")){
       // Create Company Object
-      let company = new Company(companyName, industry, location, size)
+      let company = new Company(company_name, industry, location, size)
       console.log(company)
-
-      // Checks if Company is already registerd
-      if (loggedCompanies.includes(company.company)){
-        continue
-      }
-      else{
-        loggedCompanies.push(company.company)
-        companies.push(company)
-      }
+      new_companies.push(company)
     }
   }
-  await save(companies, companiesFile)
-  console.log("Finished")
+  return companies
 };
 
-async function processUrls(linkedinMatchFile, urlsFile){
-
-  console.log("Processing Urls...")
-  const matchData = JSON.parse(fs.readFileSync(linkedinMatchFile))
-  let urlSets = JSON.parse(fs.readFileSync(urlsFile))
-  let loggedCompanies = urlSets.map(a => a.company)
-
-  for (var i=0;i<matchData.length;i++){
-    var urlSet = new UrlSet(matchData[i].company, (matchData[i].linkedinUrl).split("?")[0], matchData[i].websiteUrl)
-    if (loggedCompanies.includes(matchData.company)){
-      continue
-    }
-    else{
-      loggedCompanies.push(urlSet.company)
-      urlSets.push(urlSet)
-    }
+/**Processes the linkedin match results and returns a list of linkedin 
+ * urls, company urls and company names*/
+async function processUrls(linkedin_match_data){
+  let url_sets = []
+  for (let i = 0;i < linkedin_match_data.length; i++){
+    let url_set = new UrlSet(matchData[i].company, (matchData[i].linkedinUrl).split("?")[0], matchData[i].websiteUrl)
+    url_sets.push(url_set)
   }
-  await save(urlSets, urlsFile)
-  console.log("Finished")
+  return url_sets
 };
 
 async function zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile=undefined, contactTemplateFile=undefined, companyContactFile=undefined){
@@ -312,67 +287,88 @@ async function filterCompanies(companiesFile, good, bad){
   await save(badCompanies, bad)
 };
 
-/**
-async function run(){
-  const contactsTxtFile = "txt-files/contacts.txt"
-  const contactsFile = "json-files/contacts.json"
+const files = {
 
+  companies_save_file: "",
+  companies_text_file: "",
 
-  const companiesTxtFile = "txt-files/companies2.txt"
+  contacts_save_file: "",
+  contacts_text_file: "",
+  
+}
 
-  const companiesFile = "json-files/goodCompanies.json"
+async function main(){
+  let contacts = JSON.parse(fs.readFileSync('./json_files/trialContacts.json'))
+  contacts = await generateEmails(contacts)
+  //const emails = await JSON.parse(JSON.stringify(contacts.map(a=>a.email)));
+  //console.log(`The found emails are: ${emails}`)
+  let loop = true
+  while (loop) {
 
+    const saved_companies = JSON.parse(fs.readFileSync(files[companies_save_file]))
+    const saved_contacts = JSON.parse(fs.readFileSync(files[contacts_save_file]))
 
-  const goodCompaniesFile = "json-files/goodCompanies.json"
-  const badCompaniesFile = "json-files/badCompanies.json"
+    let saved_company_names = saved_companies.map(a => a.company)
+    let saved_contact_company_names = saved_contacts.map(a => a.name)
 
-
-  const linkedinMatchFile = "json-files/linkedinMatchResults2.json"
-
-  const urlsFile = "json-files/urls.json"
-  const contactTemplatesFile = "json-files/contactTemplates.json"
-  const companyContactFile = "json-files/companyContact.json"
-
-
-  const companiesCompleteFile = "json-files/goodCompaniesComplete.json"
-
-
-  const filteredCompaniesFile = "json-files/filteredCompanies.json"
-
-  while (true) {
     const input = prompt("Select Action (process companies, process urls, zip company files, zip and process company files): ")
-    if (input == "contacts") {
 
-    } else if (input == "process companies"){
-
-      await processCompanies(companiesTxtFile, companiesFile)
-
-    }else if (input == "process urls"){
-      await processUrls(linkedinMatchFile, urlsFile)
-    }else if (input == "process contacts"){
-      await processContacts(contactsTxtFile, contactsFile)
-    }else if (input == "generate emails"){
-      await generateEmails(contactsFile, companiesCompleteFile)
-    }else if (input == "zip company files"){
-      await zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile, contactTemplatesFile, companyContactFile)
-    }else if (input == "zip and process company files"){
-      await zipAndProcess(companiesTxtFile, companiesFile, linkedinMatchFile, urlsFile, contactTemplatesFile, companyContactFile, companiesCompleteFile)
-    }else if(input == "filter"){
-      await filterCompanies(companiesFile, goodCompaniesFile, badCompaniesFile)
-    }
-    
-    else if (input == "exit"){
-      break
-    }
-    else{
-      console.log("Invalid Input")
+    switch(input){
+      case "process companies":
+        /** Processing company text data:*/
+        const company_text_data = fs.readFileSync(files[companies_text_file]).toString().split("\r\n");
+        const processed_companies = await processCompanies(company_text_data)
+        const new_companies = processed_companies.filter(company => {
+            if(!saved_company_names.includes[company.company]){
+              saved_company_names.push(company.company)
+              return company
+            }
+        })
+        await save(saved_companies.concat(new_companies), files[companies_save_file])
+        break
+      case "process contacts":
+        /** Processing contact text data */
+        const contact_text_data = fs.readFileSync(files[contacts_text_file]).toString().split("\r\n");
+        const processed_contacts = await processContacts(contact_text_data)
+        const new_contacts = processed_contacts.filter(contact => {
+          if(!saved_contact_company_names.includes[contact.name]){
+            saved_contact_company_names.push(contact.name)
+            return contact
+          }
+        })
+        await save(saved_contacts.concat(new_contacts), files[contacts_save_file])
+        break
+      case "generate emails":
+          /**Add logic... */
+        break
+      case "process urls" :
+        const linkedin_match_data = JSON.parse(fs.readFileSync(files[linkedin_match_file]))
+        const processed_urls = await processUrls(linkedin_match_data)
+        for (let url_set of processed_urls){
+          for (let contact of saved_contacts){
+            if(contact.company == url_set.company){
+              if (contact.website_url == undefined){
+                contact.website_url = url_set.website_url
+              }
+              if (contact.linkedin_url == undefined){
+                contact.linkedin_url = url_set.linkedin_url
+              }
+            }
+          }
+          /**Add code to add urls to the companies */
+        }
+        await save(saved_contacts, files[contacts_save_file])
+        break
+      case "exit":
+        loop = false
+        break
+      default:
+        console.log("Invalid Input")
     }
   }
-};
+}
 
-run()
-
-*/
+main()
 
 
 
