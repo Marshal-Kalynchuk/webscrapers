@@ -44,6 +44,7 @@ class UrlSet{
 };
 
 /** Defines the file locations*/
+/** If the json files must at least have [{}] in them of the function wont work. */
 const files = {
 
   companies_save_file: "./files/companies_save_file.json",
@@ -52,7 +53,7 @@ const files = {
   contacts_save_file: "./files/contacts_save_file.json",
   contacts_text_file: "./files/contacts_text_file.txt",
 
-  linkedin_match_results: "./files/linkedinMatchResults.json"
+  linkedin_match_file: "./files/linkedinMatchResults.json"
 }
 
 /**Main CLI function. Runs all other functions and manages the data */
@@ -61,11 +62,12 @@ async function main(){
 
   let saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
   let saved_contacts = await JSON.parse(fs.readFileSync(files.contacts_save_file))
-
   let saved_company_names = saved_companies.map(a => a.company_name)
 
   while (loop) {
 
+    let c = 0
+    let b = 0
     const input = prompt("Select Action: ")
 
     switch(input){
@@ -89,7 +91,6 @@ async function main(){
         /** Processing contact text data */
         const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
         const processed_contacts = await processContacts(contact_text_data)
-        let c = 0
         for (let new_contact of processed_contacts){
           let is_in = false
           for (let saved_contact of saved_contacts){
@@ -115,17 +116,20 @@ async function main(){
         const processed_urls = await processUrls(linkedin_match_data)
         for (let url_set of processed_urls){
           for (let contact of saved_contacts){
-            if(contact.company == url_set.company){
+            if(contact.company_name == url_set.company_name){
               if (contact.website_url == undefined){
                 contact.website_url = url_set.website_url
+                c++
               }
               if (contact.linkedin_url == undefined){
                 contact.linkedin_url = url_set.linkedin_url
+                b++
               }
             }
           }
           /**Add code to add urls to the companies */
         }
+        console.log(`${c} website urls added, ${b} linkedin urls added.`)
         break
       case "exit":
         loop = false
@@ -249,12 +253,7 @@ async function processCompanies(text_data){
 /**Processes the linkedin match results and returns a list of linkedin 
  * urls, company urls and company names*/
 async function processUrls(linkedin_match_data){
-  let url_sets = []
-  for (let i = 0;i < linkedin_match_data.length; i++){
-    let url_set = new UrlSet(matchData[i].company, (matchData[i].linkedinUrl).split("?")[0], matchData[i].websiteUrl)
-    url_sets.push(url_set)
-  }
-  return url_sets
+  return linkedin_match_data.map(data=>new UrlSet(data.company, data.linkedinUrl.split("?")[0], data.websiteUrl))
 };
 
 /** Filters the companies based of a given criteria */
