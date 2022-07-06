@@ -1,8 +1,8 @@
 /** Defines imports required for the functions */
-const { fail } = require('assert');
 const fs = require('fs');
 const EmailBot = require('./bots.js');
 const prompt = require('prompt-sync')();
+const _ = require('lodash')
 
 /** Used to define the data structure of the companies*/
 class Company {
@@ -63,7 +63,6 @@ async function main(){
   let saved_contacts = await JSON.parse(fs.readFileSync(files.contacts_save_file))
 
   let saved_company_names = saved_companies.map(a => a.company_name)
-  let saved_contact_company_names = saved_contacts.map(a => a.company_name)
 
   while (loop) {
 
@@ -76,23 +75,37 @@ async function main(){
       case "process companies":
         /** Processing company text data:*/
         const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\n");
-        console.log(company_text_data)
         const processed_companies = await processCompanies(company_text_data)
-        const new_companies = processed_companies.filter(company => {
-            !saved_company_names.includes[company.company_name]})
+        const new_companies = processed_companies.filter(function(company) {
+            if(!saved_company_names.includes(company.company_name)){
+              saved_company_names.push(company.company_name)
+              return company
+            }
+          })
         console.log(`Adding ${new_companies.length} new companies to the save file`)
-        saved_company_names = saved_company_names.concat(new_companies.map(a=>a.company_name))
         saved_companies = saved_companies.concat(new_companies)
         break
       case "process contacts":
         /** Processing contact text data */
         const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
         const processed_contacts = await processContacts(contact_text_data)
-        const new_contacts = processed_contacts.filter(contact => {
-          !saved_contact_company_names.includes[contact.company_name]})
-        console.log(`Adding ${new_contacts.length} new contacts to the save file`)
-        saved_contact_company_names = saved_contact_company_names.concat(new_contacts.map(a=>a.company_name))
-        saved_contacts = saved_contacts.concat(new_contacts)
+        let c = 0
+        for (let new_contact of processed_contacts){
+          let is_in = false
+          for (let saved_contact of saved_contacts){
+            if (saved_contact.first_name == new_contact.first_name &&
+            saved_contact.last_name == new_contact.last_name &&
+            saved_contact.company_name == new_contact.company_name){
+              is_in = true
+              break
+            }
+          }
+          if(!is_in){
+            saved_contacts.push(new_contact)
+            c++
+          }
+        }
+        console.log(`Adding ${c} new contacts to the save file`)
         break
       case "generate emails":
           /**Add logic... */
