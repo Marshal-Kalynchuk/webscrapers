@@ -65,15 +65,15 @@ const files = {
   linkedin_match_file: "./files/linkedinMatchResults.json",
 
   email_templates_file: "./files/email_templates_file.json"
-}
+};
 
 const locations = [
   "Calgary"
-]
+];
 
 const keywords = [
   "Front-end Developer"
-]
+];
 
 /**Main CLI function. Runs all other functions and manages the data 
  * 
@@ -178,7 +178,7 @@ async function main() {
   // Saving the files
   await save(saved_companies, files.companies_save_file)
   await save(saved_contacts, files.contacts_save_file)
-}
+};
 
 /**Takes in a raw text from the linkedin sales navigator contact leads 
  * list and turns it into a list of contacts objects. 
@@ -272,7 +272,7 @@ function generateEmail(template, first_name, last_name) {
     .replace("last_initial", last_name[0])
 
   return format + "@" + domain
-}
+};
 
 /**Takes in raw text from the linkedin sales navigator company leads
  * list and turns it into a list of company objects */
@@ -340,7 +340,6 @@ async function save(data, path) {
     }
   });
 };
-
 
 
 /**Depreciated code: */
@@ -428,5 +427,6 @@ async function zipAndProcess(companiesTxtFile, companiesFile, linkedinMatchFile,
   await zipCompanyFiles(companiesFile, companyContactFile, urlsFile, contactTemplateFile)
 };
 /**Depreciated code ^^^ */
+
 
 main()
