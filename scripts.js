@@ -48,7 +48,7 @@ class UrlSet {
 class EmailTemplate {
   constructor(company_name, email_template) {
     this.company_name = company_name,
-    this.email_template = email_template
+      this.email_template = email_template
   };
 };
 
@@ -80,7 +80,7 @@ const keywords = [
 /**Main CLI function. Runs all other functions and manages the data 
  * 
  * To-Do Impliment handling for blank json files
-*/
+ */
 async function main() {
 
   // initializing the files
@@ -171,8 +171,8 @@ async function main() {
         }
         break
       case "trim":
-        trimmed_contacts = saved_contacts.filter(function(contact){
-          if(contact.website_url != undefined && contact.email != undefined){
+        trimmed_contacts = saved_contacts.filter(function (contact) {
+          if (contact.website_url != undefined && contact.email != undefined) {
             return contact
           }
         })
@@ -229,13 +229,13 @@ async function processContacts(text_data) {
  * 
  * Impliment system to ignore contacts with initials for their last name 
  * Impliment system to ignore none names like PhD*/
-async function generateEmails(contacts) {
+async function generateEmails(contacts, force = false) {
 
   /**Load email templates */
   let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
 
   /**Create Email bot instance */
-  const email_bot = new Bots.EmailBot(false)
+  const email_bot = new Bots.EmailBot(true)
   await email_bot.init()
 
   /**Cycle through list of contacts */
@@ -243,18 +243,27 @@ async function generateEmails(contacts) {
     for (let contact of contacts) {
       if (contact.email == undefined && contact.company_name != undefined) {
         // Using existing data to generate emails
-        for (let existing_template of email_templates) {
-          if (existing_template.company_name == contact.company_name) {
-            contact.email = generateEmail(existing_template.email_template, contact.first_name, contact.last_name)
-            console.log(`Email format found in database for ${contact.first_name} ${contact.last_name}: ${contact.email}`)
-            continue loop_1
+
+        for (let i = 0; i < email_templates.length; i++) {
+          if (email_templates[i].company_name == contact.company_name) {
+            if (email_templates[i].email_template != undefined) {
+              contact.email = generateEmail(email_templates[i].email_template, contact.first_name, contact.last_name)
+              console.log(`Email format found in database for ${contact.first_name} ${contact.last_name}: ${contact.email}`)
+              continue loop_1
+            } else if (force) {
+              email_templates.splice(i, 1)
+              break
+            } else {
+              console.log(`Could not find email format for ${contact.first_name} ${contact.last_name}`)
+              continue loop_1
+            }
           }
         }
         /**Use EmailBot to search for email template */
         let new_template = await email_bot.find(contact.company_name)
         /**If email format was found */
         if (new_template != undefined) {
-          
+
           /**Generate email */
           contact.email = generateEmail(new_template, contact.first_name, contact.last_name)
           email_templates.push(new EmailTemplate(contact.company_name, new_template))
@@ -263,11 +272,12 @@ async function generateEmails(contacts) {
 
           console.log(`Email format found for ${contact.first_name} ${contact.last_name}: ${contact.email}`)
         } else {
+          email_templates.push(new EmailTemplate(contact.company_name, undefined))
           console.log(`Could not find email format for ${contact.first_name} ${contact.last_name}`)
         }
       }
-  }
-  await save (email_templates, files.email_templates_file)
+    }
+  await save(email_templates, files.email_templates_file)
   return contacts
 };
 
@@ -318,7 +328,7 @@ async function processUrls(linkedin_match_data) {
 
 /** Filters the companies based of a given criteria 
  * To-Do - reformat naming conventing and improve filter
-*/
+ */
 async function filterCompanies(companiesFile, good, bad) {
   const data = JSON.parse(fs.readFileSync(companiesFile))
   let goodCompanies = []
