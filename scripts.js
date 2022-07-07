@@ -64,7 +64,9 @@ const files = {
 
   linkedin_match_file: "./files/linkedinMatchResults.json",
 
-  email_templates_file: "./files/email_templates_file.json"
+  email_templates_file: "./files/email_templates_file.json",
+
+  trimmed_contacts_file: "./files/trimmed_contacts.json"
 };
 
 /** Defines the search terms for the linkedin scraper */
@@ -85,6 +87,7 @@ async function main() {
   let saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
   let saved_contacts = await JSON.parse(fs.readFileSync(files.contacts_save_file))
   let saved_company_names = saved_companies.map(a => a.company_name)
+  let trimmed_contacts = []
 
   let loop = true
   while (loop) {
@@ -156,7 +159,7 @@ async function main() {
         }
         console.log(`${c} website urls added, ${b} linkedin urls added.`)
         break
-      case "scrape linkedin":
+      case "scrape":
         const linkedin_bot = new Bots.LinkedinBot(false)
         await linkedin_bot.init()
         for (let location in locations) {
@@ -166,6 +169,13 @@ async function main() {
             // Todo - Check is_in
           }
         }
+        break
+      case "trim":
+        trimmed_contacts = saved_contacts.filter(function(contact){
+          if(contact.website_url != undefined && contact.email != undefined){
+            return contact
+          }
+        })
         break
       case "exit":
         loop = false
@@ -178,6 +188,7 @@ async function main() {
   // Saving the files
   await save(saved_companies, files.companies_save_file)
   await save(saved_contacts, files.contacts_save_file)
+  await save(trimmed_contacts, files.trimmed_contacts_file)
 };
 
 /**Takes in a raw text from the linkedin sales navigator contact leads 
