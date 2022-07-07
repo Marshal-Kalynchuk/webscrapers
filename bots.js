@@ -1,6 +1,3 @@
-const {
-  includes
-} = require('lodash');
 const puppeteer = require('puppeteer')
 
 class Puppet {
@@ -163,10 +160,12 @@ class Puppet {
   async scrapeSearch(field_1, field_2 = undefined) {
     let url = await this.searchURL(field_1, field_2)
     await this.navigate(url)
+    // To-Do - Create dynamic for more complex search results -- google search results 
     return await this.listData()
   }
   async scrapePage() {}
 };
+
 class GoogleBot extends Puppet {
   constructor(devMode = false) {
     const config = {

@@ -67,17 +67,17 @@ const files = {
   email_templates_file: "./files/email_templates_file.json"
 };
 
+/** Defines the search terms for the linkedin scraper */
 const locations = [
   "Calgary"
 ];
-
 const keywords = [
   "Front-end Developer"
 ];
 
 /**Main CLI function. Runs all other functions and manages the data 
  * 
- * To-Do Impliment safety handling for blank json files
+ * To-Do Impliment handling for blank json files
 */
 async function main() {
 
@@ -305,7 +305,9 @@ async function processUrls(linkedin_match_data) {
   return linkedin_match_data.map(data => new UrlSet(data.company, data.linkedinUrl.split("?")[0], data.websiteUrl))
 };
 
-/** Filters the companies based of a given criteria */
+/** Filters the companies based of a given criteria 
+ * To-Do - reformat naming conventing and improve filter
+*/
 async function filterCompanies(companiesFile, good, bad) {
   const data = JSON.parse(fs.readFileSync(companiesFile))
   let goodCompanies = []
