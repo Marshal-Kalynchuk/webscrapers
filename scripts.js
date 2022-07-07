@@ -75,7 +75,10 @@ const keywords = [
   "Front-end Developer"
 ]
 
-/**Main CLI function. Runs all other functions and manages the data */
+/**Main CLI function. Runs all other functions and manages the data 
+ * 
+ * To-Do Impliment safety handling for blank json files
+*/
 async function main() {
 
   // initializing the files

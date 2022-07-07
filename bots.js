@@ -1,3 +1,6 @@
+const {
+  includes
+} = require('lodash');
 const puppeteer = require('puppeteer')
 
 class Puppet {
@@ -125,7 +128,7 @@ class Puppet {
         });
       });
       await page.setCookie()
-      if (this.config.initial_url){
+      if (this.config.initial_url) {
         await page.goto(this.config.initial_url)
       }
       this.browser = browser
@@ -162,10 +165,8 @@ class Puppet {
     await this.navigate(url)
     return await this.listData()
   }
-  async scrapePage() {
-  }
-}
-;
+  async scrapePage() {}
+};
 class GoogleBot extends Puppet {
   constructor(devMode = false) {
     const config = {
@@ -179,7 +180,7 @@ class GoogleBot extends Puppet {
     }
     super(config, devMode)
   }
-  async scrape(field_1){
+  async scrape(field_1) {
     let results = await this.scrapeSearch(field_1)
     /**Custom Script for Google Banners etc... */
     return results
@@ -187,35 +188,91 @@ class GoogleBot extends Puppet {
 };
 
 class EmailBot extends GoogleBot {
-  constructor(devMode=false) {
+  constructor(devMode = false) {
     super(devMode)
+
+    // Define identifing scheme for email formats
+    this.identifiers = {
+      first_name: "first_name",
+      first_initial: "first_initial",
+
+      last_name: "last_name",
+      last_initial: "last_intitial"
+    }
   }
-  async find(company_name){
+  async find(company_name) {
     const search_query = company_name.replace(' ', '+') + '+email+format+rocketreach'
     const search_results = await this.scrape(search_query)
     let emails = []
-
+    let formatted_emails = []
+    
     /** To-Do Impliment domain checking over name checking. 
-    * The current solution does not account for addmore vs. addmore group.
-    * Temporary solution is to only get emails from rocket reach.
-    * this solves the issue of weirdly formatted emails like j.d@domain.com*/
-    for (let res of search_results){
-      if (res.title.toUpperCase().includes(company_name.toUpperCase()) 
-      && res.title.toUpperCase().includes("ROCKETREACH")){
+     * The current solution does not account for addmore vs. addmore group.
+     * Temporary solution is to only get emails from rocket reach.
+     * this solves the issue of weirdly formatted emails like j.d@domain.com*/
+    for (let res of search_results) {
+      if (res.title.toUpperCase().includes(company_name.toUpperCase()) &&
+        res.title.toUpperCase().includes("ROCKETREACH")) {
         emails = emails.concat(extractEmails(res.description))
       }
     }
 
-    // To-Do - Impliment logic for email fomatting (issues with j isntead of john etc.)
-    emails = emails.filter(a=>a)
-    const formatted_emails = emails.map(a=>a
-      .replace("last", "last_name")
-      .replace("first", "first_name")
-      .replace("doe", "last_name")
-      .replace("jane", "first_name")
-      .replace("john", "first_name"))
+    // Safety
+    emails = emails.filter(Boolean)
+    if (emails.length) {
+      // Process each email and convert to usable form
+      for (let email of emails) {
+        // Defining variables and trimming data
+        let temp = email.split("@")
+        let raw_format = temp[0]
+          .toUpperCase()
+          .replace("{", "")
+          .replace("}", "")
+        let domain = temp[1]
+        let format = ""
+
+        // Exceptions
+        if (raw_format.includes("*")) {
+          continue
+        }
+
+        // First name handling:
+        if (raw_format.includes("J")) {
+          if (raw_format.includes("JOHN") || raw_format.includes("JANE")) {
+            format += this.identifiers.first_name
+          } else {
+            format += this.identifiers.first_initial
+          }
+        } else if (raw_format.includes("F")) {
+          if (raw_format.includes("FIRST")) {
+            format += this.identifiers.first_name
+          } else {
+            format += this.identifiers.first_initial
+          }
+        }
+
+        // Last name handling
+        if (raw_format.includes("D")) {
+          if (raw_format.includes("DOE")) {
+            format += this.identifiers.last_name
+          } else {
+            format += this.identifiers.last_initial
+          }
+        } else if (raw_format.includes("L")) {
+          if (raw_format.includes("LAST")) {
+            format += this.identifiers.last_name
+          } else {
+            format += this.identifiers.last_initial
+          }
+        }
+
+        // Putting email together:
+        formatted_emails.push(format + "@" + domain)
+      }
+    }
     return formatted_emails[0]
   }
+
 };
 
 // To-Do - Implement rate limiting feature in config.
@@ -237,7 +294,7 @@ class LinkedinBot extends Puppet {
   }
 };
 
-function extractEmails(text){
+function extractEmails(text) {
   return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);
 };
 
@@ -251,5 +308,3 @@ module.exports = {
   EmailBot: EmailBot,
   LinkedinBot: LinkedinBot
 }
-
-
