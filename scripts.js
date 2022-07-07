@@ -48,7 +48,7 @@ class UrlSet {
 class EmailTemplate {
   constructor(company_name, email_template) {
     this.company_name = company_name,
-      this.email_template = email_template
+    this.email_template = email_template
   };
 };
 

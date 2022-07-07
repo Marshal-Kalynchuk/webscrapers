@@ -1,0 +1,19 @@
+* Remove ./files from github
+* Create a info page for ease of use
+* Impliment rate limiting system in bots
+* Impliment a already searched system that skips emails we know we can't find the email format for and a force search system to override this.
+* Impliment system to remove none names like PhD and emojis
+* Reformat naming convention in filterCompanies
+* Impliment handling for blank json files
+* Impliment or statment in config for bots
+
+* Send to Ben
+
+* Learn optional parameters
+* Move generate emails to email bot
+* Finish workflow for linkedin bot
+* Improve CLI interface
+* Create Indeed Bot
+* Allow parallel scraping with linkedin and indeed bot
+* Ping email servers to see if the domain exists in email bot
+* Impliment email verification service in email bot
