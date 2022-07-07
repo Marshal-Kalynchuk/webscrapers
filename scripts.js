@@ -235,7 +235,8 @@ async function generateEmails(contacts, force = false) {
   let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
 
   /**Create Email bot instance */
-  const email_bot = new Bots.EmailBot(true)
+  console.log("Starting email bot...")
+  const email_bot = new Bots.EmailBot()
   await email_bot.init()
 
   /**Cycle through list of contacts */
@@ -254,7 +255,7 @@ async function generateEmails(contacts, force = false) {
               email_templates.splice(i, 1)
               break
             } else {
-              console.log(`Could not find email format for ${contact.first_name} ${contact.last_name}`)
+              console.log(`Email format is undefined in database for ${contact.first_name} ${contact.last_name}`)
               continue loop_1
             }
           }
@@ -273,10 +274,12 @@ async function generateEmails(contacts, force = false) {
           console.log(`Email format found for ${contact.first_name} ${contact.last_name}: ${contact.email}`)
         } else {
           email_templates.push(new EmailTemplate(contact.company_name, undefined))
-          console.log(`Could not find email format for ${contact.first_name} ${contact.last_name}`)
+          console.log(`Could not find email format. Logging as undefined ${contact.first_name} ${contact.last_name}`)
         }
-      }
-    }
+      }else {
+        console.log(`Email already registered for ${contact.first_name} ${contact.last_name}`)
+      } 
+    } 
   await save(email_templates, files.email_templates_file)
   return contacts
 };

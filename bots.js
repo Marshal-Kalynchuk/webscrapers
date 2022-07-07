@@ -19,7 +19,17 @@ class Puppet {
         defaultViewport: null
       }
     }
-    this.config = config
+
+    // Sets standard rate limiting if not defined in config
+    this.config = {
+      navigation_delay: config.navigation_delay || 2000,
+      action_delay: config.action_delay || 1000,
+      initial_url: config.initial_url,
+      search_url: config.search_url,
+      card_sel: config.card_sel,
+      card_fields: config.card_fields
+    }
+
     this.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36';
   }
   async init() {
@@ -139,13 +149,14 @@ class Puppet {
       waitUntil: 'networkidle2',
       timeout: 0
     })
+    await delay(this.config.navigation_delay)
   }
   async searchURL(field_1, field_2) {
     return await this.config.search_url.replace("field_1", field_1).replace("field_2", field_2)
   }
   async listData() {
     return await this.page.evaluate(async (config) => {
-      return [...document.querySelectorAll(config.card_Sel)].map(card => {
+      return [...document.querySelectorAll(config.card_sel)].map(card => {
         let object = {}
         for (const [key, value] of Object.entries(config.card_fields)) {
           object[key] = card.querySelector(value[0]) ? card.querySelector(value[0])[value[1]] : undefined
@@ -169,8 +180,9 @@ class Puppet {
 class GoogleBot extends Puppet {
   constructor(devMode = false) {
     const config = {
+      navigation_delay: 2000,
       search_url: "https://google.com/search?q=field_1",
-      card_Sel: "div.jtfYYd",
+      card_sel: "div.jtfYYd",
       card_fields: {
         url: ["div.NJo7tc.Z26q7c.jGGQ5e > div > a", "href"],
         title: ["div.NJo7tc.Z26q7c.jGGQ5e > div > a > h3", "innerText"],
@@ -278,9 +290,11 @@ class EmailBot extends GoogleBot {
 class LinkedinBot extends Puppet {
   constructor(devMode = false) {
     const config = {
+      navigation_delay: 200000,
+      action_delay: 15000,
       initial_url: "https://www.linkedin.com",
       search_url: "https://www.linkedin.com/jobs/search?keywords=field_1&location=field_2",
-      card_Sel: ".base-card",
+      card_sel: ".base-card",
       card_fields: {
         company_name: [".hidden-nested-link", "innerText"],
         linkedin_url: [".hidden-nested-link", "href"]
