@@ -66,16 +66,16 @@ const files = {
 
   email_templates_file: "./files/email_templates_file.json",
 
-  trimmed_contacts_file: "./files/trimmed_contacts.json"
+  trimmed_contacts_file: "./files/trimmed_contacts.json",
+
+  scraped_companies_file: "./files/scraped_companies.json",
+  filtered_companies_file: "./files/filtered_companies.json"
 };
 
 /** Defines the search terms for the linkedin scraper */
-const locations = [
-  "Calgary"
-];
-const keywords = [
-  "Front-end Developer"
-];
+const keywords = ["Angular Developer", "Frontend Developer", "Backend Developer", "Devops Developer", "Full Stack Web Developer", "Full Stack App Developer", "PHP Developer", "Java Developer", "Python Developer", "React Developer", "Vue Developer", "Node JS Developer", "Ruby Developer",/**  "Machine Learing", "AI Developer", "Express js Developer", "UI/UX Developer", "Flutter Developer", "Website Developer", "Website Engineer", "UI/UX Engineer", "Backend Engineer", "Frontend Engineer"*/]
+
+const locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada",  "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
 
 /**Main CLI function. Runs all other functions and manages the data 
  * 
@@ -86,7 +86,8 @@ async function main() {
   // initializing the files
   let saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
   let saved_contacts = await JSON.parse(fs.readFileSync(files.contacts_save_file))
-  let saved_company_names = saved_companies.map(a => a.company_name)
+  let scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
+  let saved_company_names = await saved_companies.map(a => a.company_name)
   let trimmed_contacts = []
 
   let loop = true
@@ -160,15 +161,30 @@ async function main() {
         console.log(`${c} website urls added, ${b} linkedin urls added.`)
         break
       case "scrape":
-        const linkedin_bot = new Bots.LinkedinBot(false)
+        const linkedin_bot = new Bots.LinkedinBot(true)
         await linkedin_bot.init()
-        for (let location in locations) {
-          for (let keyword in keywords) {
+        for (let location of locations) {
+          for (let keyword of keywords) {
+            console.log(`Searching for ${keyword} in ${location}...`)
+            saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
+            scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
             const results = await linkedin_bot.scrapeSearch(keyword, location)
-            console.log(results)
-            // Todo - Check is_in
+            for (let res of results){
+              if (!await checkCompany(saved_companies, res.company_name)){
+                saved_companies.push(res)
+                scraped_companies.push(res)
+                console.log(`Adding new company: ${res.company_name}`)
+              } else{
+                console.log(`Already logged ${res.company_name}`)
+              }
+            }
+            // Ensures minimal data loss if error occures in long operation
+            console.log(saved_companies[0], scraped_companies[0])
+            save(saved_companies, files.companies_save_file)
+            save(scraped_companies, files.scraped_companies_file)
           }
         }
+        console.log("Finished")
         break
       case "trim":
         trimmed_contacts = saved_contacts.filter(function (contact) {
@@ -186,9 +202,19 @@ async function main() {
   }
 
   // Saving the files
-  await save(saved_companies, files.companies_save_file)
-  await save(saved_contacts, files.contacts_save_file)
-  await save(trimmed_contacts, files.trimmed_contacts_file)
+  save(saved_companies, files.companies_save_file)
+  save(saved_contacts, files.contacts_save_file)
+  save(trimmed_contacts, files.trimmed_contacts_file)
+};
+
+// Checks if the company is already in the saved companies file
+async function checkCompany(saved_companies, company_name) {
+  for (var i = 0; i < saved_companies.length; i++) {
+    if (saved_companies[i].company_name == company_name) {
+      return true
+    }
+  }
+  return false
 };
 
 /**Takes in a raw text from the linkedin sales navigator contact leads 
@@ -236,7 +262,7 @@ async function generateEmails(contacts, force = false) {
 
   /**Create Email bot instance */
   console.log("Starting email bot...")
-  const email_bot = new Bots.EmailBot()
+  const email_bot = new Bots.EmailBot(true)
   await email_bot.init()
 
   /**Cycle through list of contacts */
@@ -280,7 +306,8 @@ async function generateEmails(contacts, force = false) {
         console.log(`Email already registered for ${contact.first_name} ${contact.last_name}`)
       } 
     } 
-  await save(email_templates, files.email_templates_file)
+  console.log("Finished")
+  save(email_templates, files.email_templates_file)
   return contacts
 };
 
@@ -352,15 +379,15 @@ async function filterCompanies(companiesFile, good, bad) {
       badCompanies.push(data[i])
     }
   }
-  await save(goodCompanies, good)
-  await save(badCompanies, bad)
+  save(goodCompanies, good)
+  save(badCompanies, bad)
 };
 
 /** Saves data to json at the specified path */
-async function save(data, path) {
+function save(data, path) {
 
   let jsonData = JSON.stringify(data);
-  fs.writeFile(path, jsonData, function (err) {
+  fs.writeFileSync(path, jsonData, function (err) {
     if (err) {
       console.log(err);
     }

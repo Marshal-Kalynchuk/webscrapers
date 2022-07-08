@@ -290,7 +290,7 @@ class EmailBot extends GoogleBot {
 class LinkedinBot extends Puppet {
   constructor(devMode = false) {
     const config = {
-      navigation_delay: 200000,
+      navigation_delay: 100000,
       action_delay: 15000,
       initial_url: "https://www.linkedin.com",
       search_url: "https://www.linkedin.com/jobs/search?keywords=field_1&location=field_2",
