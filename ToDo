@@ -1,8 +1,5 @@
 # Urgent
 * Fix email bot
-* Remove (+1) from process contacts 
-* Remove PhD stuff from names
-* Remove email format (filter on comma)
 
 # Important
 * Get email chance from email bot search (100% emails are formatted this way)

@@ -175,6 +175,11 @@ class Puppet {
     return await this.listData()
   }
   async scrapePage() {}
+
+  async quit(){
+    await this.page.close()
+    await this.browser.close()
+  }
 };
 
 class GoogleBot extends Puppet {
