@@ -226,6 +226,9 @@ class EmailBot extends GoogleBot {
      * The current solution does not account for addmore vs. addmore group.
      * Temporary solution is to only get emails from rocket reach.
      * this solves the issue of weirdly formatted emails like j.d@domain.com*/
+
+    // TODO Overhaul results combing to get emails along with assosiated chance 
+    // ie. (The email formate is janedoe@rocketreach.com 80% of the time...)
     for (let res of search_results) {
       if (res.title.toUpperCase().includes(company_name.toUpperCase()) &&
         res.title.toUpperCase().includes("ROCKETREACH")) {
@@ -286,7 +289,14 @@ class EmailBot extends GoogleBot {
         formatted_emails.push(format + "@" + domain)
       }
     }
-    return formatted_emails[0]
+    // TODO - return defined amount of results
+    if (formatted_emails.length){
+      return [{email_template: formatted_emails[0], template_score: 88}]
+    }
+    else {
+      return undefined
+    }
+    
   }
 
 };

@@ -1,5 +1,11 @@
 /** Defines imports required for the functions */
+const {
+  Console
+} = require('console');
 const fs = require('fs');
+const {
+  isNil
+} = require('lodash');
 const prompt = require('prompt-sync')();
 
 // Import bots
@@ -22,9 +28,9 @@ class Company {
 
 /** Used to define the data structure of the contacts*/
 class Contact {
-  constructor(company_name, first_name, last_name, position, 
+  constructor(company_name, first_name, last_name, position,
     geography, email = undefined, number = undefined) {
-      this.company_name = company_name,
+    this.company_name = company_name,
       this.first_name = first_name,
       this.last_name = last_name,
       this.position = position,
@@ -45,9 +51,11 @@ class UrlSet {
 
 /** Used to define the data structure of the email templates */
 class EmailTemplate {
-  constructor(company_name, email_template) {
+  constructor(company_name, email_template, verified, template_score) {
     this.company_name = company_name,
-      this.email_template = email_template
+    this.email_template = email_template,
+    this.verified = verified,
+    this.template_score = template_score
   };
 };
 
@@ -72,9 +80,9 @@ const files = {
 };
 
 /** Defines the search terms for the linkedin scraper */
-const keywords = ["Angular Developer", "Frontend Developer", "Backend Developer", "Devops Developer", "Full Stack Web Developer", "Full Stack App Developer", "PHP Developer", "Java Developer", "Python Developer", "React Developer", "Vue Developer", "Node JS Developer", "Ruby Developer",/**  "Machine Learing", "AI Developer", "Express js Developer", "UI/UX Developer", "Flutter Developer", "Website Developer", "Website Engineer", "UI/UX Engineer", "Backend Engineer", "Frontend Engineer"*/]
+const keywords = ["Angular Developer", "Frontend Developer", "Backend Developer", "Devops Developer", "Full Stack Web Developer", "Full Stack App Developer", "PHP Developer", "Java Developer", "Python Developer", "React Developer", "Vue Developer", "Node JS Developer", "Ruby Developer", /**  "Machine Learing", "AI Developer", "Express js Developer", "UI/UX Developer", "Flutter Developer", "Website Developer", "Website Engineer", "UI/UX Engineer", "Backend Engineer", "Frontend Engineer"*/ ]
 
-const locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada",  "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
+const locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada", "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
 
 /**Main CLI function. Runs all other functions and manages the data 
  * 
@@ -168,12 +176,12 @@ async function main() {
             saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
             scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
             const results = await linkedin_bot.scrapeSearch(keyword, location)
-            for (let res of results){
-              if (!await checkCompany(saved_companies, res.company_name)){
+            for (let res of results) {
+              if (!await checkCompany(saved_companies, res.company_name)) {
                 saved_companies.push(res)
                 scraped_companies.push(res)
                 console.log(`Adding new company: ${res.company_name}`)
-              } else{
+              } else {
                 console.log(`Already logged ${res.company_name}`)
               }
             }
@@ -234,10 +242,10 @@ async function processContacts(text_data) {
       // Get Name off "Select" keyword
       name = text_data[i + 2]
 
-    } else if (text_data[i].includes("List")){ 
+    } else if (text_data[i].includes("List")) {
 
       // Get additional information off of "List" keyword and create contact
-      company_name = text_data[i + 4] 
+      company_name = text_data[i + 4]
       position = text_data[i + 2]
       geography = text_data[i + 5].split("\t")[0]
 
@@ -247,7 +255,7 @@ async function processContacts(text_data) {
       /** Format name into first name, last name and remove unwanted chars.
        *  Should work for 99% of contacts. You will lose contacts formatted like 
        *  "first_name, last_name" because of the comma. Can not handle weird cases 
-       *  like "R. Cog-Spa" for Cognitive Space. It will log that so be warned */ 
+       *  like "R. Cog-Spa" for Cognitive Space. It will log that so be warned */
 
       name = cleanString(name)
       name
@@ -259,7 +267,7 @@ async function processContacts(text_data) {
       name = name.split(",")[0]
       let temp = name.split(" ")
       first_name = temp[0]
-      last_name = temp[temp.length - 1] 
+      last_name = temp[temp.length - 1]
 
       let contact = new Contact(company_name, first_name, last_name, position, geography)
       new_contacts.push(contact)
@@ -271,10 +279,10 @@ async function processContacts(text_data) {
 // Removed unwanted charaters from string
 function cleanString(input) {
   var output = "";
-  for (var i=0; i<input.length; i++) {
-      if (input.charCodeAt(i) <= 127) {
-          output += input.charAt(i);
-      }
+  for (var i = 0; i < input.length; i++) {
+    if (input.charCodeAt(i) <= 127) {
+      output += input.charAt(i);
+    }
   }
   return output;
 }
@@ -296,46 +304,79 @@ async function generateEmails(contacts, force = false) {
   await email_bot.init()
 
   /**Cycle through list of contacts */
-  loop_1:
-    for (let contact of contacts) {
-      if (contact.email == undefined && contact.company_name != undefined) {
-        // Using existing data to generate emails
+  for (let contact of contacts) {
+    if (contact.email == undefined &&
+      contact.company_name != undefined &&
+      !contact.last_name.includes(".") &&
+      !contact.first_name.includes(".")) {
 
-        for (let i = 0; i < email_templates.length; i++) {
-          if (email_templates[i].company_name == contact.company_name) {
-            if (email_templates[i].email_template != undefined) {
-              contact.email = generateEmail(email_templates[i].email_template, contact.first_name, contact.last_name)
-              console.log(`Email format found in database for ${contact.first_name} ${contact.last_name}: ${contact.email}`)
-              continue loop_1
-            } else if (force) {
-              email_templates.splice(i, 1)
-              break
-            } else {
-              console.log(`Email format is undefined in database for ${contact.first_name} ${contact.last_name}`)
-              continue loop_1
+      // Try to find exsiting template
+      let template = {}
+      for (let i = 0; i < email_templates.length; i++) {
+        if (email_templates[i].company_name == contact.company_name) {
+          template = email_templates[i]
+        }
+      }
+
+      switch (template.verified) {
+        case true:
+          // Generate email
+          contact.email = generateEmail(template, contact.first_name, contact.last_name)
+          console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
+
+          break
+        case undefined:
+          // Look for email
+
+          /**Use EmailBot to search for email template */
+          let results = await email_bot.find(contact.company_name)
+          let verified = false
+          let best_score = 0
+          let best_template = undefined
+          let company_name = contact.company_name
+          let contact_email = undefined
+
+          /**If email format was found */
+          if (results) {
+            for (let res of results) {
+              if (res.template_score > best_score) {
+                highest_score = res.template_score
+                best_template = res.email_template
+              }
+              let temp_email = generateEmail(res.email_template, contact.first_name, contact.last_name)
+              // Perform verification
+              // Using percent chance of the email being valid:
+              if (res.template_score > 80) {
+                verified = true
+                best_score = res.template_score
+                best_template = res.email_template
+                company_name = res.company_name
+                contact_email = temp_email
+                break
+              }
             }
           }
-        }
-        /**Use EmailBot to search for email template */
-        let new_template = await email_bot.find(contact.company_name)
-        /**If email format was found */
-        if (new_template != undefined) {
+          template = new EmailTemplate(
+            company_name,
+            best_template,
+            verified,
+            best_score)
 
-          /**Generate email */
-          contact.email = generateEmail(new_template, contact.first_name, contact.last_name)
-          email_templates.push(new EmailTemplate(contact.company_name, new_template))
+          contact.email = contact_email
+          email_templates.push(template)
 
-          /**TODO - Update contact database */
+          console.log("Adding new email template:", template)
+          console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
 
-          console.log(`Email format found for ${contact.first_name} ${contact.last_name}: ${contact.email}`)
-        } else {
-          email_templates.push(new EmailTemplate(contact.company_name, undefined))
-          console.log(`Could not find email format. Logging as undefined ${contact.first_name} ${contact.last_name}`)
-        }
-      }else {
-        console.log(`Email already registered for ${contact.first_name} ${contact.last_name}`)
-      } 
-    } 
+          break
+        case false:
+          // Email Template does not work
+          console.log(`Email format was defined as invalid from null searches or low validation score.`)
+          break
+      }
+    }
+  }
+  await email_bot.quit()
   console.log("Finished")
   save(email_templates, files.email_templates_file)
   return contacts
