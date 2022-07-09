@@ -22,13 +22,12 @@ class Company {
 
 /** Used to define the data structure of the contacts*/
 class Contact {
-  constructor(company_name, first_name, middle_name = undefined,
-    last_name, role, geography, email = undefined, number = undefined) {
-    this.company_name = company_name,
+  constructor(company_name, first_name, last_name, position, 
+    geography, email = undefined, number = undefined) {
+      this.company_name = company_name,
       this.first_name = first_name,
-      this.middle_name = middle_name,
       this.last_name = last_name,
-      this.role = role,
+      this.position = position,
       this.email = email,
       this.number = number,
       this.geography = geography
@@ -222,32 +221,63 @@ async function checkCompany(saved_companies, company_name) {
  * To-Do - Impliment system to remove none names like PhD and emojis*/
 async function processContacts(text_data) {
 
+  // Init
   let new_contacts = []
-  let first_name, middle_name, last_name = undefined
+  let name, first_name, middle_name, last_name, company_name, position, geography = undefined
+  const exclude = []
 
+  // Loop though each line of text
   for (var i = 0; i < text_data.length; i++) {
+
     if (text_data[i].includes("Select")) {
-      var name = text_data[i + 2].split(" ")
-      first_name = name[0]
-      last_name = name[name.length - 1]
-      if (name.length == 3) {
-        middle_name = name[1]
-      }
-    } else if (text_data[i].includes("1 List")) {
-      let contact = new Contact(
-        text_data[i + 4], // Company Name
-        first_name,
-        middle_name,
-        last_name,
-        role = text_data[i + 2],
-        geography = text_data[i + 5].split("\t")[0],
-      )
-      middle_name = undefined
+
+      // Get Name off "Select" keyword
+      name = text_data[i + 2]
+
+    } else if (text_data[i].includes("List")){ 
+
+      // Get additional information off of "List" keyword and create contact
+      company_name = text_data[i + 4] 
+      position = text_data[i + 2]
+      geography = text_data[i + 5].split("\t")[0]
+
+      // Remove (+1) etc.
+      company_name.replace("(\.*)", "").trim()
+
+      /** Format name into first name, last name and remove unwanted chars.
+       *  Should work for 99% of contacts. You will lose contacts formatted like 
+       *  "first_name, last_name" because of the comma. Can not handle weird cases 
+       *  like "R. Cog-Spa" for Cognitive Space. It will log that so be warned */ 
+
+      name = cleanString(name)
+      name
+        .replace("(\.*)", "")
+        .replace("'", "")
+        .trim()
+
+      // Removes "MBA, PhD etc. Might lose 1% of contact last names"
+      name = name.split(",")[0]
+      let temp = name.split(" ")
+      first_name = temp[0]
+      last_name = temp[temp.length - 1] 
+
+      let contact = new Contact(company_name, first_name, last_name, position, geography)
       new_contacts.push(contact)
     }
   }
   return new_contacts
 };
+
+// Removed unwanted charaters from string
+function cleanString(input) {
+  var output = "";
+  for (var i=0; i<input.length; i++) {
+      if (input.charCodeAt(i) <= 127) {
+          output += input.charAt(i);
+      }
+  }
+  return output;
+}
 
 /**Takes in a list of contacts and tries to generate emails for them 
  * To-Do - Impliment a already searched system that skips emails we know we can't
