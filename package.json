@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "email-deep-validator": "^3.3.0",
     "lodash": "^4.17.21",
     "prompt": "^1.3.0",
     "prompt-sync": "^4.2.0",
