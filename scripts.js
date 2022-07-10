@@ -296,19 +296,29 @@ function cleanString(input) {
 async function generateEmails(contacts, force = false) {
 
   /**Load email templates */
-  let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
-
+  
   /**Create Email bot instance */
   console.log("Starting email bot...")
-  const email_bot = new Bots.EmailBot(true)
+  const email_bot = new Bots.EmailBot()
   await email_bot.init()
 
-  /**Cycle through list of contacts */
+  /**Cycle through list of contacts 
+   * Skips contacts that with names including "."
+   * For instance: St.Marie or John M.
+  */
   for (let contact of contacts) {
+    console.log("--------------------------------------------------------------------------------")
+    console.log(`Evaluating: `, contact)
     if (contact.email == undefined &&
       contact.company_name != undefined &&
       !contact.last_name.includes(".") &&
-      !contact.first_name.includes(".")) {
+      !contact.first_name.includes(".") &&
+      contact.first_name.length > 2 &&
+      contact.last_name.length > 2) {
+      
+      let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
+
+      
 
       // Try to find exsiting template
       let template = {}
@@ -321,8 +331,11 @@ async function generateEmails(contacts, force = false) {
       switch (template.verified) {
         case true:
           // Generate email
-          contact.email = generateEmail(template, contact.first_name, contact.last_name)
+          contact.email = generateEmail(template.email_template, contact.first_name, contact.last_name)
+          console.log("Applying template: ", template)
           console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
+
+            
 
           break
         case undefined:
@@ -350,9 +363,10 @@ async function generateEmails(contacts, force = false) {
                 verified = true
                 best_score = res.template_score
                 best_template = res.email_template
-                company_name = res.company_name
                 contact_email = temp_email
                 break
+              } else if (false){
+                // Do email validator api calls
               }
             }
           }
@@ -365,20 +379,24 @@ async function generateEmails(contacts, force = false) {
           contact.email = contact_email
           email_templates.push(template)
 
-          console.log("Adding new email template:", template)
+          console.log("Adding new", template)
           console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
 
           break
         case false:
           // Email Template does not work
+          template.email_template = undefined
+          console.log(`Found existing template:`, template)
           console.log(`Email format was defined as invalid from null searches or low validation score.`)
           break
       }
+      save(email_templates, files.email_templates_file)
+    } else{
+      console.log(`Skipping contact because it failed to pass the health check`)
     }
   }
   await email_bot.quit()
   console.log("Finished")
-  save(email_templates, files.email_templates_file)
   return contacts
 };
 
