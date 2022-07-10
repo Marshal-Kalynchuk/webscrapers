@@ -195,7 +195,7 @@ async function main() {
         break
       case "trim":
         trimmed_contacts = saved_contacts.filter(function (contact) {
-          if (contact.website_url != undefined && contact.email != undefined) {
+          if (/**contact.website_url != undefined && */contact.email != undefined) {
             return contact
           }
         })
@@ -353,13 +353,13 @@ async function generateEmails(contacts, force = false) {
           if (results) {
             for (let res of results) {
               if (res.template_score > best_score) {
-                highest_score = res.template_score
+                best_score = res.template_score
                 best_template = res.email_template
               }
               let temp_email = generateEmail(res.email_template, contact.first_name, contact.last_name)
               // Perform verification
               // Using percent chance of the email being valid:
-              if (res.template_score > 80) {
+              if (res.template_score > 60) {
                 verified = true
                 best_score = res.template_score
                 best_template = res.email_template
