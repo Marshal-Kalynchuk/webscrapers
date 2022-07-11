@@ -298,7 +298,7 @@ function cleanString(input) {
  * Impliment system to ignore none names like PhD*/
 async function generateEmails(contacts, force = false) {
 
-  /**Load email templates */
+  console.log(`Starting Email Generation.\n\rIf a contact is skipped during template validaty analysis, re-run the program after to apply found templates to them.`)
   
   /**Create Email bot instance */
   console.log("Starting email bot...")
@@ -309,20 +309,21 @@ async function generateEmails(contacts, force = false) {
    * Skips contacts that with names including "."
    * For instance: St.Marie or John M.
   */
-  for (let contact of contacts) {
+  loop: for (let contact of contacts) {
+    
     console.log("--------------------------------------------------------------------------------")
     console.log(`Evaluating: `, contact)
     if (contact.email == undefined &&
-      contact.company_name != undefined &&
-      !contact.last_name.includes(".") &&
-      !contact.first_name.includes(".") &&
-      contact.first_name.length > 2 &&
-      contact.last_name.length > 2) {
+      contact.company_name != undefined) {
       
       let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
 
-      
-
+      const first_name = contact.first_name || undefined
+      const first_initial = first_name ? contact.first_name[0] : undefined
+      const last_name = contact.last_name || undefined
+      const last_initial = last_name ? last_name[0] : undefined
+      const name_properties = {first_name, first_initial, last_name, last_initial}
+   
       // Try to find exsiting template
       let template = {}
       for (let i = 0; i < email_templates.length; i++) {
@@ -334,12 +335,16 @@ async function generateEmails(contacts, force = false) {
       switch (template.verified) {
         case true:
           // Generate email
-          contact.email = generateEmail(template.email_template, contact.first_name, contact.last_name)
-          console.log("Applying template: ", template)
-          console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
 
-            
-
+          let temp_email = generateEmail(template.email_template, name_properties)
+          if (temp_email){
+            contact.email = temp_email
+            console.log("Applying template: ", template)
+            console.log(`Email for ${first_name} ${last_name} is ${contact.email}`)
+          } else {
+            contact.email = undefined
+            console.log(`Could not apply template ${template.email_template} to ${first_name} ${last_name}`)
+          }
           break
         case undefined:
           // Look for email
@@ -347,7 +352,7 @@ async function generateEmails(contacts, force = false) {
           /**Use EmailBot to search for email template */
           let results = await email_bot.find(contact.company_name)
           let verified = false
-          let best_score = 0
+          let best_score = -1
           let best_template = undefined
           let company_name = contact.company_name
           let contact_email = undefined
@@ -355,22 +360,33 @@ async function generateEmails(contacts, force = false) {
           /**If email format was found */
           if (results) {
             for (let res of results) {
+
               if (res.template_score > best_score) {
                 best_score = res.template_score
                 best_template = res.email_template
               }
-              let temp_email = generateEmail(res.email_template, contact.first_name, contact.last_name)
-              // Perform verification
-              // Using percent chance of the email being valid:
-              if (res.template_score > 60) {
-                verified = true
-                best_score = res.template_score
-                best_template = res.email_template
-                contact_email = temp_email
-                break
-              } else if (false){
-                // Do email validator api calls
+              let temp_email = generateEmail(res.email_template, name_properties)
+              if (temp_email){
+                // Perform verification
+                // Using percent chance of the email being valid:
+                if (res.template_score > 60) {
+                  verified = true
+                  best_score = res.template_score
+                  best_template = res.email_template
+                  contact_email = temp_email
+                  break
+                } else if (false){
+                  // Do email validator api calls
+                } else {
+
+                }
+              } else {
+                console.log(`Could not apply template ${template.email_template} to ${first_name} ${last_name}`)
+                console.log(`Skipping contact due to bad candidate for validity anaylsis.`)
+                save(email_templates, files.email_templates_file)
+                continue loop
               }
+              
             }
           }
           template = new EmailTemplate(
@@ -383,12 +399,11 @@ async function generateEmails(contacts, force = false) {
           email_templates.push(template)
 
           console.log("Adding new", template)
-          console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
+          console.log(`Email for ${first_name} ${last_name} is ${contact.email}`)
 
           break
         case false:
           // Email Template does not work
-          template.email_template = undefined
           console.log(`Found existing template:`, template)
           console.log(`Email format was defined as invalid from null searches or low validation score.`)
           break
@@ -403,18 +418,55 @@ async function generateEmails(contacts, force = false) {
   return contacts
 };
 
-function generateEmail(template, first_name, last_name) {
-  const temp = template.split("@");
-  let format = temp[0];
-  let domain = temp[1];
 
-  format = format
-    .replace("first_name", first_name)
-    .replace("first_initial", first_name[0])
-    .replace("last_name", last_name)
-    .replace("last_initial", last_name[0])
 
-  return format + "@" + domain
+function generateEmail(template, name_properties) {
+
+
+  /**  Return undefined for names like St.Marie
+  if (name_properties.first_name != undefined){
+    if (name_properties.first_name.toUpperCase().includes("ST.")){
+      return undefined
+    }
+  }
+  if (name_properties.last_name != undefined){
+    if (name_properties.last_name.toUpperCase().includes("ST.")){
+      return undefined
+    }
+  }
+  */
+  // Return undefined for templates that require information that is not given
+  if (template.includes("first_initial")){
+    if (name_properties.first_initial != undefined){
+      template = template.replace("first_initial", name_properties.first_initial)
+    } else {
+      return undefined
+    }
+  } 
+  else if (template.includes("first_name")) {
+    if (name_properties.first_name != undefined){
+      template = template.replace("first_name", name_properties.first_name)
+    } else {
+     return undefined
+    }
+  }
+    
+  if (template.includes("last_initial")) {
+    if (name_properties.last_initial != undefined){
+      template = template.replace("last_initial", name_properties.last_initial)
+    } else {
+    return undefined
+    }
+  }
+  else if (template.includes("last_name")) {
+    if (name_properties.last_name != undefined) {
+      template = template.replace("last_name", name_properties.last_name)
+    } else {
+      return undefined
+    }
+  }
+
+  return template.toLowerCase()
 };
 
 /**Takes in raw text from the linkedin sales navigator company leads

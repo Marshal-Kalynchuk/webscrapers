@@ -222,7 +222,7 @@ class EmailBot extends GoogleBot {
       first_initial: "first_initial",
 
       last_name: "last_name",
-      last_initial: "last_intitial"
+      last_initial: "last_initial"
     }
   }
   async find(company_name, max_results=3) {
@@ -310,21 +310,19 @@ class EmailBot extends GoogleBot {
         }
       }
     }
-
-
-
    
     if (email_templates.length){
       // Sort based on score
-      email_templates.sort((a,b) => (a.score > b.score) ? 1 : ((b.score > a.score) ? -1 : 0))
+      email_templates = email_templates.sort((a,b) => (a.template_score > b.template_score) ? -1 : ((b.template_score > a.template_score) ? 1 : 0))
       // Trucate to max_results
       let return_templates = email_templates.slice(0, max_results)
       // Console output
       let info = return_templates.map(function(a){return [a.email_template, a.template_score]})
-      console.log(`Found templates:`, info)
+      console.log("Found templates:", info)
       return return_templates
     }
     else {
+      console.log("No templates found.")
       return undefined
     }
     
