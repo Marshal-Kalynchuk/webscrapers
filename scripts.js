@@ -224,6 +224,8 @@ async function checkCompany(saved_companies, company_name) {
   return false
 };
 
+const regex = /\([^()]*\)/g
+
 /**Takes in a raw text from the linkedin sales navigator contact leads 
  * list and turns it into a list of contacts objects. 
  * To-Do - Impliment system to remove none names like PhD and emojis*/
@@ -231,7 +233,7 @@ async function processContacts(text_data) {
 
   // Init
   let new_contacts = []
-  let name, first_name, middle_name, last_name, company_name, position, geography = undefined
+  let name, first_name, last_name, company_name, position, geography = undefined
   const exclude = []
 
   // Loop though each line of text
@@ -250,7 +252,7 @@ async function processContacts(text_data) {
       geography = text_data[i + 5].split("\t")[0]
 
       // Remove (+1) etc.
-      company_name.replace("(\.*)", "").trim()
+      company_name = company_name.replace(regex, "").trim()
 
       /** Format name into first name, last name and remove unwanted chars.
        *  Should work for 99% of contacts. You will lose contacts formatted like 
@@ -258,9 +260,10 @@ async function processContacts(text_data) {
        *  like "R. Cog-Spa" for Cognitive Space. It will log that so be warned */
 
       name = cleanString(name)
-      name
-        .replace("(\.*)", "")
+      name = name
+        .replace(regex, "")
         .replace("'", "")
+        .replace("\r", "")
         .trim()
 
       // Removes "MBA, PhD etc. Might lose 1% of contact last names"
