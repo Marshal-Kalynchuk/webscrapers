@@ -248,7 +248,7 @@ async function processContacts(text_data) {
 
       // Get additional information off of "List" keyword and create contact
       company_name = text_data[i + 4]
-      position = text_data[i + 2]
+      position = text_data[i + 2].replace("\r", "")
       geography = text_data[i + 5].split("\t")[0]
 
       // Remove (+1) etc.
