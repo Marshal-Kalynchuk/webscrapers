@@ -1,12 +1,3 @@
-# Urgent
-* Fix email bot
-
-# Important
-* Get email chance from email bot search (100% emails are formatted this way)
-* Finish workflow for linkedin bot
-* Ping email servers to see if the domain exists in email bot
-* Impliment email verification service in email bot
-
 # To-Do
 * Reformat naming convention in filterCompanies
 * Impliment handling for blank json files
