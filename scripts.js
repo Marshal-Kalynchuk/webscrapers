@@ -220,7 +220,8 @@ async function checkCompany(saved_companies, company_name) {
   return false
 };
 
-const regex = /\([^()]*\)/g
+const regex_for_name = /\([^()]*\)/g
+const regex_for_company = /\([^(a-zA-Z)]*\)/g
 
 /**Takes in a raw text from the linkedin sales navigator contact leads 
  * list and turns it into a list of contacts objects. 
@@ -248,7 +249,7 @@ async function processContacts(text_data) {
       geography = text_data[i + 5].split("\t")[0]
 
       // Remove (+1) etc.
-      company_name = company_name.replace(regex, "").trim()
+      company_name = company_name.replace(regex_for_company, "").trim()
 
       /** Format name into first name, last name and remove unwanted chars.
        *  Should work for 99% of contacts. You will lose contacts formatted like 
@@ -257,7 +258,7 @@ async function processContacts(text_data) {
 
       name = cleanString(name)
       name = name
-        .replace(regex, "")
+        .replace(regex_for_name, "")
         .replace("'", "")
         .replace("\r", "")
         .trim()
@@ -317,11 +318,11 @@ async function generateEmails(contacts, force = false) {
       
       let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
 
-      const first_name = contact.first_name || undefined
-      const first_initial = first_name ? contact.first_name[0] : undefined
-      const last_name = contact.last_name || undefined
-      const last_initial = last_name ? last_name[0] : undefined
-      const name_properties = {first_name, first_initial, last_name, last_initial}
+      const name = {
+        first_name: contact.first_name ? first_name.length > 2 ? contact.first_name : undefined : undefined, 
+        first_initial: contact.first_name ? contact.first_name[0] : undefined, 
+        last_name: contact.last_name ? last_name.length > 2 ? contact.last_name : undefined : undefined, 
+        last_initial: contact.last_name ? contact.last_name[0] : undefined}
    
       // Try to find exsiting template
       let template = {}
@@ -335,14 +336,14 @@ async function generateEmails(contacts, force = false) {
         case true:
           // Generate email
 
-          let temp_email = generateEmail(template.email_template, name_properties)
+          let temp_email = generateEmail(template.email_template, name)
           if (temp_email){
             contact.email = temp_email
             console.log("Applying template: ", template)
-            console.log(`Email for ${first_name} ${last_name} is ${contact.email}`)
+            console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
           } else {
             contact.email = undefined
-            console.log(`Could not apply template ${template.email_template} to ${first_name} ${last_name}`)
+            console.log(`Could not apply template ${template.email_template} to ${contact.first_name} ${contact.last_name}`)
           }
           break
         case undefined:
@@ -365,7 +366,7 @@ async function generateEmails(contacts, force = false) {
                 best_score = res.template_score
                 best_template = res.email_template
               }
-              let temp_email = generateEmail(res.email_template, name_properties)
+              let temp_email = generateEmail(res.email_template, name)
               if (temp_email){
                 console.log(`Validating email format ${res.email_template}...`)
                 // Perform verification
@@ -401,7 +402,7 @@ async function generateEmails(contacts, force = false) {
                 }
                 if (should_break){break}
               } else {
-                console.log(`Could not apply template ${template.email_template} to ${first_name} ${last_name}`)
+                console.log(`Could not apply template ${template.email_template} to ${contact.first_name} ${contact.last_name}`)
                 console.log(`Skipping contact due to bad candidate for validity anaylsis.`)
                 save(email_templates, files.email_templates_file)
                 continue loop_1
@@ -419,7 +420,7 @@ async function generateEmails(contacts, force = false) {
           email_templates.push(template)
 
           console.log("Adding new", template)
-          console.log(`Email for ${first_name} ${last_name} is ${contact.email}`)
+          console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
 
           break
         case false:
@@ -438,7 +439,7 @@ async function generateEmails(contacts, force = false) {
   return contacts
 };
 
-function generateEmail(template, name_properties) {
+function generateEmail(template, name) {
 
 
   /**  Return undefined for names like St.Marie
@@ -454,31 +455,33 @@ function generateEmail(template, name_properties) {
   }
   */
   // Return undefined for templates that require information that is not given
+
   if (template.includes("first_initial")){
-    if (name_properties.first_initial != undefined){
-      template = template.replace("first_initial", name_properties.first_initial)
+    if (name.first_initial != undefined){
+      template = template.replace("first_initial", name.first_initial)
     } else {
       return undefined
     }
   } 
   else if (template.includes("first_name")) {
-    if (name_properties.first_name != undefined){
-      template = template.replace("first_name", name_properties.first_name)
+    if (name.first_name != undefined){
+      template = template.replace("first_name", name.first_name)
     } else {
      return undefined
     }
   }
     
   if (template.includes("last_initial")) {
-    if (name_properties.last_initial != undefined){
-      template = template.replace("last_initial", name_properties.last_initial)
+    if (name.last_initial != undefined){
+      name.last_initial = name.last_initial.replace(".", "")
+      template = template.replace("last_initial", name.last_initial)
     } else {
     return undefined
     }
   }
   else if (template.includes("last_name")) {
-    if (name_properties.last_name != undefined) {
-      template = template.replace("last_name", name_properties.last_name)
+    if (name.last_name != undefined) {
+      template = template.replace("last_name", name.last_name)
     } else {
       return undefined
     }
