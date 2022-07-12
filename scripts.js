@@ -72,6 +72,7 @@ const files = {
   trimmed_contacts_file: "./files/trimmed_contacts.json",
 
   scraped_companies_file: "./files/scraped_companies.json",
+  newly_scraped_companies_file: "./files/newly_scraped_companies.json",
   filtered_companies_file: "./files/filtered_companies.json"
 };
 
@@ -169,21 +170,21 @@ async function main() {
         for (let location of locations) {
           for (let keyword of keywords) {
             console.log(`Searching for ${keyword} in ${location}...`)
-            saved_companies = await JSON.parse(fs.readFileSync(files.companies_save_file))
             scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
+            newly_scraped_companies = await JSON.parse(fs.readFileSync(files.newly_scraped_companies_file))
             const results = await linkedin_bot.scrapeSearch(keyword, location)
             for (let res of results) {
-              if (!await checkCompany(saved_companies, res.company_name)) {
-                saved_companies.push(res)
+              if (!await checkCompany(scraped_companies, res.company_name)) {
                 scraped_companies.push(res)
+                newly_scraped_companies.push(res)
                 console.log(`Adding new company: ${res.company_name}`)
               } else {
                 console.log(`Already logged ${res.company_name}`)
               }
             }
             // Ensures minimal data loss if error occures in long operation
-            save(saved_companies, files.companies_save_file)
             save(scraped_companies, files.scraped_companies_file)
+            save(newly_scraped_companies, files.newly_scraped_companies_file)
           }
         }
         console.log("Finished")
@@ -357,7 +358,7 @@ async function generateEmails(contacts, force = false) {
 
           /**If email format was found */
           if (results) {
-            loop_2: for (let res of results) {
+            for (let res of results) {
 
               let should_break = false
               if (res.template_score > best_score) {
