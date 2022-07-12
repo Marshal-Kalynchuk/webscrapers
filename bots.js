@@ -169,10 +169,24 @@ class Puppet {
 
   }
   async scrapeSearch(field_1, field_2 = undefined) {
-    let url = await this.searchURL(field_1, field_2)
-    await this.navigate(url)
-    // To-Do - Create dynamic for more complex search results -- google search results 
-    return await this.listData()
+    const search_url = await this.searchURL(field_1, field_2)
+    let data = undefined
+    let attempts = 0
+    const max_attempts = 6
+    while(attempts < max_attempts){
+      try{
+        await this.navigate(search_url)
+        data = await this.listData()
+        break
+      } catch {
+        console.log(`Something threw an error. Assumed to be due to authwall.`)
+        console.log(`Attempting to by-pass authwall... Attempt: ${attempts}/${max_attempts}`)
+        await this.authwall()
+        attempts += 1
+      }
+    }
+    return data
+    // To-Do - Create dynamic for more complex search results -- google search results
   }
   async scrapePage() {}
 
@@ -180,6 +194,12 @@ class Puppet {
     await this.page.close()
     await this.browser.close()
   }
+
+  // Generic authwall bypass:
+  async authwall(){
+    // Do nothing. Will just re-navigate to search url.
+  }
+
 };
 
 class GoogleBot extends Puppet {

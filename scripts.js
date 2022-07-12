@@ -182,7 +182,6 @@ async function main() {
               }
             }
             // Ensures minimal data loss if error occures in long operation
-            console.log(saved_companies[0], scraped_companies[0])
             save(saved_companies, files.companies_save_file)
             save(scraped_companies, files.scraped_companies_file)
           }
@@ -437,8 +436,6 @@ async function generateEmails(contacts, force = false) {
   console.log("Finished")
   return contacts
 };
-
-
 
 function generateEmail(template, name_properties) {
 
