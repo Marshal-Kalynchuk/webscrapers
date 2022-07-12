@@ -1,12 +1,8 @@
 /** Defines imports required for the functions */
-const {
-  Console
-} = require('console');
+
 const fs = require('fs');
-const {
-  isNil
-} = require('lodash');
 const prompt = require('prompt-sync')();
+const axios = require('axios')
 
 // Import bots
 const Bots = require('./bots.js');
@@ -299,6 +295,9 @@ function cleanString(input) {
 async function generateEmails(contacts, force = false) {
 
   console.log(`Starting Email Generation.\n\rIf a contact is skipped during template validaty analysis, re-run the program after to apply found templates to them.`)
+
+  const whoisxmlapi_api_key = "at_mp0pXIJFeZBYXnzgopWktb7uBBTbf"
+  const api_calls_allowed = true
   
   /**Create Email bot instance */
   console.log("Starting email bot...")
@@ -309,7 +308,7 @@ async function generateEmails(contacts, force = false) {
    * Skips contacts that with names including "."
    * For instance: St.Marie or John M.
   */
-  loop: for (let contact of contacts) {
+  loop_1: for (let contact of contacts) {
     
     console.log("--------------------------------------------------------------------------------")
     console.log(`Evaluating: `, contact)
@@ -349,8 +348,8 @@ async function generateEmails(contacts, force = false) {
         case undefined:
           // Look for email
 
-          /**Use EmailBot to search for email template */
-          let results = await email_bot.find(contact.company_name)
+          /**Use EmailBot to search for email template. Max results set to 1 to limit api calling*/
+          let results = await email_bot.find(contact.company_name, 1)
           let verified = false
           let best_score = -1
           let best_template = undefined
@@ -359,32 +358,53 @@ async function generateEmails(contacts, force = false) {
 
           /**If email format was found */
           if (results) {
-            for (let res of results) {
+            loop_2: for (let res of results) {
 
+              let should_break = false
               if (res.template_score > best_score) {
                 best_score = res.template_score
                 best_template = res.email_template
               }
               let temp_email = generateEmail(res.email_template, name_properties)
               if (temp_email){
+                console.log(`Validating email format ${res.email_template}...`)
                 // Perform verification
                 // Using percent chance of the email being valid:
                 if (res.template_score > 60) {
+                  console.log("Email score above 60.")
+                  console.log(`Email format ${res.email_template} is verified`)
                   verified = true
                   best_score = res.template_score
                   best_template = res.email_template
                   contact_email = temp_email
-                  break
-                } else if (false){
-                  // Do email validator api calls
-                } else {
+                  should_break = true
+                } else if (api_calls_allowed) {
+                  console.log("Calling verification API...")
+                  await axios.get(`https://emailverification.whoisxmlapi.com/api/v2?apiKey=${whoisxmlapi_api_key}&emailAddress=${temp_email}`).then(resp=>{
 
+                    let data = resp.data
+                    const {mxRecords, audit, ...display} = data
+                    console.log(`Response:`, display)
+
+                    // Evaluate the response
+                    if (data.smtpCheck == 'true' && data.formatCheck == 'true'){
+                      console.log(`Email format ${res.email_template} is verified`)
+                      verified = true
+                      best_score = res.template_score
+                      best_template = res.email_template
+                      contact_email = temp_email
+                      should_break = true
+                    } else{
+                      console.log(`Email format ${res.email_template} is invalid.`)
+                    }
+                  })
                 }
+                if (should_break){break}
               } else {
                 console.log(`Could not apply template ${template.email_template} to ${first_name} ${last_name}`)
                 console.log(`Skipping contact due to bad candidate for validity anaylsis.`)
                 save(email_templates, files.email_templates_file)
-                continue loop
+                continue loop_1
               }
               
             }
