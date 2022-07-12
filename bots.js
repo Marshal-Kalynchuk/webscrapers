@@ -169,10 +169,24 @@ class Puppet {
 
   }
   async scrapeSearch(field_1, field_2 = undefined) {
-    let url = await this.searchURL(field_1, field_2)
-    await this.navigate(url)
-    // To-Do - Create dynamic for more complex search results -- google search results 
-    return await this.listData()
+    const search_url = await this.searchURL(field_1, field_2)
+    let data = undefined
+    let attempts = 0
+    const max_attempts = 6
+    while(attempts < max_attempts){
+      try{
+        await this.navigate(search_url)
+        data = await this.listData()
+        break
+      } catch {
+        console.log(`Something threw an error. Assumed to be due to authwall.`)
+        console.log(`Attempting to by-pass authwall... Attempt: ${attempts}/${max_attempts}`)
+        await this.authwall()
+        attempts += 1
+      }
+    }
+    return data
+    // To-Do - Create dynamic for more complex search results -- google search results
   }
   async scrapePage() {}
 
@@ -180,6 +194,12 @@ class Puppet {
     await this.page.close()
     await this.browser.close()
   }
+
+  // Generic authwall bypass:
+  async authwall(){
+    // Do nothing. Will just re-navigate to search url.
+  }
+
 };
 
 class GoogleBot extends Puppet {
@@ -203,6 +223,15 @@ class GoogleBot extends Puppet {
   }
 };
 
+class EmailTemplate{
+  constructor(company_name, email_template, template_score, result_info){
+    this.company_name = company_name
+    this.email_template = email_template
+    this.template_score = template_score
+    this.result_info = result_info
+  }
+}
+
 class EmailBot extends GoogleBot {
   constructor(devMode = false) {
     super(devMode)
@@ -213,14 +242,15 @@ class EmailBot extends GoogleBot {
       first_initial: "first_initial",
 
       last_name: "last_name",
-      last_initial: "last_intitial"
+      last_initial: "last_initial"
     }
   }
-  async find(company_name) {
-    const search_query = company_name.replace(' ', '+') + '+email+format+rocketreach'
+  async find(company_name, max_results=3) {
+    console.log("Looking for email templates...")
+    company_name = company_name.toUpperCase()
+    const search_query = company_name.replace(' ', '+') + '+email+format'
     const search_results = await this.scrape(search_query)
-    let emails = []
-    let formatted_emails = []
+    let email_templates = []
     
     /** To-Do Impliment domain checking over name checking. 
      * The current solution does not account for addmore vs. addmore group.
@@ -230,70 +260,89 @@ class EmailBot extends GoogleBot {
     // TODO Overhaul results combing to get emails along with assosiated chance 
     // ie. (The email formate is janedoe@rocketreach.com 80% of the time...)
     for (let res of search_results) {
-      if (res.title.toUpperCase().includes(company_name.toUpperCase()) &&
-        res.title.toUpperCase().includes("ROCKETREACH")) {
-        emails = emails.concat(extractEmails(res.description))
+      let words = res.description.split(" ")
+      let res_company_name =  res.title.toUpperCase().split("EMAIL FORMAT")[0].trim()
+      // Skip irrelavent results:
+      if (res_company_name == company_name){
+        for (let i = 0; i < words.length; i++){
+          let maybe_email = extractEmails(words[i])
+          if (maybe_email){
+            let raw_email = maybe_email[0]
+            if (!raw_email.includes("*")) {
+              
+              let temp = raw_email.split("@")
+              let raw_format = temp[0]
+                .toUpperCase()
+                .replace("{", "")
+                .replace("}", "")
+              let domain = temp[1]
+              let format = ""
+
+              // First name handling:
+              if (raw_format.includes("J")) {
+                if (raw_format.includes("JOHN") || raw_format.includes("JANE")) {
+                  format += this.identifiers.first_name
+                } else {
+                  format += this.identifiers.first_initial
+                }
+              } else if (raw_format.includes("F")) {
+                if (raw_format.includes("FIRST")) {
+                  format += this.identifiers.first_name
+                } else {
+                  format += this.identifiers.first_initial
+                }
+              }
+
+              // Last name handling
+              if (raw_format.includes("D")) {
+                if (raw_format.includes("DOE")) {
+                  format += this.identifiers.last_name
+                } else {
+                  format += this.identifiers.last_initial
+                }
+              } else if (raw_format.includes("L")) {
+                if (raw_format.includes("LAST")) {
+                  format += this.identifiers.last_name
+                } else {
+                  format += this.identifiers.last_initial
+                }
+              }
+
+              // Putting email together:
+              let email_template = format + "@" + domain
+          
+              // Determining email score if possible
+              let score = 0
+              for (let j = i; j < words.length; j++){
+                if (words[j].includes("%")){
+                  score = parseInt(words[j])
+                  break
+                }
+                else if (words[j].toUpperCase().includes("PERCENT")){
+                  score = parseInt(words[j-1])
+                  break
+                }
+              }
+              const template = new EmailTemplate(res_company_name, email_template, score, res)
+              email_templates.push(template)
+            }
+          }
+        }
       }
     }
-
-    // Safety
-    emails = emails.filter(Boolean)
-    if (emails.length) {
-      // Process each email and convert to usable form
-      for (let email of emails) {
-        // Defining variables and trimming data
-        let temp = email.split("@")
-        let raw_format = temp[0]
-          .toUpperCase()
-          .replace("{", "")
-          .replace("}", "")
-        let domain = temp[1]
-        let format = ""
-
-        // Exceptions
-        if (raw_format.includes("*")) {
-          continue
-        }
-
-        // First name handling:
-        if (raw_format.includes("J")) {
-          if (raw_format.includes("JOHN") || raw_format.includes("JANE")) {
-            format += this.identifiers.first_name
-          } else {
-            format += this.identifiers.first_initial
-          }
-        } else if (raw_format.includes("F")) {
-          if (raw_format.includes("FIRST")) {
-            format += this.identifiers.first_name
-          } else {
-            format += this.identifiers.first_initial
-          }
-        }
-
-        // Last name handling
-        if (raw_format.includes("D")) {
-          if (raw_format.includes("DOE")) {
-            format += this.identifiers.last_name
-          } else {
-            format += this.identifiers.last_initial
-          }
-        } else if (raw_format.includes("L")) {
-          if (raw_format.includes("LAST")) {
-            format += this.identifiers.last_name
-          } else {
-            format += this.identifiers.last_initial
-          }
-        }
-
-        // Putting email together:
-        formatted_emails.push(format + "@" + domain)
-      }
-    }
-    // TODO - return defined amount of results
-    if (formatted_emails.length){
-      return [{email_template: formatted_emails[0], template_score: 88}]
+   
+    if (email_templates.length){
+      // Sort based on score
+      email_templates = email_templates.sort((a,b) => (a.template_score > b.template_score) ? -1 : ((b.template_score > a.template_score) ? 1 : 0))
+      // Trucate to max_results
+      let return_templates = email_templates.slice(0, max_results)
+      // Console output
+      let info = return_templates.map(function(a){return [a.email_template, a.template_score]})
+      console.log("Found templates:", info)
+      return return_templates
     }
     else {
+      console.log("No templates found.")
       return undefined
     }
     
@@ -321,6 +370,12 @@ class LinkedinBot extends Puppet {
     super(config, devMode)
   }
 };
+
+function capitalizeWords(arr) {
+  return arr.map(element => {
+    return element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
+  });
+}
 
 function extractEmails(text) {
   return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);

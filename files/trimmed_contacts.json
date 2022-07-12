@@ -1,1 +1,106 @@
-[]
+[
+    {
+        "company_name": "Affinity",
+        "first_name": "Angela",
+        "last_name": "Morales",
+        "position": "IT Technical Recruiter",
+        "geography": "Greater Vancouver A, British Columbia, Canada",
+        "email": "angela@affinity.co"
+    },
+    {
+        "company_name": "MyHEAT",
+        "first_name": "Darren",
+        "last_name": "Jones",
+        "position": "Chief Executive Officer",
+        "geography": "Calgary, Alberta, Canada",
+        "email": "darren@myheat.ca"
+    },
+    {
+        "company_name": "Areto Labs",
+        "first_name": "Kasey",
+        "last_name": "Machin",
+        "position": "Founder and COO",
+        "geography": "Canada",
+        "email": "kaseym@aretolabs.com"
+    },
+    {
+        "company_name": "Alida",
+        "first_name": "Mairead",
+        "last_name": "Whelan",
+        "position": "HR Manager, People & Culture",
+        "geography": "Canada",
+        "email": "maireadwhelan@alida.com"
+    },
+    {
+        "company_name": "Affinity",
+        "first_name": "David",
+        "last_name": "Torres",
+        "position": "Business Operations Manager",
+        "geography": "Vancouver, British Columbia, Canada",
+        "email": "david@affinity.co"
+    },
+    {
+        "company_name": "Affinity",
+        "first_name": "Lara",
+        "last_name": "Peretz",
+        "position": "Senior Technical Recruiter",
+        "geography": "Vancouver, British Columbia, Canada",
+        "email": "lara@affinity.co"
+    },
+    {
+        "company_name": "Areto Labs",
+        "first_name": "Lana",
+        "last_name": "Cuthbertson",
+        "position": "CEO & Founder",
+        "geography": "Montreal, Quebec, Canada",
+        "email": "lanac@aretolabs.com"
+    },
+    {
+        "company_name": "Affinity",
+        "first_name": "David",
+        "last_name": "Parris",
+        "position": "VP, Business Operations",
+        "geography": "Richmond, British Columbia, Canada",
+        "email": "david@affinity.co"
+    },
+    {
+        "company_name": "Alida",
+        "first_name": "Joshua",
+        "last_name": "Green",
+        "position": "Senior Vice President; Security, Compliance, Privacy, Information Systems, and Procurement",
+        "geography": "Wesley Chapel, Florida, United States",
+        "email": "joshuagreen@alida.com"
+    },
+    {
+        "company_name": "54e Dev Studios",
+        "first_name": "Stephanie",
+        "last_name": "Boon",
+        "position": "Head of People & Operations",
+        "geography": "Regina, Saskatchewan, Canada",
+        "email": "stephanie@54e.dev"
+    },
+    {
+        "company_name": "Arterys",
+        "first_name": "Chandler",
+        "last_name": "Vis",
+        "position": "Senior Manager of People",
+        "geography": "San Francisco, California, United States",
+        "email": "chandlervis@arterys.com"
+    },
+    {
+        "company_name": "Arterys",
+        "first_name": "Albert",
+        "last_name": "Hsiao",
+        "position": "Associate Professor, In-Residence",
+        "geography": "San Diego, California, United States",
+        "email": "alberthsiao@arterys.com"
+    },
+    {
+        "company_name": "Arterys",
+        "first_name": "Jesica",
+        "last_name": "L.",
+        "position": "Human Resources Specialist",
+        "geography": "San Francisco, California, United States",
+        "email": "jesical.@arterys.com"
+    }
+]
