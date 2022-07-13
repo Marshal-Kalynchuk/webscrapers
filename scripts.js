@@ -79,8 +79,12 @@ const files = {
 /** Defines the search terms for the linkedin scraper */
 const keywords = ["Angular Developer", "Frontend Developer", "Backend Developer", "Devops Developer", "Full Stack Web Developer", "Full Stack App Developer", "PHP Developer", "Java Developer", "Python Developer", "React Developer", "Vue Developer", "Node JS Developer", "Ruby Developer", /**  "Machine Learing", "AI Developer", "Express js Developer", "UI/UX Developer", "Flutter Developer", "Website Developer", "Website Engineer", "UI/UX Engineer", "Backend Engineer", "Frontend Engineer"*/ ]
 
-const locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada", "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
+let locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada", "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
 
+const canada_locations = ["Montreal, Quebec, Canada", "Halifax, Nova Scotia, Canada", "Quebec City, Quebec, Canada", "Hamilton, Ontario, Canada"]
+const united_states_locations = ["Atlanta, GA", "Austin, TX", "Boston, MA", "Chicago, IL", "Colorado, CO", "Dallas-Ft. Worth, TX", "Los Angeles, CA", "New York City, NY", "San Francisco, CA", "Seattle, WA", "Washington, D.C.",
+]
+locations = united_states_locations
 /**Main CLI function. Runs all other functions and manages the data 
  * 
  * To-Do Impliment handling for blank json files
@@ -165,14 +169,14 @@ async function main() {
         console.log(`${c} website urls added, ${b} linkedin urls added.`)
         break
       case "scrape":
-        const linkedin_bot = new Bots.LinkedinBot(true)
+        const linkedin_bot = new Bots.LinkedinBot()
         await linkedin_bot.init()
         for (let location of locations) {
           for (let keyword of keywords) {
             console.log(`Searching for ${keyword} in ${location}...`)
             scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
             newly_scraped_companies = await JSON.parse(fs.readFileSync(files.newly_scraped_companies_file))
-            const results = await linkedin_bot.scrapeSearch(keyword, location)
+            const results = await linkedin_bot.scrape({field_1: keyword, field_2: location})
             for (let res of results) {
               if (!await checkCompany(scraped_companies, res.company_name)) {
                 scraped_companies.push(res)
@@ -293,16 +297,18 @@ function cleanString(input) {
  * 
  * Impliment system to ignore contacts with initials for their last name 
  * Impliment system to ignore none names like PhD*/
-async function generateEmails(contacts, force = false) {
+async function generateEmails(contacts) {
 
   console.log(`Starting Email Generation.\n\rIf a contact is skipped during template validaty analysis, re-run the program after to apply found templates to them.`)
 
   const whoisxmlapi_api_key = "at_mp0pXIJFeZBYXnzgopWktb7uBBTbf"
-  const api_calls_allowed = true
+  const api_calls_allowed = false
+
+  const most_common_format = "first_name.last_name"
   
   /**Create Email bot instance */
   console.log("Starting email bot...")
-  const email_bot = new Bots.EmailBot()
+  const email_bot = new Bots.EmailBot(true)
   await email_bot.init()
 
   /**Cycle through list of contacts 
@@ -319,9 +325,9 @@ async function generateEmails(contacts, force = false) {
       let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
 
       const name = {
-        first_name: contact.first_name ? first_name.length > 2 ? contact.first_name : undefined : undefined, 
+        first_name: contact.first_name ? contact.first_name.length > 2 ? contact.first_name : undefined : undefined, 
         first_initial: contact.first_name ? contact.first_name[0] : undefined, 
-        last_name: contact.last_name ? last_name.length > 2 ? contact.last_name : undefined : undefined, 
+        last_name: contact.last_name ? contact.last_name.length > 2 ? contact.last_name : undefined : undefined, 
         last_initial: contact.last_name ? contact.last_name[0] : undefined}
    
       // Try to find exsiting template
@@ -350,7 +356,7 @@ async function generateEmails(contacts, force = false) {
           // Look for email
 
           /**Use EmailBot to search for email template. Max results set to 1 to limit api calling*/
-          let results = await email_bot.find(contact.company_name, 1)
+          const results = await email_bot.find(contact.company_name)
           let verified = false
           let best_score = -1
           let best_template = undefined
@@ -359,24 +365,24 @@ async function generateEmails(contacts, force = false) {
 
           /**If email format was found */
           if (results) {
-            for (let res of results) {
+            for (let result of results) {
 
               let should_break = false
-              if (res.template_score > best_score) {
-                best_score = res.template_score
-                best_template = res.email_template
+              if (result.template_score > best_score) {
+                best_score = result.template_score
+                best_template = result.email_template
               }
-              let temp_email = generateEmail(res.email_template, name)
+              let temp_email = generateEmail(result.email_template, name)
               if (temp_email){
-                console.log(`Validating email format ${res.email_template}...`)
+                console.log(`Validating email format ${result.email_template}...`)
                 // Perform verification
                 // Using percent chance of the email being valid:
-                if (res.template_score > 60) {
-                  console.log("Email score above 60.")
-                  console.log(`Email format ${res.email_template} is verified`)
+                if (result.template_score > 50) {
+                  console.log("Email score above 50.")
+                  console.log(`Email format ${result.email_template} is verified`)
                   verified = true
-                  best_score = res.template_score
-                  best_template = res.email_template
+                  best_score = result.template_score
+                  best_template = result.email_template
                   contact_email = temp_email
                   should_break = true
                 } else if (api_calls_allowed) {
@@ -389,14 +395,14 @@ async function generateEmails(contacts, force = false) {
 
                     // Evaluate the response
                     if (data.smtpCheck == 'true' && data.formatCheck == 'true'){
-                      console.log(`Email format ${res.email_template} is verified`)
+                      console.log(`Email format ${result.email_template} is verified`)
                       verified = true
-                      best_score = res.template_score
-                      best_template = res.email_template
+                      best_score = result.template_score
+                      best_template = result.email_template
                       contact_email = temp_email
                       should_break = true
                     } else{
-                      console.log(`Email format ${res.email_template} is invalid.`)
+                      console.log(`Email format ${result.email_template} is invalid.`)
                     }
                   })
                 }
@@ -434,8 +440,8 @@ async function generateEmails(contacts, force = false) {
       console.log(`Skipping contact because it failed to pass the health check`)
     }
   }
-  await email_bot.quit()
   console.log("Finished")
+  await email_bot.quit()
   return contacts
 };
 
