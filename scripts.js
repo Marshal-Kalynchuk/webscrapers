@@ -60,7 +60,7 @@ class EmailTemplate {
 const files = {
 
   companies_save_file: "./files/companies_save_file.json",
-  companies_text_file: "./files/companies_text_file.txt",
+  companies_text_file: "./raw_files/bulk_import_4.txt",
 
   contacts_save_file: "./files/contacts_save_file.json",
   contacts_text_file: "./files/contacts_text_file.txt",
@@ -98,8 +98,7 @@ async function main() {
   let saved_company_names = await saved_companies.map(a => a.company_name)
   let trimmed_contacts = []
 
-  let loop = true
-  while (loop) {
+  cli: while (true) {
 
     // Counters, no function outside of displaying amounts added:
     let c = 0
@@ -201,7 +200,9 @@ async function main() {
         })
         break
       case "exit":
-        loop = false
+        break cli
+      case "filter":
+        save(saved_companies.filter(is_good_company), files.filtered_companies_file)
         break
       default:
         console.log("Invalid Input. For help type help")
@@ -530,28 +531,24 @@ async function processUrls(linkedin_match_data) {
 /** Filters the companies based of a given criteria 
  * To-Do - reformat naming conventing and improve filter
  */
-async function filterCompanies(companiesFile, good, bad) {
-  const data = JSON.parse(fs.readFileSync(companiesFile))
-  let goodCompanies = []
-  let badCompanies = []
-  const alwaysExclude = ["Civil Engineering", "Construction", "Law Practice", "Wellness and Fitness Services", "Motor Vehicle Manufacturing",
+function is_good_company(company) {
+
+  const exclude_industry = ["Civil Engineering", "Construction", "Law Practice", "Wellness and Fitness Services", "Motor Vehicle Manufacturing",
     "Online Audio and Video Media", "Motor Vehicle Manufacturing", "E-Learning Providers", "Real Estate", "Travel Arrangements", "Printing Services",
     "Government Relations Services", "Food and Beverage Services", "Wholesale", "Appliances, Electrical, and Electronics Manufacturing",
     "Automation Machinery Manufacturing", 'Computer Hardware Manufacturing', 'Manufacturing', 'Hospitality', 'Furniture and Home Furnishings Manufacturing',
-    'Fundraising', 'Musicians', 'Aviation and Aerospace Component Manufacturing', 'Measuring and Control Instrument Manufacturing',
-  ]
+    'Fundraising', 'Musicians', 'Aviation and Aerospace Component Manufacturing', 'Measuring and Control Instrument Manufacturing', 'Executive Offices', 
+    'Transportation, Logistics, Supply Chain and Storage', 'Higher Education', 'Retail Motor Vehicles', 'Biotechnology Research', 'Computers and Electronics Manufacturing',
+    'Hospitals and Health Care', 'Government Administration', 'Truck Transportation']
 
-  const alwaysInclude = ["Human Resources Services", "Staffing and Recruiting"]
+  const include_industry = ["Human Resources Services", "Staffing and Recruiting"]
 
-  for (var i = 0; i < data.length; i++) {
-    if ((parseInt(data[i].size.replace(",", "")) < 150 || alwaysInclude.includes(data[i].indusrty)) && !alwaysExclude.includes(data[i].industry)) {
-      goodCompanies.push(data[i])
-    } else {
-      badCompanies.push(data[i])
-    }
+  if (!exclude_industry.includes(company.industry) && (company.location.includes("United States") || company.location.includes("Canada"))
+  && (parseInt(company.size.replaceAll(",", "")) < 150 || include_industry.includes(company.indusrty))) {
+    return true
+  } else {
+    return false
   }
-  save(goodCompanies, good)
-  save(badCompanies, bad)
 };
 
 /** Saves data to json at the specified path */

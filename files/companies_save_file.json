@@ -1,1 +1,3011 @@
-[{}]
+[{}, {
+  "company_name": "2K",
+  "industry": "Computer Games",
+  "location": "Novato, California, United States",
+  "size": "1,647"
+}, {
+  "company_name": "540",
+  "industry": "IT Services and IT Consulting",
+  "location": "Arlington, Virginia, United States",
+  "size": "67"
+}, {
+  "company_name": "7-Eleven",
+  "industry": "Retail",
+  "location": "Irving, Texas, United States",
+  "size": "31,100"
+}, {
+  "company_name": "98point6 Inc.",
+  "industry": "Hospitals and Health Care",
+  "location": "Seattle, Washington, United States",
+  "size": "347"
+}, {
+  "company_name": "AAA Northeast",
+  "industry": "Consumer Services",
+  "location": "Stephen Brochu’s profile photo",
+  "size": "5"
+}, {
+  "company_name": "Abacus Service Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "Southfield, Michigan, United States",
+  "size": "264"
+}, {
+  "company_name": "Abode TechZone, LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "New York, New York, United States",
+  "size": "19"
+}, {
+  "company_name": "Accede LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Edison, New Jersey, United States",
+  "size": "48"
+}, {
+  "company_name": "ACL Digital",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Jose, California, United States",
+  "size": "1,185"
+}, {
+  "company_name": "Active Theory",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "47"
+}, {
+  "company_name": "Acumen, LLC",
+  "industry": "Public Policy Offices",
+  "location": "Burlingame, California, United States",
+  "size": "532"
+}, {
+  "company_name": "AD IT Staffing",
+  "industry": "IT Services and IT Consulting",
+  "location": "Glendale Heights, Illinois, United States",
+  "size": "10"
+}, {
+  "company_name": "Adim",
+  "industry": "Media Production",
+  "location": "Santa Monica, California, United States",
+  "size": "6"
+}, {
+  "company_name": "Aditi Consulting",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bellevue, Washington, United States",
+  "size": "1,040"
+}, {
+  "company_name": "Advent Resources, Inc.",
+  "industry": "Software Development",
+  "location": "San Pedro, California, United States",
+  "size": "67"
+}, {
+  "company_name": "Adyen",
+  "industry": "Financial Services",
+  "location": "Amsterdam, North Holland, Netherlands",
+  "size": "3,001"
+}, {
+  "company_name": "Aegistech",
+  "industry": "Staffing and Recruiting",
+  "location": "New York, New York, United States",
+  "size": "48"
+}, {
+  "company_name": "Agency Habitat",
+  "industry": "Advertising Services",
+  "location": "Fort Worth, Texas, United States",
+  "size": "108"
+}, {
+  "company_name": "AgileMD",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
+  "size": "14"
+}, {
+  "company_name": "AiCure",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "113"
+}, {
+  "company_name": "Airbiquity",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "87"
+}, {
+  "company_name": "Airbnb",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "43,881"
+}, {
+  "company_name": "Airdev",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
+  "size": "78"
+}, {
+  "company_name": "AKKO",
+  "industry": "Consumer Services",
+  "location": "San Francisco, California, United States",
+  "size": "31"
+}, {
+  "company_name": "All Athlete, Inc.",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "11"
+}, {
+  "company_name": "Allied Electronics & Automation",
+  "industry": "Automation Machinery Manufacturing",
+  "location": "Fort Worth, Texas, United States",
+  "size": "1,048"
+}, {
+  "company_name": "Alloy",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "275"
+}, {
+  "company_name": "AllSTEM Connections",
+  "industry": "Staffing and Recruiting",
+  "location": "Steven Jackson’s profile photo",
+  "size": "100"
+}, {
+  "company_name": "Amazee Global Ventures Inc",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New York, United States",
+  "size": "5"
+}, {
+  "company_name": "Amazon Business",
+  "industry": "Retail Office Equipment",
+  "location": "Seattle, Washington, United States",
+  "size": "4,591"
+}, {
+  "company_name": "American College of Obstetricians and Gynecologists (ACOG)",
+  "industry": "Non-profit Organizations",
+  "location": "Washington, District of Columbia, United States",
+  "size": "368"
+}, {
+  "company_name": "Amerit Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "San Ramon, California, United States",
+  "size": "67"
+}, {
+  "company_name": "Amida Technology Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "64"
+}, {
+  "company_name": "AMNESIA Media",
+  "industry": "Advertising Services",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Amplify",
+  "industry": "Education Administration Programs",
+  "location": "Brooklyn, New York, United States",
+  "size": "1,636"
+}, {
+  "company_name": "AnaVation LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Chantilly, Virginia, United States",
+  "size": "134"
+}, {
+  "company_name": "Ancient Ritual",
+  "industry": "Wellness and Fitness Services",
+  "location": "San Francisco, California, United States",
+  "size": "11"
+}, {
+  "company_name": "Apkudo",
+  "industry": "Wireless Services",
+  "location": "Baltimore, Maryland, United States",
+  "size": "120"
+}, {
+  "company_name": "Appetize - Now Part of SpotOn",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "118"
+}, {
+  "company_name": "Apploi",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "129"
+}, {
+  "company_name": "Arc Boat Company",
+  "industry": "Maritime Transportation",
+  "location": "Los Angeles, California, United States",
+  "size": "38"
+}, {
+  "company_name": "Arcadia",
+  "industry": "Software Development",
+  "location": "Washington, District of Columbia, United States",
+  "size": "393"
+}, {
+  "company_name": "AscendEX",
+  "industry": "IT Services and IT Consulting",
+  "location": "Singapore, Singapore",
+  "size": "87"
+}, {
+  "company_name": "Assembled",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "69"
+}, {
+  "company_name": "ASSYST",
+  "industry": "IT Services and IT Consulting",
+  "location": "Sterling, Virginia, United States",
+  "size": "327"
+}, {
+  "company_name": "Atlys",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "13"
+}, {
+  "company_name": "Atticus",
+  "industry": "Legal Services",
+  "location": "Los Angeles, California, United States",
+  "size": "43"
+}, {
+  "company_name": "Austin Fraser",
+  "industry": "Staffing and Recruiting",
+  "location": "Reading, England, United Kingdom",
+  "size": "230"
+}, {
+  "company_name": "Autograph",
+  "industry": "Entertainment Providers",
+  "location": "Santa Monica, California, United States",
+  "size": "130"
+}, {
+  "company_name": "automatize",
+  "industry": "Oil and Gas",
+  "location": "Grapevine, Texas, United States",
+  "size": "26"
+}, {
+  "company_name": "Averity",
+  "industry": "Staffing and Recruiting",
+  "location": "Stamford, Connecticut, United States",
+  "size": "26"
+}, {
+  "company_name": "Avochato",
+  "industry": "Technology, Information and Internet",
+  "location": "Mill Valley, California, United States",
+  "size": "29"
+}, {
+  "company_name": "AvodahMed",
+  "industry": "IT Services and IT Consulting",
+  "location": "Southlake, Texas, United States",
+  "size": "17"
+}, {
+  "company_name": "Axle",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, Iowa, United States",
+  "size": "89"
+}, {
+  "company_name": "Axle Informatics",
+  "industry": "IT Services and IT Consulting",
+  "location": "Rockville, Maryland, United States",
+  "size": "197"
+}, {
+  "company_name": "Balanced",
+  "industry": "Wellness and Fitness Services",
+  "location": "Brooklyn, New York, United States",
+  "size": "35"
+}, {
+  "company_name": "Basis",
+  "industry": "Market Research",
+  "location": "West End, England, United Kingdom",
+  "size": "119"
+}, {
+  "company_name": "BCMC, LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Falls Church, Virginia, United States",
+  "size": "89"
+}, {
+  "company_name": "BEACON STREET STUDIOS INC",
+  "industry": "Musicians",
+  "location": "Los Angeles, California, United States",
+  "size": "16"
+}, {
+  "company_name": "Beaker & Wrench",
+  "industry": "Industrial Machinery Manufacturing",
+  "location": "Los Angeles, California, United States",
+  "size": "8"
+}, {
+  "company_name": "BEMO",
+  "industry": "IT Services and IT Consulting",
+  "location": "Redmond, Washington, United States",
+  "size": "55"
+}, {
+  "company_name": "BenevolentAI",
+  "industry": "Biotechnology Research",
+  "location": "West End, England, United Kingdom",
+  "size": "353"
+}, {
+  "company_name": "BioDiscovery",
+  "industry": "Biotechnology Research",
+  "location": "El Segundo, California, United States",
+  "size": "25"
+}, {
+  "company_name": "Bisnow",
+  "industry": "Online Audio and Video Media",
+  "location": "New York, Iowa, United States",
+  "size": "259"
+}, {
+  "company_name": "Bizzy Labs",
+  "industry": "Software Development",
+  "location": "Irving, Texas, United States",
+  "size": "9"
+}, {
+  "company_name": "BLACKBIRD.AI",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "44"
+}, {
+  "company_name": "Blend Supply",
+  "industry": "Paint, Coating, and Adhesive Manufacturing",
+  "location": "Fort Worth, Texas, United States",
+  "size": "45"
+}, {
+  "company_name": "Blep Technologies",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "11"
+}, {
+  "company_name": "Blue Bridge Financial, Inc.",
+  "industry": "Financial Services",
+  "location": "Reston, Virginia, United States",
+  "size": "29"
+}, {
+  "company_name": "Blue Ocean Ventures",
+  "industry": "Staffing and Recruiting",
+  "location": "Atlanta, Georgia, United States",
+  "size": "110"
+}, {
+  "company_name": "BLUE ORIGIN",
+  "industry": "Defense and Space Manufacturing",
+  "location": "Kent, Washington, United States",
+  "size": "5,795"
+}, {
+  "company_name": "Blue State",
+  "industry": "Advertising Services",
+  "location": "Brooklyn, New York, United States",
+  "size": "192"
+}, {
+  "company_name": "Bobbie",
+  "industry": "Food and Beverage Manufacturing",
+  "location": "San Francisco, California, United States",
+  "size": "96"
+}, {
+  "company_name": "Bold+Beyond",
+  "industry": "Advertising Services",
+  "location": "Los Angeles, California, United States",
+  "size": "4"
+}, {
+  "company_name": "Braid Health",
+  "industry": "Biotechnology Research",
+  "location": "San Francisco, California, United States",
+  "size": "26"
+}, {
+  "company_name": "BrickRed Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bellevue, Washington, United States",
+  "size": "182"
+}, {
+  "company_name": "Bright Pattern",
+  "industry": "Software Development",
+  "location": "South San Francisco, California, United States",
+  "size": "75"
+}, {
+  "company_name": "Brillio",
+  "industry": "IT Services and IT Consulting",
+  "location": "Edison, New Jersey, United States",
+  "size": "4,128"
+}, {
+  "company_name": "Bruker",
+  "industry": "Biotechnology Research",
+  "location": "Billerica, Massachusetts, United States",
+  "size": "991"
+}, {
+  "company_name": "BSI Financial Services",
+  "industry": "Financial Services",
+  "location": "Irving, Texas, United States",
+  "size": "292"
+}, {
+  "company_name": "BTAS, Inc.",
+  "industry": "Defense and Space Manufacturing",
+  "location": "Dayton, Ohio, United States",
+  "size": "161"
+}, {
+  "company_name": "BTI360",
+  "industry": "Software Development",
+  "location": "Herndon, Virginia, United States",
+  "size": "243"
+}, {
+  "company_name": "Bucephalus Tech",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "4"
+}, {
+  "company_name": "Budee",
+  "industry": "Consumer Services",
+  "location": "Los Angeles, California, United States",
+  "size": "48"
+}, {
+  "company_name": "BuildOps",
+  "industry": "Software Development",
+  "location": "Santa Monica, California, United States",
+  "size": "129"
+}, {
+  "company_name": "Burnt Finance",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "8"
+}, {
+  "company_name": "Burq",
+  "industry": "Technology, Information and Internet",
+  "location": "Salman Habib’s profile photo",
+  "size": "15"
+}, {
+  "company_name": "Buxton",
+  "industry": "Software Development",
+  "location": "Fort Worth, Texas, United States",
+  "size": "212"
+}, {
+  "company_name": "ByteLion",
+  "industry": "Software Development",
+  "location": "Hunt Valley, Maryland, United States",
+  "size": "3"
+}, {
+  "company_name": "Caltech",
+  "industry": "Research Services",
+  "location": "Pasadena, California, United States",
+  "size": "4,738"
+}, {
+  "company_name": "Camden Kelly Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "Richardson, Texas, United States",
+  "size": "46"
+}, {
+  "company_name": "Cantor Fitzgerald",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "1,844"
+}, {
+  "company_name": "Capgemini Engineering",
+  "industry": "IT Services and IT Consulting",
+  "location": "Paris, Île-de-France, France",
+  "size": "26,719"
+}, {
+  "company_name": "Capital One",
+  "industry": "Financial Services",
+  "location": "McLean, Virginia, United States",
+  "size": "59,446"
+}, {
+  "company_name": "Carbon Robotics",
+  "industry": "Agriculture, Construction, Mining Machinery Manufacturing",
+  "location": "Seattle, Washington, United States",
+  "size": "55"
+}, {
+  "company_name": "CARMERA",
+  "industry": "Motor Vehicle Manufacturing",
+  "location": "Brooklyn, New York, United States",
+  "size": "18"
+}, {
+  "company_name": "Cast & Crew",
+  "industry": "Entertainment Providers",
+  "location": "Burbank, California, United States",
+  "size": "1,023"
+}, {
+  "company_name": "Castle Hill Gaming",
+  "industry": "Gambling Facilities and Casinos",
+  "location": "Charlottesville, Virginia, United States",
+  "size": "57"
+}, {
+  "company_name": "Celestino",
+  "industry": "Retail",
+  "location": "Aiyaleo, Attiki, Greece",
+  "size": "112"
+}, {
+  "company_name": "Centrical",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "178"
+}, {
+  "company_name": "CGS Federal (Contact Government Services)",
+  "industry": "Government Relations Services",
+  "location": "Washington, District of Columbia, United States",
+  "size": "15"
+}, {
+  "company_name": "Chartboost",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "157"
+}, {
+  "company_name": "Citizen Data",
+  "industry": "Civic and Social Organizations",
+  "location": "Washington, District of Columbia, United States",
+  "size": "16"
+}, {
+  "company_name": "CivicActions",
+  "industry": "Technology, Information and Internet",
+  "location": "Lafayette, California, United States",
+  "size": "121"
+}, {
+  "company_name": "Clarity Technology Partners",
+  "industry": "IT Services and IT Consulting",
+  "location": "Pacifica, California, United States",
+  "size": "28"
+}, {
+  "company_name": "Clear Labs",
+  "industry": "Biotechnology Research",
+  "location": "San Carlos, California, United States",
+  "size": "108"
+}, {
+  "company_name": "ClinicalMind",
+  "industry": "Pharmaceutical Manufacturing",
+  "location": "New York, New York, United States",
+  "size": "133"
+}, {
+  "company_name": "Clover",
+  "industry": "Technology, Information and Internet",
+  "location": "Sunnyvale, California, United States",
+  "size": "725"
+}, {
+  "company_name": "CMG Financial",
+  "industry": "Financial Services",
+  "location": "San Ramon, California, United States",
+  "size": "1,782"
+}, {
+  "company_name": "Coalesce Management Consulting",
+  "industry": "Business Consulting and Services",
+  "location": "Singapore, Singapore",
+  "size": "107"
+}, {
+  "company_name": "Coco",
+  "industry": "Consumer Services",
+  "location": "Los Angeles, California, United States",
+  "size": "334"
+}, {
+  "company_name": "Code.org",
+  "industry": "Primary and Secondary Education",
+  "location": "Seattle, Washington, United States",
+  "size": "335"
+}, {
+  "company_name": "Codexis, Inc.",
+  "industry": "Biotechnology Research",
+  "location": "Redwood City, California, United States",
+  "size": "322"
+}, {
+  "company_name": "CoinList",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "136"
+}, {
+  "company_name": "CommandLink",
+  "industry": "Software Development",
+  "location": "Bellevue, Washington, United States",
+  "size": "44"
+}, {
+  "company_name": "CompStak®",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "124"
+}, {
+  "company_name": "Comtech LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "64"
+}, {
+  "company_name": "Concentrix Catalyst",
+  "industry": "IT Services and IT Consulting",
+  "location": "Beaverton, Oregon, United States",
+  "size": "817"
+}, {
+  "company_name": "CONNECTIVE Agency",
+  "industry": "Advertising Services",
+  "location": "Dallas, Texas, United States",
+  "size": "13"
+}, {
+  "company_name": "ConsultAdd Inc",
+  "industry": "IT Services and IT Consulting",
+  "location": "Irving, Texas, United States",
+  "size": "389"
+}, {
+  "company_name": "ConsultNet",
+  "industry": "Staffing and Recruiting",
+  "location": "South Jordan, Utah, United States",
+  "size": "206"
+}, {
+  "company_name": "Contend",
+  "industry": "Advertising Services",
+  "location": "Los Angeles, California, United States",
+  "size": "49"
+}, {
+  "company_name": "CoreWeave",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New Mexico, United States",
+  "size": "45"
+}, {
+  "company_name": "CorSource",
+  "industry": "IT Services and IT Consulting",
+  "location": "Portland, Oregon, United States",
+  "size": "72"
+}, {
+  "company_name": "COVET IT inc",
+  "industry": "Staffing and Recruiting",
+  "location": "Newark, California, United States",
+  "size": "61"
+}, {
+  "company_name": "CRISIL Limited",
+  "industry": "Financial Services",
+  "location": "Mumbai, Maharashtra, India",
+  "size": "5,156"
+}, {
+  "company_name": "Curie",
+  "industry": "Retail",
+  "location": "Seattle, Washington, United States",
+  "size": "21"
+}, {
+  "company_name": "Cypress HCM",
+  "industry": "Staffing and Recruiting",
+  "location": "Walnut Creek, California, United States",
+  "size": "221"
+}, {
+  "company_name": "Da Vinci",
+  "industry": "Software Development",
+  "location": "Anaheim, California, United States",
+  "size": "25"
+}, {
+  "company_name": "Darwin Recruitment",
+  "industry": "Staffing and Recruiting",
+  "location": "Billericay, England, United Kingdom",
+  "size": "198"
+}, {
+  "company_name": "Data Society",
+  "industry": "Information Services",
+  "location": "Washington, District of Columbia, United States",
+  "size": "62"
+}, {
+  "company_name": "Databento",
+  "industry": "Financial Services",
+  "location": "Boston, Massachusetts, United States",
+  "size": "15"
+}, {
+  "company_name": "Databricks",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "4,394"
+}, {
+  "company_name": "Dataherald (YC W21)",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "15"
+}, {
+  "company_name": "Delve Professionals LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "St Petersburg, Florida, United States",
+  "size": "18"
+}, {
+  "company_name": "1 List",
+  "industry": "IT Services and IT Consulting",
+  "location": "United States",
+  "size": "8"
+}, {
+  "company_name": "Dibbs",
+  "industry": "Spectator Sports",
+  "location": "El Segundo, California, United States",
+  "size": "34"
+}, {
+  "company_name": "Digital Infuzion",
+  "industry": "Software Development",
+  "location": "Gaithersburg, Maryland, United States",
+  "size": "111"
+}, {
+  "company_name": "DigitalCrafts",
+  "industry": "IT Services and IT Consulting",
+  "location": "Atlanta, Georgia, United States",
+  "size": "116"
+}, {
+  "company_name": "DIMO",
+  "industry": "Technology, Information and Internet",
+  "location": "Brooklyn, New York, United States",
+  "size": "19"
+}, {
+  "company_name": "Diversio",
+  "industry": "IT Services and IT Consulting",
+  "location": "Toronto, Ontario, Canada",
+  "size": "50"
+}, {
+  "company_name": "Docugami",
+  "industry": "IT Services and IT Consulting",
+  "location": "Kirkland, Washington, United States",
+  "size": "29"
+}, {
+  "company_name": "Donatech Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "Fairfield, Iowa, United States",
+  "size": "80"
+}, {
+  "company_name": "dot818",
+  "industry": "Advertising Services",
+  "location": "Glendale, California, United States",
+  "size": "44"
+}, {
+  "company_name": "Dow Jones",
+  "industry": "Online Audio and Video Media",
+  "location": "New York, New York, United States",
+  "size": "5,090"
+}, {
+  "company_name": "Drank",
+  "industry": "Technology, Information and Internet",
+  "location": "Reno, Nevada, United States",
+  "size": "3"
+}, {
+  "company_name": "Dray Alliance",
+  "industry": "Technology, Information and Internet",
+  "location": "Emilie Elmore Kintner’s profile photo",
+  "size": "83"
+}, {
+  "company_name": "DreamWorks Animation",
+  "industry": "Animation and Post-production",
+  "location": "Glendale, California, United States",
+  "size": "1,942"
+}, {
+  "company_name": "DSA",
+  "industry": "IT Services and IT Consulting",
+  "location": "Trevose, Pennsylvania, United States",
+  "size": "1,938"
+}, {
+  "company_name": "DSPolitical",
+  "industry": "Political Organizations",
+  "location": "Washington, Wisconsin, United States",
+  "size": "62"
+}, {
+  "company_name": "Dumpa Consulting LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "Brandon, Florida, United States",
+  "size": "15"
+}, {
+  "company_name": "Duro",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "33"
+}, {
+  "company_name": "E-volve Technology Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "National Harbor, Maryland, United States",
+  "size": "36"
+}, {
+  "company_name": "EAB",
+  "industry": "Education Administration Programs",
+  "location": "Washington, District of Columbia, United States",
+  "size": "1,654"
+}, {
+  "company_name": "eBay",
+  "industry": "Technology, Information and Internet",
+  "location": "San Jose, California, United States",
+  "size": "25,268"
+}, {
+  "company_name": "Eclaro",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New York, United States",
+  "size": "895"
+}, {
+  "company_name": "Effectual",
+  "industry": "IT Services and IT Consulting",
+  "location": "Jersey City, New Jersey, United States",
+  "size": "149"
+}, {
+  "company_name": "Electrosoft",
+  "industry": "Computer and Network Security",
+  "location": "Reston, Virginia, United States",
+  "size": "82"
+}, {
+  "company_name": "Elegant Themes",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "98"
+}, {
+  "company_name": "Eleven Recruiting",
+  "industry": "Staffing and Recruiting",
+  "location": "Los Angeles, California, United States",
+  "size": "14"
+}, {
+  "company_name": "Eluvio",
+  "industry": "Software Development",
+  "location": "Berkeley, California, United States",
+  "size": "39"
+}, {
+  "company_name": "eNamix",
+  "industry": "Staffing and Recruiting",
+  "location": "Laguna Hills, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Enfec",
+  "industry": "IT Services and IT Consulting",
+  "location": "Redmond, Washington, United States",
+  "size": "81"
+}, {
+  "company_name": "Enterprize Software",
+  "industry": "Software Development",
+  "location": "Ashburn, Virginia, United States",
+  "size": "7"
+}, {
+  "company_name": "Enveil",
+  "industry": "Software Development",
+  "location": "Fulton, Maryland, United States",
+  "size": "55"
+}, {
+  "company_name": "ERPMARK INC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Princeton, New Jersey, United States",
+  "size": "93"
+}, {
+  "company_name": "eStaffing Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "New Brunswick, New Jersey, United States",
+  "size": "49"
+}, {
+  "company_name": "Euclid Innovations",
+  "industry": "IT Services and IT Consulting",
+  "location": "Charlotte, North Carolina, United States",
+  "size": "157"
+}, {
+  "company_name": "Eulerity",
+  "industry": "Advertising Services",
+  "location": "New York, New York, United States",
+  "size": "52"
+}, {
+  "company_name": "Evans & Chambers Technology",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "38"
+}, {
+  "company_name": "Everyrealm Inc.",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "55"
+}, {
+  "company_name": "Excyl, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Troy, Michigan, United States",
+  "size": "36"
+}, {
+  "company_name": "Experis",
+  "industry": "Staffing and Recruiting",
+  "location": "Milwaukee, Wisconsin, United States",
+  "size": "5,902"
+}, {
+  "company_name": "Exsilio Solutions",
+  "industry": "Software Development",
+  "location": "Irvine, California, United States",
+  "size": "31"
+}, {
+  "company_name": "ExtraHop",
+  "industry": "Computer and Network Security",
+  "location": "Seattle, Washington, United States",
+  "size": "674"
+}, {
+  "company_name": "Extremely Heavy",
+  "industry": "Software Development",
+  "location": "Larchmont, New York, United States",
+  "size": "13"
+}, {
+  "company_name": "Extron",
+  "industry": "Appliances, Electrical, and Electronics Manufacturing",
+  "location": "Anaheim, California, United States",
+  "size": "1,536"
+}, {
+  "company_name": "Facet💎",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "14"
+}, {
+  "company_name": "Fearless",
+  "industry": "Software Development",
+  "location": "Baltimore, Maryland, United States",
+  "size": "195"
+}, {
+  "company_name": "Feathery",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "13"
+}, {
+  "company_name": "Fidelity TalentSource",
+  "industry": "Staffing and Recruiting",
+  "location": "Boston, Massachusetts, United States",
+  "size": "227"
+}, {
+  "company_name": "Fintor",
+  "industry": "Financial Services",
+  "location": "San Francisco, California, United States",
+  "size": "4"
+}, {
+  "company_name": "Finys",
+  "industry": "IT Services and IT Consulting",
+  "location": "Troy, Michigan, United States",
+  "size": "52"
+}, {
+  "company_name": "First Republic Bank",
+  "industry": "Banking",
+  "location": "San Francisco, California, United States",
+  "size": "5,700"
+}, {
+  "company_name": "Float",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "5"
+}, {
+  "company_name": "Flocknote",
+  "industry": "Software Development",
+  "location": "Spring, Texas, United States",
+  "size": "29"
+}, {
+  "company_name": "FloQast",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "528"
+}, {
+  "company_name": "Forward",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "485"
+}, {
+  "company_name": "Foursquare",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "624"
+}, {
+  "company_name": "FOX Tech",
+  "industry": "Broadcast Media Production and Distribution",
+  "location": "New York, New York, United States",
+  "size": "25"
+}, {
+  "company_name": "Freemodel",
+  "industry": "Real Estate",
+  "location": "Burlingame, California, United States",
+  "size": "45"
+}, {
+  "company_name": "FreshCut",
+  "industry": "Entertainment Providers",
+  "location": "Los Angeles, California, United States",
+  "size": "42"
+}, {
+  "company_name": "FullDeck",
+  "industry": "Staffing and Recruiting",
+  "location": "Los Angeles, California, United States",
+  "size": "5"
+}, {
+  "company_name": "funded.club",
+  "industry": "Human Resources Services",
+  "location": "Haarlem, North Holland, Netherlands",
+  "size": "38"
+}, {
+  "company_name": "Fusion Cell",
+  "industry": "Staffing and Recruiting",
+  "location": "Windham, New Hampshire, United States",
+  "size": "21"
+}, {
+  "company_name": "GalaxE.Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Somerset, New Jersey, United States",
+  "size": "1,424"
+}, {
+  "company_name": "GameOn Technology",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "44"
+}, {
+  "company_name": "Garner Health",
+  "industry": "Software Development",
+  "location": "Nick Reber’s profile photo",
+  "size": "86"
+}, {
+  "company_name": "GEICO",
+  "industry": "Insurance",
+  "location": "Chevy Chase, Maryland, United States",
+  "size": "26,191"
+}, {
+  "company_name": "Genies",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "148"
+}, {
+  "company_name": "Genome Medical",
+  "industry": "Medical Practices",
+  "location": "South San Francisco, California, United States",
+  "size": "158"
+}, {
+  "company_name": "GenTech Associates, Inc.",
+  "industry": "Business Consulting and Services",
+  "location": "Indianapolis, Indiana, United States",
+  "size": "67"
+}, {
+  "company_name": "Genuent is becoming INSPYR Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Houston, Texas, United States",
+  "size": "237"
+}, {
+  "company_name": "Get Well",
+  "industry": "Hospitals and Health Care",
+  "location": "Bethesda, Maryland, United States",
+  "size": "345"
+}, {
+  "company_name": "Getaround",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "424"
+}, {
+  "company_name": "GiveDirectly",
+  "industry": "Non-profit Organizations",
+  "location": "New York, New York, United States",
+  "size": "693"
+}, {
+  "company_name": "Glassdoor",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "1,365"
+}, {
+  "company_name": "GliaCell Technologies",
+  "industry": "Software Development",
+  "location": "Columbia, Maryland, United States",
+  "size": "18"
+}, {
+  "company_name": "GLIDEsf",
+  "industry": "Non-profit Organizations",
+  "location": "San Francisco, California, United States",
+  "size": "173"
+}, {
+  "company_name": "GoGuardian",
+  "industry": "Technology, Information and Internet",
+  "location": "El Segundo, California, United States",
+  "size": "602"
+}, {
+  "company_name": "Gold Label Society",
+  "industry": "Entertainment Providers",
+  "location": "Calabasas, California, United States",
+  "size": "3"
+}, {
+  "company_name": "Goodshuffle",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "22"
+}, {
+  "company_name": "goop.com",
+  "industry": "Online Audio and Video Media",
+  "location": "Santa Monica, California, United States",
+  "size": "304"
+}, {
+  "company_name": "Gordian Software",
+  "industry": "Airlines and Aviation",
+  "location": "Seattle, Washington, United States",
+  "size": "39"
+}, {
+  "company_name": "Gradle Inc.",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "119"
+}, {
+  "company_name": "Graduway",
+  "industry": "Software Development",
+  "location": "London, England, United Kingdom",
+  "size": "154"
+}, {
+  "company_name": "Granulate",
+  "industry": "Software Development",
+  "location": "Tel Aviv-Yafo, Tel Aviv, Israel",
+  "size": "139"
+}, {
+  "company_name": "Grindr",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "232"
+}, {
+  "company_name": "Groundswell",
+  "industry": "Philanthropic Fundraising Services",
+  "location": "El Segundo, California, United States",
+  "size": "26"
+}, {
+  "company_name": "GTN Technical Staffing and Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "104"
+}, {
+  "company_name": "Harp Talent Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Pipersville, Pennsylvania, United States",
+  "size": "5"
+}, {
+  "company_name": "Hayden AI",
+  "industry": "Software Development",
+  "location": "Oakland, California, United States",
+  "size": "67"
+}, {
+  "company_name": "HDR",
+  "industry": "Design Services",
+  "location": "Omaha, Nebraska, United States",
+  "size": "11,567"
+}, {
+  "company_name": "Heal",
+  "industry": "Hospitals and Health Care",
+  "location": "Los Angeles, California, United States",
+  "size": "264"
+}, {
+  "company_name": "HedgeServ",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "1,301"
+}, {
+  "company_name": "Heirloom",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "7"
+}, {
+  "company_name": "Heitmeyer Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "Westerville, Ohio, United States",
+  "size": "114"
+}, {
+  "company_name": "Helium",
+  "industry": "Technology, Information and Internet",
+  "location": "Gig Harbor, Washington, United States",
+  "size": "9"
+}, {
+  "company_name": "Heritage Auctions",
+  "industry": "Retail Luxury Goods and Jewelry",
+  "location": "Dallas, Texas, United States",
+  "size": "529"
+}, {
+  "company_name": "Hexadus Corp",
+  "industry": "IT Services and IT Consulting",
+  "location": "North Brunswick, New Jersey, United States",
+  "size": "28"
+}, {
+  "company_name": "Hippo Education, LLC",
+  "industry": "Hospitals and Health Care",
+  "location": "Los Angeles, California, United States",
+  "size": "61"
+}, {
+  "company_name": "Hostwinds",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "23"
+}, {
+  "company_name": "HRUCKUS",
+  "industry": "Business Consulting and Services",
+  "location": "Washington, District of Columbia, United States",
+  "size": "8"
+}, {
+  "company_name": "HTC Global Services",
+  "industry": "IT Services and IT Consulting",
+  "location": "Troy, Michigan, United States",
+  "size": "6,179"
+}, {
+  "company_name": "Hudson Medical + Wellness",
+  "industry": "Hospitals and Health Care",
+  "location": "New York, New York, United States",
+  "size": "41"
+}, {
+  "company_name": "Humanly (humanly.io)",
+  "industry": "Human Resources Services",
+  "location": "Seattle, Washington, United States",
+  "size": "38"
+}, {
+  "company_name": "Huntress Talent",
+  "industry": "Staffing and Recruiting",
+  "location": "Seattle, Washington, United States",
+  "size": "38"
+}, {
+  "company_name": "HUSTLER HOLLYWOOD",
+  "industry": "Retail",
+  "location": "Beverly Hills, California, United States",
+  "size": "215"
+}, {
+  "company_name": "HyerTek Inc.",
+  "industry": "Business Consulting and Services",
+  "location": "Washington, District of Columbia, United States",
+  "size": "4"
+}, {
+  "company_name": "Hyosung America",
+  "industry": "IT Services and IT Consulting",
+  "location": "Irving, Texas, United States",
+  "size": "553"
+}, {
+  "company_name": "HYPED",
+  "industry": "Advertising Services",
+  "location": "New York, New York, United States",
+  "size": "10"
+}, {
+  "company_name": "I.T. Solutions, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Mateo, California, United States",
+  "size": "62"
+}, {
+  "company_name": "i360",
+  "industry": "IT Services and IT Consulting",
+  "location": "Arlington, Virginia, United States",
+  "size": "112"
+}, {
+  "company_name": "IDT Corporation",
+  "industry": "Telecommunications",
+  "location": "Newark, New Jersey, United States",
+  "size": "1,113"
+}, {
+  "company_name": "Incedo Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Iselin, New Jersey, United States",
+  "size": "2,750"
+}, {
+  "company_name": "Inceed",
+  "industry": "Staffing and Recruiting",
+  "location": "Tulsa, Oklahoma, United States",
+  "size": "175"
+}, {
+  "company_name": "Incredible Health",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "111"
+}, {
+  "company_name": "InfoPeople Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "New York, New York, United States",
+  "size": "48"
+}, {
+  "company_name": "Inman",
+  "industry": "Internet News",
+  "location": "Tallahassee, Florida, United States",
+  "size": "130"
+}, {
+  "company_name": "Innosoft Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "Windsor Mill, Maryland, United States",
+  "size": "28"
+}, {
+  "company_name": "Innovative Object Solutions, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "7"
+}, {
+  "company_name": "Inpay - The Fastest Growing Company in Denmark",
+  "industry": "Financial Services",
+  "location": "Copenhagen, Capital Region, Denmark",
+  "size": "127"
+}, {
+  "company_name": "INRIX",
+  "industry": "IT Services and IT Consulting",
+  "location": "Kirkland, Washington, United States",
+  "size": "335"
+}, {
+  "company_name": "Insomniac Events",
+  "industry": "Entertainment Providers",
+  "location": "Calabasas, California, United States",
+  "size": "1,103"
+}, {
+  "company_name": "Integrity LLC",
+  "industry": "Executive Offices",
+  "location": "Fairfield, Maine, United States",
+  "size": "3"
+}, {
+  "company_name": "IntelliBridge",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "348"
+}, {
+  "company_name": "IntelliShift",
+  "industry": "Software Development",
+  "location": "Commack, New York, United States",
+  "size": "128"
+}, {
+  "company_name": "Interapt",
+  "industry": "IT Services and IT Consulting",
+  "location": "Louisville, Kentucky, United States",
+  "size": "165"
+}, {
+  "company_name": "International Rescue Committee",
+  "industry": "Non-profit Organizations",
+  "location": "New York, New York, United States",
+  "size": "10,563"
+}, {
+  "company_name": "Internet Brands",
+  "industry": "Technology, Information and Internet",
+  "location": "El Segundo, California, United States",
+  "size": "2,229"
+}, {
+  "company_name": "InterSources Inc : SBA Certified, Minority & Women-Owned Certified Enterprise.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Fremont, California, United States",
+  "size": "54"
+}, {
+  "company_name": "Intrinsic",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bellevue, Washington, United States",
+  "size": "16"
+}, {
+  "company_name": "InvestCloud, Inc.",
+  "industry": "Financial Services",
+  "location": "West Hollywood, California, United States",
+  "size": "931"
+}, {
+  "company_name": "Invitae",
+  "industry": "Biotechnology Research",
+  "location": "San Francisco, California, United States",
+  "size": "2,509"
+}, {
+  "company_name": "involve.ai",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "61"
+}, {
+  "company_name": "iRecruit Tech",
+  "industry": "Staffing and Recruiting",
+  "location": "New York, New York, United States",
+  "size": "7"
+}, {
+  "company_name": "Jam City",
+  "industry": "Computer Games",
+  "location": "Culver City, California, United States",
+  "size": "973"
+}, {
+  "company_name": "JM Eagle",
+  "industry": "Plastics Manufacturing",
+  "location": "Los Angeles, California, United States",
+  "size": "468"
+}, {
+  "company_name": "Jogg, Inc.",
+  "industry": "Market Research",
+  "location": "Glendale, California, United States",
+  "size": "10"
+}, {
+  "company_name": "JohnHart Real Estate",
+  "industry": "Real Estate",
+  "location": "Glendale, California, United States",
+  "size": "312"
+}, {
+  "company_name": "Johnson Service Group, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Westmont, Illinois, United States",
+  "size": "596"
+}, {
+  "company_name": "JOON",
+  "industry": "Human Resources Services",
+  "location": "Beverly Hills, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Just Slide Media",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "31"
+}, {
+  "company_name": "Kaiyo",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "63"
+}, {
+  "company_name": "Karat",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "411"
+}, {
+  "company_name": "KELLS",
+  "industry": "Hospitals and Health Care",
+  "location": "Queens, New York, United States",
+  "size": "7"
+}, {
+  "company_name": "Kenneth Copeland Ministries",
+  "industry": "Non-profit Organizations",
+  "location": "Fort Worth, Texas, United States",
+  "size": "259"
+}, {
+  "company_name": "Kittch",
+  "industry": "Online Audio and Video Media",
+  "location": "New York, New York, United States",
+  "size": "15"
+}, {
+  "company_name": "KMS Lighthouse",
+  "industry": "Software Development",
+  "location": "Ganei Tikva, Central, Israel",
+  "size": "123"
+}, {
+  "company_name": "Knowable",
+  "industry": "Legal Services",
+  "location": "San Francisco, California, United States",
+  "size": "188"
+}, {
+  "company_name": "Kodable",
+  "industry": "Education",
+  "location": "San Diego, California, United States",
+  "size": "13"
+}, {
+  "company_name": "KORE1",
+  "industry": "Staffing and Recruiting",
+  "location": "Irvine, California, United States",
+  "size": "164"
+}, {
+  "company_name": "Koverse, Inc., An SAIC Company",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "49"
+}, {
+  "company_name": "Kubient",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "39"
+}, {
+  "company_name": "KUBRA",
+  "industry": "IT Services and IT Consulting",
+  "location": "Mississauga, Ontario, Canada",
+  "size": "526"
+}, {
+  "company_name": "KWI",
+  "industry": "Software Development",
+  "location": "Greenvale, New York, United States",
+  "size": "199"
+}, {
+  "company_name": "Kythera Space Solutions",
+  "industry": "Telecommunications",
+  "location": "Bethesda, Maryland, United States",
+  "size": "38"
+}, {
+  "company_name": "Lanvera",
+  "industry": "IT System Custom Software Development",
+  "location": "Coppell, Texas, United States",
+  "size": "82"
+}, {
+  "company_name": "LAShowroom.com",
+  "industry": "Wholesale",
+  "location": "Los Angeles, California, United States",
+  "size": "30"
+}, {
+  "company_name": "Launch Consulting Group",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bellevue, Washington, United States",
+  "size": "475"
+}, {
+  "company_name": "LAXIR",
+  "industry": "Advertising Services",
+  "location": "Los Angeles, California, United States",
+  "size": "4"
+}, {
+  "company_name": "LEAP Legal Software UK",
+  "industry": "Software Development",
+  "location": "London, England, United Kingdom",
+  "size": "132"
+}, {
+  "company_name": "Learning Economy Foundation",
+  "industry": "Education Administration Programs",
+  "location": "Washington, District of Columbia, United States",
+  "size": "26"
+}, {
+  "company_name": "Leverege",
+  "industry": "Software Development",
+  "location": "Rockville, Maryland, United States",
+  "size": "47"
+}, {
+  "company_name": "Liftoff Mobile",
+  "industry": "Advertising Services",
+  "location": "Redwood City, California, United States",
+  "size": "476"
+}, {
+  "company_name": "Lightfront",
+  "industry": "Software Development",
+  "location": "Redwood City, California, United States",
+  "size": "476"
+}, {
+  "company_name": "Likewise, Inc.",
+  "industry": "Entertainment Providers",
+  "location": "Bellevue, Washington, United States",
+  "size": "54"
+}, {
+  "company_name": "Lime FinTech LLC",
+  "industry": "Technology, Information and Internet",
+  "location": "Bellevue, Washington, United States",
+  "size": "54"
+}, {
+  "company_name": "Little Otter",
+  "industry": "Mental Health Care",
+  "location": "San Francisco, California, United States",
+  "size": "49"
+}, {
+  "company_name": "Lively, Inc.",
+  "industry": "Financial Services",
+  "location": "San Francisco, California, United States",
+  "size": "162"
+}, {
+  "company_name": "LivePerson",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "2,006"
+}, {
+  "company_name": "LocalScale",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "2,006"
+}, {
+  "company_name": "LTI - Larsen & Toubro Infotech",
+  "industry": "IT Services and IT Consulting",
+  "location": "Mumbai, Maharashtra, India",
+  "size": "44,959"
+}, {
+  "company_name": "Lucid",
+  "industry": "Marketing Services",
+  "location": "New York, New York, United States",
+  "size": "23"
+}, {
+  "company_name": "Luma Health",
+  "industry": "Hospitals and Health Care",
+  "location": "San Mateo, California, United States",
+  "size": "146"
+}, {
+  "company_name": "Lunchclub",
+  "industry": "Social Networking Platforms",
+  "location": "Remote, Oregon, United States",
+  "size": "36"
+}, {
+  "company_name": "Lyra Health",
+  "industry": "Mental Health Care",
+  "location": "Burlingame, California, United States",
+  "size": "1,342"
+}, {
+  "company_name": "Magnus Technology Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Hayward, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Mama",
+  "industry": "Advertising Services",
+  "location": "Hayward, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Management Concepts",
+  "industry": "Professional Training and Coaching",
+  "location": "Vienna, Virginia, United States",
+  "size": "365"
+}, {
+  "company_name": "Marathon TS",
+  "industry": "IT Services and IT Consulting",
+  "location": "Sterling, Virginia, United States",
+  "size": "139"
+}, {
+  "company_name": "Marvin",
+  "industry": "Wellness and Fitness Services",
+  "location": "Los Angeles, California, United States",
+  "size": "30"
+}, {
+  "company_name": "Matlen Silver",
+  "industry": "IT Services and IT Consulting",
+  "location": "Somerville, New Jersey, United States",
+  "size": "334"
+}, {
+  "company_name": "Mbanq",
+  "industry": "Banking",
+  "location": "Healdsburg, California, United States",
+  "size": "54"
+}, {
+  "company_name": "McKesson",
+  "industry": "Hospitals and Health Care",
+  "location": "Irving, Texas, United States",
+  "size": "24,665"
+}, {
+  "company_name": "MealPal",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "37"
+}, {
+  "company_name": "MedHab",
+  "industry": "Medical Equipment Manufacturing",
+  "location": "San Angelo, Texas, United States",
+  "size": "6"
+}, {
+  "company_name": "MediaAlpha",
+  "industry": "Advertising Services",
+  "location": "Los Angeles, California, United States",
+  "size": "151"
+}, {
+  "company_name": "Meditrial",
+  "industry": "Hospitals and Health Care",
+  "location": "New York, New York, United States",
+  "size": "50"
+}, {
+  "company_name": "Medsender",
+  "industry": "Hospitals and Health Care",
+  "location": "New York, New York, United States",
+  "size": "10"
+}, {
+  "company_name": "MEMX",
+  "industry": "Capital Markets",
+  "location": "Jersey City, New Jersey, United States",
+  "size": "63"
+}, {
+  "company_name": "Mid-States Distributing, LLC",
+  "industry": "Wholesale",
+  "location": "Fort Worth, Texas, United States",
+  "size": "92"
+}, {
+  "company_name": "Miles",
+  "industry": "Technology, Information and Internet",
+  "location": "Redwood City, California, United States",
+  "size": "79"
+}, {
+  "company_name": "Millennial Software",
+  "industry": "IT Services and IT Consulting",
+  "location": "Aldie, Virginia, United States",
+  "size": "7"
+}, {
+  "company_name": "Millennium Space Systems, A Boeing Company",
+  "industry": "Defense and Space Manufacturing",
+  "location": "El Segundo, California, United States",
+  "size": "426"
+}, {
+  "company_name": "Mindr",
+  "industry": "Technology, Information and Media",
+  "location": "Brooklyn, New York, United States",
+  "size": "9"
+}, {
+  "company_name": "Mindshow",
+  "industry": "Entertainment Providers",
+  "location": "Los Angeles, California, United States",
+  "size": "49"
+}, {
+  "company_name": "Mindsize",
+  "industry": "IT Services and IT Consulting",
+  "location": "Burleson, Texas, United States",
+  "size": "9"
+}, {
+  "company_name": "MindSource",
+  "industry": "IT Services and IT Consulting",
+  "location": "Milpitas, California, United States",
+  "size": "95"
+}, {
+  "company_name": "Mindteck",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bengaluru, Karnataka, India",
+  "size": "951"
+}, {
+  "company_name": "Mix.com",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "13"
+}, {
+  "company_name": "MKS2 Technologies",
+  "industry": "Defense and Space Manufacturing",
+  "location": "Austin, Texas, United States",
+  "size": "135"
+}, {
+  "company_name": "Moment",
+  "industry": "Retail",
+  "location": "Seattle, Washington, United States",
+  "size": "48"
+}, {
+  "company_name": "Moment House",
+  "industry": "Entertainment Providers",
+  "location": "Los Angeles, California, United States",
+  "size": "43"
+}, {
+  "company_name": "Momentum",
+  "industry": "Philanthropic Fundraising Services",
+  "location": "Oakland, California, United States",
+  "size": "12"
+}, {
+  "company_name": "Mommy Poppins",
+  "industry": "Online Audio and Video Media",
+  "location": "Troy Dohner’s profile photo",
+  "size": "35"
+}, {
+  "company_name": "Monzo Bank",
+  "industry": "Banking",
+  "location": "Liverpool Street, England, United Kingdom",
+  "size": "1,768"
+}, {
+  "company_name": "Motesque",
+  "industry": "Software Development",
+  "location": "Brooklyn, New York, United States",
+  "size": "19"
+}, {
+  "company_name": "Mouser Electronics",
+  "industry": "Appliances, Electrical, and Electronics Manufacturing",
+  "location": "Mansfield, Texas, United States",
+  "size": "1,820"
+}, {
+  "company_name": "Mozart",
+  "industry": "IT Services and IT Consulting",
+  "location": "Santa Monica, California, United States",
+  "size": "52"
+}, {
+  "company_name": "Murad",
+  "industry": "Personal Care Product Manufacturing",
+  "location": "El Segundo, California, United States",
+  "size": "511"
+}, {
+  "company_name": "Mystery",
+  "industry": "Entertainment Providers",
+  "location": "Seattle, Washington, United States",
+  "size": "65"
+}, {
+  "company_name": "NachoNacho",
+  "industry": "Financial Services",
+  "location": "San Francisco, California, United States",
+  "size": "21"
+}, {
+  "company_name": "Nanotronics",
+  "industry": "Automation Machinery Manufacturing",
+  "location": "Brooklyn, New York, United States",
+  "size": "110"
+}, {
+  "company_name": "Nations Info Corp",
+  "industry": "Technology, Information and Internet",
+  "location": "Santa Barbara, California, United States",
+  "size": "86"
+}, {
+  "company_name": "Naughty Dog",
+  "industry": "Computer Games",
+  "location": "Santa Monica, California, United States",
+  "size": "680"
+}, {
+  "company_name": "Neatleaf",
+  "industry": "Agriculture, Construction, Mining Machinery Manufacturing",
+  "location": "Scotts Valley, California, United States",
+  "size": "20"
+}, {
+  "company_name": "NEOGOV",
+  "industry": "Software Development",
+  "location": "El Segundo, California, United States",
+  "size": "469"
+}, {
+  "company_name": "Network Optix",
+  "industry": "IT Services and IT Consulting",
+  "location": "Burbank, California, United States",
+  "size": "104"
+}, {
+  "company_name": "Newfront",
+  "industry": "Insurance",
+  "location": "San Francisco, California, United States",
+  "size": "743"
+}, {
+  "company_name": "Nexon America",
+  "industry": "Computer Games",
+  "location": "El Segundo, California, United States",
+  "size": "579"
+}, {
+  "company_name": "NHN Global",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "142"
+}, {
+  "company_name": "Nimble Robotics",
+  "industry": "Transportation, Logistics, Supply Chain and Storage",
+  "location": "San Francisco, California, United States",
+  "size": "130"
+}, {
+  "company_name": "Ninth Wave",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "46"
+}, {
+  "company_name": "Nordstrom",
+  "industry": "Retail",
+  "location": "Seattle, Washington, United States",
+  "size": "38,691"
+}, {
+  "company_name": "Northbeam",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Northstrat Incorporated",
+  "industry": "Defense and Space Manufacturing",
+  "location": "Sterling, Virginia, United States",
+  "size": "87"
+}, {
+  "company_name": "Notion",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "566"
+}, {
+  "company_name": "Novetta",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "582"
+}, {
+  "company_name": "NTWRK",
+  "industry": "Internet Marketplace Platforms",
+  "location": "Los Angeles, California, United States",
+  "size": "162"
+}, {
+  "company_name": "nuArch",
+  "industry": "Software Development",
+  "location": "Pound Ridge, New York, United States",
+  "size": "8"
+}, {
+  "company_name": "Nuvolum",
+  "industry": "Advertising Services",
+  "location": "San Francisco, California, United States",
+  "size": "50"
+}, {
+  "company_name": "Octo",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "807"
+}, {
+  "company_name": "Olla",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "20"
+}, {
+  "company_name": "Omm IT Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Columbia, Maryland, United States",
+  "size": "55"
+}, {
+  "company_name": "ONYX Design",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "8"
+}, {
+  "company_name": "Opala",
+  "industry": "Hospitals and Health Care",
+  "location": "Seattle, Washington, United States",
+  "size": "47"
+}, {
+  "company_name": "Open Road Integrated Media Inc.",
+  "industry": "Media Production",
+  "location": "New York, New York, United States",
+  "size": "75"
+}, {
+  "company_name": "Open Road Media",
+  "industry": "Photography",
+  "location": "Washington, District of Columbia, United States",
+  "size": "6"
+}, {
+  "company_name": "OPTnation",
+  "industry": "Technology, Information and Internet",
+  "location": "Boston, Massachusetts, United States",
+  "size": "28"
+}, {
+  "company_name": "Oracle",
+  "industry": "IT Services and IT Consulting",
+  "location": "Austin, Texas, United States",
+  "size": "187,394"
+}, {
+  "company_name": "Orchestra Technology",
+  "industry": "Telecommunications",
+  "location": "Richardson, Texas, United States",
+  "size": "93"
+}, {
+  "company_name": "OscarMike",
+  "industry": "IT Services and IT Consulting",
+  "location": "Southlake, Texas, United States",
+  "size": "17"
+}, {
+  "company_name": "Outpay",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "3"
+}, {
+  "company_name": "Overalls",
+  "industry": "Insurance",
+  "location": "New York, New York, United States",
+  "size": "13"
+}, {
+  "company_name": "Pacific Northwest National Laboratory",
+  "industry": "Research Services",
+  "location": "Richland, Washington, United States",
+  "size": "5,090"
+}, {
+  "company_name": "Pactera EDGE",
+  "industry": "IT Services and IT Consulting",
+  "location": "Redmond, Washington, United States",
+  "size": "1,675"
+}, {
+  "company_name": "Pagaya",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "753"
+}, {
+  "company_name": "Paladin Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "225"
+}, {
+  "company_name": "Pano AI",
+  "industry": "Fire Protection",
+  "location": "San Francisco, California, United States",
+  "size": "38"
+}, {
+  "company_name": "Panther Protocol",
+  "industry": "Technology, Information and Internet",
+  "location": "Anish Mohammed’s profile photo",
+  "size": "34"
+}, {
+  "company_name": "Paradox",
+  "industry": "Software Development",
+  "location": "Scottsdale, Arizona, United States",
+  "size": "450"
+}, {
+  "company_name": "Paradyme Management Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "131"
+}, {
+  "company_name": "Paramount+",
+  "industry": "Entertainment Providers",
+  "location": "Los Angeles, California, United States",
+  "size": "1,087"
+}, {
+  "company_name": "Pastel Network",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "11"
+}, {
+  "company_name": "Payitoff",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "22"
+}, {
+  "company_name": "Peach",
+  "industry": "Financial Services",
+  "location": "Oakland, California, United States",
+  "size": "60"
+}, {
+  "company_name": "Peacock",
+  "industry": "Entertainment Providers",
+  "location": "New York, New York, United States",
+  "size": "1,082"
+}, {
+  "company_name": "PeopleSERVE, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Boston, Massachusetts, United States",
+  "size": "29"
+}, {
+  "company_name": "Perceptive Recruiting, LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "Greenville, South Carolina, United States",
+  "size": "7"
+}, {
+  "company_name": "PerformYard",
+  "industry": "Software Development",
+  "location": "Arlington, Virginia, United States",
+  "size": "61"
+}, {
+  "company_name": "Philo",
+  "industry": "Entertainment Providers",
+  "location": "San Francisco, California, United States",
+  "size": "141"
+}, {
+  "company_name": "Photon Commerce",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Pipe17",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "21"
+}, {
+  "company_name": "Pixwel",
+  "industry": "Advertising Services",
+  "location": "Los Angeles, California, United States",
+  "size": "24"
+}, {
+  "company_name": "Plain Concepts",
+  "industry": "IT Services and IT Consulting",
+  "location": "Madrid, Community of Madrid, Spain",
+  "size": "400"
+}, {
+  "company_name": "Planet Technology",
+  "industry": "Staffing and Recruiting",
+  "location": "Bedford, Massachusetts, United States",
+  "size": "272"
+}, {
+  "company_name": "Player First Games",
+  "industry": "Computer Games",
+  "location": "Los Angeles, California, United States",
+  "size": "41"
+}, {
+  "company_name": "Popchew",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "6"
+}, {
+  "company_name": "PredictionStrike",
+  "industry": "Spectator Sports",
+  "location": "New York, New York, United States",
+  "size": "21"
+}, {
+  "company_name": "Prelude",
+  "industry": "Internet Publishing",
+  "location": "New York, New York, United States",
+  "size": "5"
+}, {
+  "company_name": "Presence Product Group, LLC",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "39"
+}, {
+  "company_name": "Procentrix, LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Herndon, Virginia, United States",
+  "size": "197"
+}, {
+  "company_name": "Prodege, LLC",
+  "industry": "Technology, Information and Internet",
+  "location": "El Segundo, California, United States",
+  "size": "474"
+}, {
+  "company_name": "Prolegis",
+  "industry": "Technology, Information and Internet",
+  "location": "Washington, District of Columbia, United States",
+  "size": "16"
+}, {
+  "company_name": "ProSphere",
+  "industry": "IT Services and IT Consulting",
+  "location": "Alexandria, Virginia, United States",
+  "size": "330"
+}, {
+  "company_name": "Protingent",
+  "industry": "Staffing and Recruiting",
+  "location": "Bellevue, Washington, United States",
+  "size": "151"
+}, {
+  "company_name": "Proven Recruiting",
+  "industry": "Staffing and Recruiting",
+  "location": "San Diego, California, United States",
+  "size": "119"
+}, {
+  "company_name": "Proxim Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "15"
+}, {
+  "company_name": "PulsePoint",
+  "industry": "Advertising Services",
+  "location": "New York, New York, United States",
+  "size": "155"
+}, {
+  "company_name": "Pulumi Corporation",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "84"
+}, {
+  "company_name": "PWV Consultants",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "17"
+}, {
+  "company_name": "Pythonwise Inc",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "8"
+}, {
+  "company_name": "Qcells North America",
+  "industry": "Renewable Energy Semiconductor Manufacturing",
+  "location": "Irvine, California, United States",
+  "size": "437"
+}, {
+  "company_name": "Qrypt",
+  "industry": "Computer and Network Security",
+  "location": "New York, Iowa, United States",
+  "size": "41"
+}, {
+  "company_name": "Quadrint, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Falls Church, Virginia, United States",
+  "size": "103"
+}, {
+  "company_name": "RackTop Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Fulton, Maryland, United States",
+  "size": "57"
+}, {
+  "company_name": "Radish Health",
+  "industry": "Hospitals and Health Care",
+  "location": "New York, New York, United States",
+  "size": "17"
+}, {
+  "company_name": "Rakuten",
+  "industry": "Technology, Information and Internet",
+  "location": "Tokyo, Tokyo, Japan",
+  "size": "6,754"
+}, {
+  "company_name": "Ramp",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "403"
+}, {
+  "company_name": "Raya",
+  "industry": "Technology, Information and Internet",
+  "location": "West Hollywood, California, United States",
+  "size": "81"
+}, {
+  "company_name": "Reality AI",
+  "industry": "Software Development",
+  "location": "Columbia, Maryland, United States",
+  "size": "19"
+}, {
+  "company_name": "Rec Room",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "240"
+}, {
+  "company_name": "Recurrent Ventures",
+  "industry": "Online Audio and Video Media",
+  "location": "Miami, Florida, United States",
+  "size": "215"
+}, {
+  "company_name": "Red Arch Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Columbia, Maryland, United States",
+  "size": "48"
+}, {
+  "company_name": "Red Oak Technologies",
+  "industry": "Staffing and Recruiting",
+  "location": "San Jose, California, United States",
+  "size": "152"
+}, {
+  "company_name": "Regenative Labs",
+  "industry": "Biotechnology Research",
+  "location": "Pensacola, Florida, United States",
+  "size": "66"
+}, {
+  "company_name": "REI Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Sterling, Virginia, United States",
+  "size": "788"
+}, {
+  "company_name": "Reingold, Inc.",
+  "industry": "Advertising Services",
+  "location": "Alexandria, Virginia, United States",
+  "size": "300"
+}, {
+  "company_name": "Request Technology, LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Naperville, Illinois, United States",
+  "size": "22"
+}, {
+  "company_name": "Riccione Resources, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "6"
+}, {
+  "company_name": "RightStone",
+  "industry": "Staffing and Recruiting",
+  "location": "Plano, Texas, United States",
+  "size": "36"
+}, {
+  "company_name": "RightWorks",
+  "industry": "Staffing and Recruiting",
+  "location": "Austin, Texas, United States",
+  "size": "60"
+}, {
+  "company_name": "Rippling",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "1,502"
+}, {
+  "company_name": "RISE",
+  "industry": "Hospitals and Health Care",
+  "location": "Charlotte, North Carolina, United States",
+  "size": "59"
+}, {
+  "company_name": "Risk Focus (A Ness Company)",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New York, United States",
+  "size": "72"
+}, {
+  "company_name": "RiVi Consulting Group L.L.C",
+  "industry": "IT Services and IT Consulting",
+  "location": "Alpharetta, Georgia, United States",
+  "size": "45"
+}, {
+  "company_name": "RMS Computer Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "David Arnemann’s profile photo",
+  "size": "161"
+}, {
+  "company_name": "Robust Intelligence",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "63"
+}, {
+  "company_name": "Rokt",
+  "industry": "Advertising Services",
+  "location": "New York, New York, United States",
+  "size": "400"
+}, {
+  "company_name": "Rooster Park",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "36"
+}, {
+  "company_name": "Roundhouse Recruiting",
+  "industry": "Staffing and Recruiting",
+  "location": "Cincinnati, Ohio, United States",
+  "size": "8"
+}, {
+  "company_name": "Runway",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "20"
+}, {
+  "company_name": "Saggezza",
+  "industry": "IT Services and IT Consulting",
+  "location": "Chicago, Illinois, United States",
+  "size": "472"
+}, {
+  "company_name": "Sahara Cloud",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "4"
+}, {
+  "company_name": "Samsara",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "2,075"
+}, {
+  "company_name": "Sandstone",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "8"
+}, {
+  "company_name": "SANS Institute",
+  "industry": "Computer and Network Security",
+  "location": "Rockville, Maryland, United States",
+  "size": "1,316"
+}, {
+  "company_name": "Schrödinger",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "776"
+}, {
+  "company_name": "Scratch Financial",
+  "industry": "Financial Services",
+  "location": "United States",
+  "size": "54"
+}, {
+  "company_name": "Screencast-O-Matic",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "18"
+}, {
+  "company_name": "SeatGeek",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "667"
+}, {
+  "company_name": "SeekOut",
+  "industry": "Software Development",
+  "location": "Bellevue, Washington, United States",
+  "size": "203"
+}, {
+  "company_name": "SEngine Precision Medicine",
+  "industry": "Biotechnology Research",
+  "location": "Seattle, Washington, United States",
+  "size": "33"
+}, {
+  "company_name": "Servsys Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "Irving, Texas, United States",
+  "size": "117"
+}, {
+  "company_name": "Shareablee, Inc",
+  "industry": "Market Research",
+  "location": "New York, New York, United States",
+  "size": "27"
+}, {
+  "company_name": "Shift5",
+  "industry": "Software Development",
+  "location": "Arlington, Virginia, United States",
+  "size": "88"
+}, {
+  "company_name": "Shipium",
+  "industry": "Transportation, Logistics, Supply Chain and Storage",
+  "location": "Seattle, Washington, United States",
+  "size": "46"
+}, {
+  "company_name": "Signature Consultants",
+  "industry": "Staffing and Recruiting",
+  "location": "Fort Lauderdale, Florida, United States",
+  "size": "1,613"
+}, {
+  "company_name": "SimpleCircle",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "10"
+}, {
+  "company_name": "Simpli.fi",
+  "industry": "Advertising Services",
+  "location": "Fort Worth, Texas, United States",
+  "size": "493"
+}, {
+  "company_name": "SingleStore",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "401"
+}, {
+  "company_name": "Singuli",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "11"
+}, {
+  "company_name": "SiriusXM",
+  "industry": "Entertainment Providers",
+  "location": "New York, New York, United States",
+  "size": "3,968"
+}, {
+  "company_name": "Skillr",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "68"
+}, {
+  "company_name": "SKIMS",
+  "industry": "Retail Apparel and Fashion",
+  "location": "Culver City, California, United States",
+  "size": "512"
+}, {
+  "company_name": "Skipify",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "40"
+}, {
+  "company_name": "SM Diversity",
+  "industry": "Staffing and Recruiting",
+  "location": "Seattle, Washington, United States",
+  "size": "18"
+}, {
+  "company_name": "SmarTek21",
+  "industry": "IT Services and IT Consulting",
+  "location": "Kirkland, Washington, United States",
+  "size": "378"
+}, {
+  "company_name": "Smartrr",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New York, United States",
+  "size": "24"
+}, {
+  "company_name": "Smith Hanley Associates",
+  "industry": "Staffing and Recruiting",
+  "location": "Southport, Connecticut, United States",
+  "size": "89"
+}, {
+  "company_name": "Snow Joe",
+  "industry": "Manufacturing",
+  "location": "Hoboken, New Jersey, United States",
+  "size": "202"
+}, {
+  "company_name": "Soar",
+  "industry": "Professional Training and Coaching",
+  "location": "Hoboken, New Jersey, United States",
+  "size": "202"
+}, {
+  "company_name": "Sogeti",
+  "industry": "IT Services and IT Consulting",
+  "location": "Issy-les-Moulineaux, Île-de-France, France",
+  "size": "12,528"
+}, {
+  "company_name": "Solo Brands",
+  "industry": "Retail",
+  "location": "Rainer Castillo’s profile photo",
+  "size": "49"
+}, {
+  "company_name": "SOLUTE",
+  "industry": "Defense and Space Manufacturing",
+  "location": "San Diego, California, United States",
+  "size": "192"
+}, {
+  "company_name": "Sony Pictures Entertainment",
+  "industry": "Entertainment Providers",
+  "location": "Culver City, California, United States",
+  "size": "8,021"
+}, {
+  "company_name": "Southwestern Baptist Theological Seminary",
+  "industry": "Higher Education",
+  "location": "Fort Worth, Texas, United States",
+  "size": "439"
+}, {
+  "company_name": "Spectrum Reach",
+  "industry": "Advertising Services",
+  "location": "New York, New York, United States",
+  "size": "3,103"
+}, {
+  "company_name": "SpiceOrb",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Spot AI",
+  "industry": "Software Development",
+  "location": "Burlingame, California, United States",
+  "size": "84"
+}, {
+  "company_name": "SpringbokIT",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "13"
+}, {
+  "company_name": "Stably",
+  "industry": "Financial Services",
+  "location": "Seattle, Washington, United States",
+  "size": "29"
+}, {
+  "company_name": "Staffing Theory",
+  "industry": "Staffing and Recruiting",
+  "location": "Raleigh, North Carolina, United States",
+  "size": "21"
+}, {
+  "company_name": "Starbucks",
+  "industry": "Retail",
+  "location": "Seattle, Washington, United States",
+  "size": "171,630"
+}, {
+  "company_name": "State of Maryland",
+  "industry": "Government Administration",
+  "location": "Baltimore, Maryland, United States",
+  "size": "7,906"
+}, {
+  "company_name": "Stateset",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "10"
+}, {
+  "company_name": "Stellent IT",
+  "industry": "Staffing and Recruiting",
+  "location": "St Augustine, Florida, United States",
+  "size": "70"
+}, {
+  "company_name": "Storetasker",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "65"
+}, {
+  "company_name": "Storyboard",
+  "industry": "Online Audio and Video Media",
+  "location": "Santa Monica, California, United States",
+  "size": "34"
+}, {
+  "company_name": "Storytime",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "2"
+}, {
+  "company_name": "StraitSys",
+  "industry": "IT Services and IT Consulting",
+  "location": "Owens Crossroads, Alabama, United States",
+  "size": "15"
+}, {
+  "company_name": "Strategic Employment Partners (SEP)",
+  "industry": "Staffing and Recruiting",
+  "location": "Los Angeles, California, United States",
+  "size": "110"
+}, {
+  "company_name": "Strategic Resource Partners, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Manhattan Beach, California, United States",
+  "size": "8"
+}, {
+  "company_name": "Streamline",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bothell, Washington, United States",
+  "size": "10"
+}, {
+  "company_name": "StrongArm Tech",
+  "industry": "IT Services and IT Consulting",
+  "location": "Brooklyn, New York, United States",
+  "size": "127"
+}, {
+  "company_name": "Submittable",
+  "industry": "Software Development",
+  "location": "Missoula, Montana, United States",
+  "size": "185"
+}, {
+  "company_name": "Substantial",
+  "industry": "Professional Services",
+  "location": "Seattle, Washington, United States",
+  "size": "51"
+}, {
+  "company_name": "Summer",
+  "industry": "Financial Services",
+  "location": "New York, Iowa, United States",
+  "size": "53"
+}, {
+  "company_name": "Summit2Sea Consulting",
+  "industry": "IT Services and IT Consulting",
+  "location": "Arlington, Virginia, United States",
+  "size": "76"
+}, {
+  "company_name": "SUNROOM",
+  "industry": "Retail Apparel and Fashion",
+  "location": "Austin, Texas, United States",
+  "size": "5"
+}, {
+  "company_name": "Supplyframe",
+  "industry": "Software Development",
+  "location": "Pasadena, California, United States",
+  "size": "211"
+}, {
+  "company_name": "Swenson He",
+  "industry": "Software Development",
+  "location": "Beverly Hills, California, United States",
+  "size": "30"
+}, {
+  "company_name": "Sydata Inc",
+  "industry": "Staffing and Recruiting",
+  "location": "San Diego, California, United States",
+  "size": "95"
+}, {
+  "company_name": "Syren Technologies",
+  "industry": "Software Development",
+  "location": "Bellevue, Washington, United States",
+  "size": "143"
+}, {
+  "company_name": "T-Mobile",
+  "industry": "Telecommunications",
+  "location": "Bellevue, Washington, United States",
+  "size": "80,738"
+}, {
+  "company_name": "Tachyon Technologies",
+  "industry": "IT Services and IT Consulting",
+  "location": "Southlake, Texas, United States",
+  "size": "283"
+}, {
+  "company_name": "Tahzoo",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "75"
+}, {
+  "company_name": "Tales",
+  "industry": "Computer Games",
+  "location": "San Francisco, California, United States",
+  "size": "75"
+}, {
+  "company_name": "Talkspace",
+  "industry": "Wellness and Fitness Services",
+  "location": "New York, New York, United States",
+  "size": "797"
+}, {
+  "company_name": "Tarana Wireless, Inc.",
+  "industry": "Wireless Services",
+  "location": "Milpitas, California, United States",
+  "size": "290"
+}, {
+  "company_name": "Targetbase",
+  "industry": "Advertising Services",
+  "location": "Irving, Texas, United States",
+  "size": "342"
+}, {
+  "company_name": "TaxAct",
+  "industry": "Software Development",
+  "location": "Cedar Rapids, Iowa, United States",
+  "size": "310"
+}, {
+  "company_name": "TaxDome",
+  "industry": "Technology, Information and Internet",
+  "location": "Brooklyn, New York, United States",
+  "size": "39"
+}, {
+  "company_name": "TBWA\\Media Arts Lab",
+  "industry": "Advertising Services",
+  "location": "Los Angeles, California, United States",
+  "size": "860"
+}, {
+  "company_name": "TEAL",
+  "industry": "Wireless Services",
+  "location": "Seattle, Washington, United States",
+  "size": "53"
+}, {
+  "company_name": "Tech Firefly",
+  "industry": "IT Services and IT Consulting",
+  "location": "Santa Clara, California, United States",
+  "size": "215"
+}, {
+  "company_name": "TechFlow, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Diego, California, United States",
+  "size": "177"
+}, {
+  "company_name": "TechWish",
+  "industry": "IT Services and IT Consulting",
+  "location": "Vienna, Virginia, United States",
+  "size": "50"
+}, {
+  "company_name": "TED Conferences",
+  "industry": "Media Production",
+  "location": "New York, New York, United States",
+  "size": "9,383"
+}, {
+  "company_name": "Temboo",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "10"
+}, {
+  "company_name": "Terafuze",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "2"
+}, {
+  "company_name": "Terra Kaffe",
+  "industry": "Manufacturing",
+  "location": "Brooklyn, New York, United States",
+  "size": "35"
+}, {
+  "company_name": "The New York Times",
+  "industry": "Newspaper Publishing",
+  "location": "New York, New York, United States",
+  "size": "13,808"
+}, {
+  "company_name": "The Pokémon Company International",
+  "industry": "Entertainment Providers",
+  "location": "Bellevue, Washington, United States",
+  "size": "1,282"
+}, {
+  "company_name": "The Rockridge Group",
+  "industry": "Staffing and Recruiting",
+  "location": "Bellevue, Washington, United States",
+  "size": "1,282"
+}, {
+  "company_name": "The Squires Group, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Annapolis, Maryland, United States",
+  "size": "52"
+}, {
+  "company_name": "The TIE",
+  "industry": "Information Services",
+  "location": "New York, New York, United States",
+  "size": "40"
+}, {
+  "company_name": "The Trade Desk",
+  "industry": "Technology, Information and Internet",
+  "location": "Ventura, California, United States",
+  "size": "2,608"
+}, {
+  "company_name": "The University of Texas at Arlington",
+  "industry": "Higher Education",
+  "location": "Arlington, Texas, United States",
+  "size": "7,093"
+}, {
+  "company_name": "Therma°",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
+  "size": "55"
+}, {
+  "company_name": "Think",
+  "industry": "Business Consulting and Services",
+  "location": "Kingsville, Maryland, United States",
+  "size": "73"
+}, {
+  "company_name": "Thinkfind Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "Richardson, Texas, United States",
+  "size": "10"
+}, {
+  "company_name": "Thinkingbox",
+  "industry": "Advertising Services",
+  "location": "Vancouver, British Columbia, Canada",
+  "size": "111"
+}, {
+  "company_name": "ThinOptics",
+  "industry": "Manufacturing",
+  "location": "Sonoma, California, United States",
+  "size": "19"
+}, {
+  "company_name": "Thunkable",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "37"
+}, {
+  "company_name": "Till Financial",
+  "industry": "Financial Services",
+  "location": "Boston, Massachusetts, United States",
+  "size": "13"
+}, {
+  "company_name": "TITAN TECHNOLOGIES INC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Pittsburgh, Pennsylvania, United States",
+  "size": "98"
+}, {
+  "company_name": "Topology",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "30"
+}, {
+  "company_name": "Torii Studio",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "3"
+}, {
+  "company_name": "Total Brain",
+  "industry": "Wellness and Fitness Services",
+  "location": "San Francisco, California, United States",
+  "size": "54"
+}, {
+  "company_name": "Traction Guest",
+  "industry": "Software Development",
+  "location": "Burnaby, British Columbia, Canada",
+  "size": "93"
+}, {
+  "company_name": "Tradeweb",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "1,068"
+}, {
+  "company_name": "Trelly",
+  "industry": "Real Estate",
+  "location": "Dallas, Texas, United States",
+  "size": "23"
+}, {
+  "company_name": "Trillion Technology Solutions, Inc",
+  "industry": "Software Development",
+  "location": "Reston, Virginia, United States",
+  "size": "83"
+}, {
+  "company_name": "Triplenet Technologies Inc",
+  "industry": "Staffing and Recruiting",
+  "location": "Seattle, Washington, United States",
+  "size": "11"
+}, {
+  "company_name": "Truebase",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "16"
+}, {
+  "company_name": "TrueFoundry",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "24"
+}, {
+  "company_name": "Trybe",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Twelve",
+  "industry": "Chemical Manufacturing",
+  "location": "United States",
+  "size": "165"
+}, {
+  "company_name": "Twine Labs",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "8"
+}, {
+  "company_name": "Twitch",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "11,126"
+}, {
+  "company_name": "Two Sigma",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "1,934"
+}, {
+  "company_name": "Uniswap Labs",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "107"
+}, {
+  "company_name": "Unit21",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "151"
+}, {
+  "company_name": "UnitedMasters",
+  "industry": "Musicians",
+  "location": "Brooklyn, New York, United States",
+  "size": "391"
+}, {
+  "company_name": "Universal.one",
+  "industry": "Wellness and Fitness Services",
+  "location": "Durham, North Carolina, United States",
+  "size": "3"
+}, {
+  "company_name": "University of Washington",
+  "industry": "Higher Education",
+  "location": "Seattle, Washington, United States",
+  "size": "27,152"
+}, {
+  "company_name": "Upside",
+  "industry": "Retail",
+  "location": "Washington, District of Columbia, United States",
+  "size": "292"
+}, {
+  "company_name": "Urban Insight",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "27"
+}, {
+  "company_name": "Ursus, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "United States",
+  "size": "89"
+}, {
+  "company_name": "US Tech Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Jersey City, New Jersey, United States",
+  "size": "1,884"
+}, {
+  "company_name": "USADATA Inc",
+  "industry": "Advertising Services",
+  "location": "New York, New York, United States",
+  "size": "46"
+}, {
+  "company_name": "UtilizeCore.com",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "86"
+}, {
+  "company_name": "UWorld",
+  "industry": "E-Learning Providers",
+  "location": "Coppell, Texas, United States",
+  "size": "423"
+}, {
+  "company_name": "Vanguard Logistics Services",
+  "industry": "Transportation, Logistics, Supply Chain and Storage",
+  "location": "Long Beach, California, United States",
+  "size": "1,410"
+}, {
+  "company_name": "Veo",
+  "industry": "Transportation, Logistics, Supply Chain and Storage",
+  "location": "Santa Monica, California, United States",
+  "size": "145"
+}, {
+  "company_name": "Verifi Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "174"
+}, {
+  "company_name": "Verneek",
+  "industry": "Software Development",
+  "location": "New York City Metropolitan Area",
+  "size": "11"
+}, {
+  "company_name": "Verse",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "14"
+}, {
+  "company_name": "Vertical Relevance",
+  "industry": "Financial Services",
+  "location": "New York, New York, United States",
+  "size": "82"
+}, {
+  "company_name": "Vexterra Group",
+  "industry": "Computer and Network Security",
+  "location": "Reston, Virginia, United States",
+  "size": "17"
+}, {
+  "company_name": "Vidoori Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Silver Spring, Maryland, United States",
+  "size": "91"
+}, {
+  "company_name": "VincentBenjamin",
+  "industry": "Staffing and Recruiting",
+  "location": "Phoenix, Arizona, United States",
+  "size": "135"
+}, {
+  "company_name": "Virgin Hyperloop",
+  "industry": "Truck Transportation",
+  "location": "Los Angeles, California, United States",
+  "size": "227"
+}, {
+  "company_name": "Virtru",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "188"
+}, {
+  "company_name": "Visionable Global",
+  "industry": "IT Services and IT Consulting",
+  "location": "London, England, United Kingdom",
+  "size": "73"
+}, {
+  "company_name": "Vitally.io",
+  "industry": "Software Development",
+  "location": "Brooklyn, New York, United States",
+  "size": "46"
+}, {
+  "company_name": "Vodastra Technologies",
+  "industry": "IT Services and IT Consulting",
+  "location": "Dallas, Texas, United States",
+  "size": "32"
+}, {
+  "company_name": "Volkswagen Automotive Cloud",
+  "industry": "Motor Vehicle Manufacturing",
+  "location": "Redmond, Washington, United States",
+  "size": "118"
+}, {
+  "company_name": "Vontive",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "65"
+}, {
+  "company_name": "W. R. Berkley Corporation",
+  "industry": "Insurance",
+  "location": "Greenwich, Connecticut, United States",
+  "size": "2,158"
+}, {
+  "company_name": "Waldo",
+  "industry": "Software Development",
+  "location": "Brooklyn, New York, United States",
+  "size": "32"
+}, {
+  "company_name": "WayBetter",
+  "industry": "Wellness and Fitness Services",
+  "location": "New York, New York, United States",
+  "size": "51"
+}, {
+  "company_name": "Western Digital",
+  "industry": "Computer Hardware Manufacturing",
+  "location": "San Jose, California, United States",
+  "size": "18,644"
+}, {
+  "company_name": "Whisper",
+  "industry": "Medical Equipment Manufacturing",
+  "location": "San Francisco, California, United States",
+  "size": "86"
+}, {
+  "company_name": "Whop",
+  "industry": "Technology, Information and Internet",
+  "location": "Brooklyn, New York, United States",
+  "size": "15"
+}, {
+  "company_name": "Wider Circle",
+  "industry": "Wellness and Fitness Services",
+  "location": "Redwood City, California, United States",
+  "size": "94"
+}, {
+  "company_name": "WinMax",
+  "industry": "Staffing and Recruiting",
+  "location": "Milpitas, California, United States",
+  "size": "86"
+}, {
+  "company_name": "Wonderverse",
+  "industry": "Computer Games",
+  "location": "Milpitas, California, United States",
+  "size": "86"
+}, {
+  "company_name": "WSP USA",
+  "industry": "Civil Engineering",
+  "location": "New York, New York, United States",
+  "size": "6,303"
+}, {
+  "company_name": "WUWTA",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "7"
+}, {
+  "company_name": "Wyze",
+  "industry": "Computers and Electronics Manufacturing",
+  "location": "Kirkland, Washington, United States",
+  "size": "228"
+}, {
+  "company_name": "X1 Card",
+  "industry": "Financial Services",
+  "location": "San Francisco, California, United States",
+  "size": "30"
+}, {
+  "company_name": "X4 Technology",
+  "industry": "Staffing and Recruiting",
+  "location": "Strand, England, United Kingdom",
+  "size": "99"
+}, {
+  "company_name": "Xcelerate Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "212"
+}, {
+  "company_name": "Xplore",
+  "industry": "Defense and Space Manufacturing",
+  "location": "Redmond, Washington, United States",
+  "size": "28"
+}, {
+  "company_name": "Yamaha Motor Corporation, USA",
+  "industry": "Manufacturing",
+  "location": "Cypress, California, United States",
+  "size": "2,474"
+}, {
+  "company_name": "zenapse",
+  "industry": "Technology, Information and Internet",
+  "location": "Westport, Connecticut, United States",
+  "size": "10"
+}, {
+  "company_name": "Zimetrics Technologies",
+  "industry": "IT Services and IT Consulting",
+  "location": "Pune, Maharashtra, India",
+  "size": "274"
+}, {
+  "company_name": "Zip",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "130"
+}, {
+  "company_name": "Zoox",
+  "industry": "Motor Vehicle Manufacturing",
+  "location": "San Mateo, California, United States",
+  "size": "1,953"
+}]
