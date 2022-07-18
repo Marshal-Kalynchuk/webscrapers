@@ -1,1516 +1,1381 @@
 [{
-  "company_name": "2iSolutions Inc.",
+  "company_name": "540",
   "industry": "IT Services and IT Consulting",
-  "location": "Mississauga, Ontario, Canada",
-  "size": "72"
-}, {
-  "company_name": "360.Agency",
-  "industry": "Technology, Information and Internet",
-  "location": "Montreal, Quebec, Canada",
-  "size": "138"
-}, {
-  "company_name": "5thColumn",
-  "industry": "Computer and Network Security",
-  "location": "Chicago, Illinois, United States",
-  "size": "11"
-}, {
-  "company_name": "Acceler8 Talent",
-  "industry": "Staffing and Recruiting",
-  "location": "Boston, Massachusetts, United States",
-  "size": "12"
-}, {
-  "company_name": "AccuLynx",
-  "industry": "Software Development",
-  "location": "Beloit, Wisconsin, United States",
-  "size": "120"
-}, {
-  "company_name": "ADDSOURCE",
-  "industry": "Human Resources Services",
-  "location": "Vancouver, British Columbia, Canada",
-  "size": "18"
-}, {
-  "company_name": "AdeptID",
-  "industry": "Software Development",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "21"
-}, {
-  "company_name": "Adroit Software Inc.",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "38"
-}, {
-  "company_name": "Advanced Tech Placement",
-  "industry": "Staffing and Recruiting",
-  "location": "Virginia, United States",
-  "size": "9"
-}, {
-  "company_name": "Agile Resources, Inc.",
-  "industry": "Staffing and Recruiting",
-  "location": "Alpharetta, Georgia, United States",
-  "size": "66"
-}, {
-  "company_name": "Airblox",
-  "industry": "Airlines and Aviation",
-  "location": "Aurora, Illinois, United States",
-  "size": "10"
-}, {
-  "company_name": "Alborea",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "5"
-}, {
-  "company_name": "AlleyCorp",
-  "industry": "Financial Services",
-  "location": "New York, New York, United States",
-  "size": "41"
-}, {
-  "company_name": "Alohop",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "4"
-}, {
-  "company_name": "AP Recruiters & Associates",
-  "industry": "Staffing and Recruiting",
-  "location": "West Palm Beach, Florida, United States",
-  "size": "16"
-}, {
-  "company_name": "Applicantz",
-  "industry": "Technology, Information and Internet",
-  "location": "Houston, Texas, United States",
-  "size": "108"
-}, {
-  "company_name": "aquesst",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "26"
-}, {
-  "company_name": "ARK Solutions, Inc.",
-  "industry": "Staffing and Recruiting",
-  "location": "Reston, Virginia, United States",
-  "size": "99"
-}, {
-  "company_name": "Arobas Personnel",
-  "industry": "Staffing and Recruiting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "34"
-}, {
-  "company_name": "Arrowroot Capital Management",
-  "industry": "Venture Capital and Private Equity Principals",
-  "location": "Marina del Rey, California, United States",
-  "size": "27"
-}, {
-  "company_name": "Artemis Consulting, Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "McLean, Virginia, United States",
-  "size": "57"
-}, {
-  "company_name": "Arth Consulting - An Executive Search Firm",
-  "industry": "Staffing and Recruiting",
-  "location": "Pleasanton, California, United States",
-  "size": "48"
-}, {
-  "company_name": "Ashley Ellis, Inc",
-  "industry": "Staffing and Recruiting",
-  "location": "Naperville, Illinois, United States",
-  "size": "42"
-}, {
-  "company_name": "Aspire Software",
-  "industry": "Software Development",
-  "location": "Montreal, Quebec, Canada",
-  "size": "54"
-}, {
-  "company_name": "Asta Crs Inc",
-  "industry": "IT Services and IT Consulting",
-  "location": "Ashburn, Virginia, United States",
-  "size": "120"
-}, {
-  "company_name": "authentic.art.tech",
-  "industry": "Artists and Writers",
-  "location": "Montreal, Quebec, Canada",
-  "size": "4"
-}, {
-  "company_name": "Avatria",
-  "industry": "Technology, Information and Internet",
-  "location": "Chicago, Illinois, United States",
-  "size": "16"
-}, {
-  "company_name": "AWeber",
-  "industry": "Software Development",
-  "location": "Chalfont, Pennsylvania, United States",
-  "size": "109"
-}, {
-  "company_name": "BallotReady",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "110"
-}, {
-  "company_name": "Bayforce",
-  "industry": "IT Services and IT Consulting",
-  "location": "Tampa, Florida, United States",
-  "size": "55"
-}, {
-  "company_name": "Bear Claw",
-  "industry": "Software Development",
-  "location": "Northbrook, Illinois, United States",
-  "size": "7"
-}, {
-  "company_name": "Bectran, Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Schaumburg, Illinois, United States",
-  "size": "82"
-}, {
-  "company_name": "Bellwood Labs",
-  "industry": "Software Development",
-  "location": "Atlanta, Georgia, United States",
-  "size": "8"
-}, {
-  "company_name": "BigRio",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "65"
-}, {
-  "company_name": "Blackstone Talent Group",
-  "industry": "Staffing and Recruiting",
-  "location": "San Francisco, California, United States",
-  "size": "23"
-}, {
-  "company_name": "Bloxo",
-  "industry": "Spectator Sports",
-  "location": "Halifax, Nova Scotia, Canada",
-  "size": "6"
-}, {
-  "company_name": "Blue Rose Consulting Group, Inc.",
-  "industry": "Business Consulting and Services",
-  "location": "Washington, District of Columbia, United States",
-  "size": "25"
-}, {
-  "company_name": "BlueChip Financial",
-  "industry": "Financial Services",
-  "location": "Belcourt, North Dakota, United States",
-  "size": "63"
-}, {
-  "company_name": "Brainrider",
-  "industry": "Advertising Services",
-  "location": "Toronto, Ontario, Canada",
-  "size": "125"
-}, {
-  "company_name": "Brains Workgroup",
-  "industry": "Staffing and Recruiting",
-  "location": "Paramus, New Jersey, United States",
-  "size": "12"
-}, {
-  "company_name": "BrightLink",
-  "industry": "Software Development",
-  "location": "Roswell, Georgia, United States",
-  "size": "21"
-}, {
-  "company_name": "CacheFly",
-  "industry": "Technology, Information and Internet",
-  "location": "Chicago, Illinois, United States",
-  "size": "13"
-}, {
-  "company_name": "Caliola Engineering, LLC",
-  "industry": "Defense and Space Manufacturing",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "22"
-}, {
-  "company_name": "Callibrity",
-  "industry": "Software Development",
-  "location": "Cincinnati, Ohio, United States",
-  "size": "90"
-}, {
-  "company_name": "Capital Advisors Group, Inc.",
-  "industry": "Financial Services",
-  "location": "Newton, Massachusetts, United States",
-  "size": "36"
-}, {
-  "company_name": "CardX",
-  "industry": "Financial Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "42"
-}, {
-  "company_name": "Centaur Labs",
-  "industry": "IT Services and IT Consulting",
-  "location": "Boston, Massachusetts, United States",
-  "size": "32"
-}, {
-  "company_name": "Centiva",
-  "industry": "Technology, Information and Internet",
-  "location": "Montreal, Quebec, Canada",
-  "size": "22"
-}, {
-  "company_name": "ChabezTech LLC",
-  "industry": "Staffing and Recruiting",
-  "location": "Lemoyne, Pennsylvania, United States",
-  "size": "21"
-}, {
-  "company_name": "Cinter Career",
-  "industry": "Staffing and Recruiting",
-  "location": "Cincinnati, Ohio, United States",
-  "size": "6"
-}, {
-  "company_name": "CityBase, Inc",
-  "industry": "IT Services and IT Consulting",
-  "location": "Chicago, Illinois, United States",
-  "size": "90"
-}, {
-  "company_name": "Claricode",
-  "industry": "IT Services and IT Consulting",
-  "location": "Dedham, Massachusetts, United States",
-  "size": "19"
-}, {
-  "company_name": "Clarus Group",
-  "industry": "IT Services and IT Consulting",
-  "location": "Overland Park, Kansas, United States",
+  "location": "Arlington, Virginia, United States",
   "size": "67"
 }, {
-  "company_name": "Clear Measure",
-  "industry": "IT Services and IT Consulting",
-  "location": "Austin, Texas, United States",
-  "size": "25"
-}, {
-  "company_name": "ClicSanté",
-  "industry": "Software Development",
-  "location": "Alma, Quebec, Canada",
-  "size": "21"
-}, {
-  "company_name": "ClikFocus - a Division of DSoft Technology",
-  "industry": "Technology, Information and Internet",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "7"
-}, {
-  "company_name": "cloaked",
-  "industry": "Software Development",
-  "location": "Lowell, Massachusetts, United States",
-  "size": "32"
-}, {
-  "company_name": "Codoxo",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "59"
-}, {
-  "company_name": "Core Software Technologies Inc",
-  "industry": "IT Services and IT Consulting",
-  "location": "Plainsboro, New Jersey, United States",
-  "size": "4"
-}, {
-  "company_name": "Cosmic Advanced Engineered Solutions",
-  "industry": "Defense and Space Manufacturing",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "64"
-}, {
-  "company_name": "Creative Guild",
-  "industry": "Advertising Services",
-  "location": "Hamilton, Ontario, Canada",
-  "size": "23"
-}, {
-  "company_name": "Crescens Inc.",
+  "company_name": "Abacus Service Corporation",
   "industry": "Staffing and Recruiting",
-  "location": "Bridgewater, New Jersey, United States",
-  "size": "56"
+  "location": "Southfield, Michigan, United States",
+  "size": "264"
 }, {
-  "company_name": "Crowd Favorite",
-  "industry": "Technology, Information and Internet",
-  "location": "Las Vegas, Nevada, United States",
-  "size": "30"
-}, {
-  "company_name": "CS GROUP - Canada",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "145"
-}, {
-  "company_name": "dash",
-  "industry": "Animation and Post-production",
-  "location": "Raleigh, North Carolina, United States",
-  "size": "30"
-}, {
-  "company_name": "DATAMTX LLC",
-  "industry": "IT Services and IT Consulting",
-  "location": "Peachtree Corners, Georgia, United States",
-  "size": "49"
-}, {
-  "company_name": "dcbel",
-  "industry": "Solar Electric Power Generation",
-  "location": "Montreal, Quebec, Canada",
-  "size": "76"
-}, {
-  "company_name": "Decide Consulting",
-  "industry": "IT Services and IT Consulting",
-  "location": "Houston, Texas, United States",
-  "size": "8"
-}, {
-  "company_name": "DELAN - Chasseurs de Talents en TI",
-  "industry": "Human Resources Services",
-  "location": "Montreal, Quebec, Canada",
-  "size": "21"
-}, {
-  "company_name": "Devfi",
-  "industry": "IT Services and IT Consulting",
-  "location": "Columbus, Ohio, United States",
-  "size": "81"
-}, {
-  "company_name": "Devonshire Recruitment",
+  "company_name": "Abode TechZone, LLC",
   "industry": "Staffing and Recruiting",
-  "location": "Boston, Massachusetts, United States",
-  "size": "6"
-}, {
-  "company_name": "DevStaff Canada",
-  "industry": "Staffing and Recruiting",
-  "location": "Kitchener, Ontario, Canada",
-  "size": "8"
-}, {
-  "company_name": "Diesel Labs",
-  "industry": "Technology, Information and Media",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "15"
-}, {
-  "company_name": "Digital Thrive",
-  "industry": "Advertising Services",
-  "location": "Austin, Texas, United States",
-  "size": "22"
-}, {
-  "company_name": "Dispel",
-  "industry": "Computer and Network Security",
-  "location": "Austin, Texas, United States",
-  "size": "18"
-}, {
-  "company_name": "DonationXchange",
-  "industry": "IT Services and IT Consulting",
-  "location": "Chicago, Illinois, United States",
-  "size": "7"
-}, {
-  "company_name": "Dragon Army",
-  "industry": "Advertising Services",
-  "location": "Atlanta, Georgia, United States",
-  "size": "39"
-}, {
-  "company_name": "DRAKKAR",
-  "industry": "Outsourcing and Offshoring Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "127"
-}, {
-  "company_name": "DRUM Associates",
-  "industry": "Business Consulting and Services",
   "location": "New York, New York, United States",
-  "size": "48"
-}, {
-  "company_name": "DSoft Technology, Engineering & Analysis, Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "54"
-}, {
-  "company_name": "DTG Finance & Capital Markets",
-  "industry": "Staffing and Recruiting",
-  "location": "Framingham, Massachusetts, United States",
-  "size": "7"
-}, {
-  "company_name": "Dunn Solutions Group",
-  "industry": "IT Services and IT Consulting",
-  "location": "Skokie, Illinois, United States",
-  "size": "112"
-}, {
-  "company_name": "eDriving",
-  "industry": "IT Services and IT Consulting",
-  "location": "Cape May Court House, New Jersey, United States",
-  "size": "141"
-}, {
-  "company_name": "eHire",
-  "industry": "Staffing and Recruiting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "57"
-}, {
-  "company_name": "Einblick",
-  "industry": "Software Development",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "27"
-}, {
-  "company_name": "EITACIES INC",
-  "industry": "IT Services and IT Consulting",
-  "location": "Santa Clara, California, United States",
-  "size": "129"
-}, {
-  "company_name": "Envision Technology Solutions - Tech Think Infotech",
-  "industry": "IT Services and IT Consulting",
-  "location": "Charlotte, North Carolina, United States",
-  "size": "20"
-}, {
-  "company_name": "ErisX, a Cboe Global Markets Company",
-  "industry": "Financial Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "57"
-}, {
-  "company_name": "Esprezzo",
-  "industry": "IT Services and IT Consulting",
-  "location": "Boston, Massachusetts, United States",
-  "size": "7"
-}, {
-  "company_name": "Event Temple",
-  "industry": "Technology, Information and Internet",
-  "location": "Vancouver, British Columbia, Canada",
-  "size": "26"
-}, {
-  "company_name": "Everflow - Partner Marketing Platform",
-  "industry": "Technology, Information and Internet",
-  "location": "Mountain View, California, United States",
-  "size": "64"
-}, {
-  "company_name": "Evolving Web",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "62"
-}, {
-  "company_name": "exagens",
-  "industry": "Software Development",
-  "location": "Montreal, Quebec, Canada",
-  "size": "18"
-}, {
-  "company_name": "Expert Technical Solutions",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "27"
-}, {
-  "company_name": "Falcon IT & Staffing Solutions",
-  "industry": "Staffing and Recruiting",
-  "location": "Delray Beach, Florida, United States",
-  "size": "28"
-}, {
-  "company_name": "FastModel Sports",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "42"
-}, {
-  "company_name": "Fine Tune Expense Management",
-  "industry": "Business Consulting and Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "52"
-}, {
-  "company_name": "First Street Foundation",
-  "industry": "Research Services",
-  "location": "Brooklyn, New York, United States",
-  "size": "38"
-}, {
-  "company_name": "Flashtract",
-  "industry": "Financial Services",
-  "location": "Atlanta, Georgia, United States",
-  "size": "37"
-}, {
-  "company_name": "FMTC",
-  "industry": "Advertising Services",
-  "location": "Austin, Texas, United States",
-  "size": "31"
-}, {
-  "company_name": "FormAssembly",
-  "industry": "Technology, Information and Internet",
-  "location": "Bloomington, Indiana, United States",
-  "size": "119"
-}, {
-  "company_name": "FortifyData",
-  "industry": "IT Services and IT Consulting",
-  "location": "Kennesaw, Georgia, United States",
-  "size": "35"
-}, {
-  "company_name": "Foxbox Digital",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "74"
-}, {
-  "company_name": "Frequent Flyer Services",
-  "industry": "Book and Periodical Publishing",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "8"
-}, {
-  "company_name": "Fusion92",
-  "industry": "Advertising Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "123"
-}, {
-  "company_name": "GAINS",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "91"
-}, {
-  "company_name": "Georgia IT, Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Alpharetta, Georgia, United States",
-  "size": "88"
-}, {
-  "company_name": "GHGSAT",
-  "industry": "Environmental Services",
-  "location": "Montreal, Quebec, Canada",
-  "size": "132"
-}, {
-  "company_name": "Global Channel Management, Inc.",
-  "industry": "Staffing and Recruiting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "6"
-}, {
-  "company_name": "Gradient AI",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "82"
-}, {
-  "company_name": "Gray",
-  "industry": "Software Development",
-  "location": "Boulder, Colorado, United States",
-  "size": "7"
-}, {
-  "company_name": "Groom & Associates(és)",
-  "industry": "Staffing and Recruiting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "17"
-}, {
-  "company_name": "GSquared Group",
-  "industry": "Staffing and Recruiting",
-  "location": "Alpharetta, Georgia, United States",
-  "size": "39"
-}, {
-  "company_name": "GVD Systems LLC",
-  "industry": "Staffing and Recruiting",
-  "location": "Middletown, Delaware, United States",
-  "size": "20"
-}, {
-  "company_name": "Hanzo",
-  "industry": "Software Development",
-  "location": "New York, New York, United States",
-  "size": "53"
-}, {
-  "company_name": "HappyFunCorp",
-  "industry": "Technology, Information and Internet",
-  "location": "Brooklyn, New York, United States",
-  "size": "47"
-}, {
-  "company_name": "helloDarwin",
-  "industry": "Advertising Services",
-  "location": "Montreal, Quebec, Canada",
-  "size": "14"
-}, {
-  "company_name": "Henon.io",
-  "industry": "Financial Services",
-  "location": "Toronto, Ontario, Canada",
-  "size": "7"
-}, {
-  "company_name": "Highwire",
-  "industry": "Software Development",
-  "location": "Burlington, Massachusetts, United States",
-  "size": "53"
-}, {
-  "company_name": "Hitch",
-  "industry": "Consumer Services",
-  "location": "Austin, Texas, United States",
-  "size": "28"
-}, {
-  "company_name": "Hive Brands",
-  "industry": "Retail",
-  "location": "New York, New York, United States",
-  "size": "31"
-}, {
-  "company_name": "HourWork",
-  "industry": "Human Resources Services",
-  "location": "Boston, Massachusetts, United States",
-  "size": "59"
-}, {
-  "company_name": "Humanify",
-  "industry": "Human Resources Services",
-  "location": "Montreal, Quebec, Canada",
-  "size": "58"
-}, {
-  "company_name": "IfThen",
-  "industry": "Technology, Information and Internet",
-  "location": "Atlanta, Georgia, United States",
-  "size": "54"
-}, {
-  "company_name": "Incident IQ",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "106"
-}, {
-  "company_name": "Index - Web Marketing Agency",
-  "industry": "Advertising Services",
-  "location": "Montreal, Quebec, Canada",
-  "size": "18"
-}, {
-  "company_name": "InfoMart",
-  "industry": "Human Resources Services",
-  "location": "Marietta, Georgia, United States",
-  "size": "122"
-}, {
-  "company_name": "Infoya",
-  "industry": "IT Services and IT Consulting",
-  "location": "Oakville, Ontario, Canada",
-  "size": "12"
-}, {
-  "company_name": "Innovare",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
   "size": "19"
 }, {
-  "company_name": "InRule",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "63"
-}, {
-  "company_name": "Integrated Computer Solutions, Inc. (ICS)",
-  "industry": "Software Development",
-  "location": "Waltham, Massachusetts, United States",
-  "size": "125"
-}, {
-  "company_name": "Integrity Communications Solutions, Inc.",
-  "industry": "Defense and Space Manufacturing",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "30"
-}, {
-  "company_name": "Interaptix Augmented Reality",
-  "industry": "Software Development",
-  "location": "Toronto, Ontario, Canada",
-  "size": "19"
-}, {
-  "company_name": "Inventive",
-  "industry": "IT Services and IT Consulting",
-  "location": "Austin, Texas, United States",
-  "size": "57"
-}, {
-  "company_name": "isgSearch",
-  "industry": "IT Services and IT Consulting",
-  "location": "Canada",
-  "size": "57"
-}, {
-  "company_name": "ISSAC LLC",
-  "industry": "Defense and Space Manufacturing",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "48"
-}, {
-  "company_name": "IT Avalon",
-  "industry": "IT Services and IT Consulting",
-  "location": "Brentwood, California, United States",
-  "size": "44"
-}, {
-  "company_name": "IT Unlock",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "18"
-}, {
-  "company_name": "ITConnectUS",
+  "company_name": "Accede LLC",
   "industry": "IT Services and IT Consulting",
   "location": "Edison, New Jersey, United States",
-  "size": "124"
-}, {
-  "company_name": "Jackbox Games",
-  "industry": "Computer Games",
-  "location": "Chicago, Illinois, United States",
-  "size": "67"
-}, {
-  "company_name": "Javen Technologies, Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Minneapolis, Minnesota, United States",
-  "size": "29"
-}, {
-  "company_name": "Jaxon, Inc.",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "19"
-}, {
-  "company_name": "Julia Computing",
-  "industry": "Software Development",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "81"
-}, {
-  "company_name": "Katana Graph",
-  "industry": "Software Development",
-  "location": "Austin, Texas, United States",
-  "size": "79"
-}, {
-  "company_name": "KCare",
-  "industry": "Software Development",
-  "location": "Austin, Texas, United States",
-  "size": "65"
-}, {
-  "company_name": "Keirton Inc.",
-  "industry": "Design Services",
-  "location": "Surrey, British Columbia, Canada",
   "size": "48"
 }, {
-  "company_name": "Kensho Technologies",
-  "industry": "Software Development",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "104"
-}, {
-  "company_name": "KEV Group",
-  "industry": "Software Development",
-  "location": "North York, Ontario, Canada",
-  "size": "147"
-}, {
-  "company_name": "Klap6",
-  "industry": "IT Services and IT Consulting",
-  "location": "Frisco, Texas, United States",
-  "size": "76"
-}, {
-  "company_name": "KLM Careers",
-  "industry": "Human Resources Services",
-  "location": "Kingsford, Michigan, United States",
-  "size": "3"
-}, {
-  "company_name": "La Jolla Logic - CMMC Authorized C3PAO",
-  "industry": "Computer and Network Security",
-  "location": "San Diego, California, United States",
-  "size": "33"
-}, {
-  "company_name": "Lady Bird Talent",
-  "industry": "Staffing and Recruiting",
-  "location": "Austin, Texas, United States",
-  "size": "5"
-}, {
-  "company_name": "Large Scale Distribution",
-  "industry": "Advertising Services",
-  "location": "Austin, Texas, United States",
-  "size": "2"
-}, {
-  "company_name": "Larochelle Groupe Conseil",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "141"
-}, {
-  "company_name": "Latitude Inc",
-  "industry": "Staffing and Recruiting",
-  "location": "Hanover, Maryland, United States",
-  "size": "50"
-}, {
-  "company_name": "LaunchPad Lab",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "57"
-}, {
-  "company_name": "Leaf Trade",
+  "company_name": "Active Theory",
   "industry": "Technology, Information and Internet",
-  "location": "Chicago, Illinois, United States",
-  "size": "45"
+  "location": "Los Angeles, California, United States",
+  "size": "47"
 }, {
-  "company_name": "LEDUConseils",
+  "company_name": "AD IT Staffing",
   "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "2"
+  "location": "Glendale Heights, Illinois, United States",
+  "size": "10"
 }, {
-  "company_name": "Local Logic",
+  "company_name": "Advent Resources, Inc.",
   "industry": "Software Development",
-  "location": "Montreal, Quebec, Canada",
-  "size": "42"
-}, {
-  "company_name": "Logient",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "135"
-}, {
-  "company_name": "Longbow Advantage",
-  "industry": "Internet Publishing",
-  "location": "Montreal, Quebec, Canada",
-  "size": "99"
-}, {
-  "company_name": "Lorvin Technologies Inc",
-  "industry": "IT Services and IT Consulting",
-  "location": "Woodbridge, New Jersey, United States",
-  "size": "38"
-}, {
-  "company_name": "Lou",
-  "industry": "Software Development",
-  "location": "Austin, Texas, United States",
-  "size": "6"
-}, {
-  "company_name": "LUDEX, LLC",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "28"
-}, {
-  "company_name": "LVL",
-  "industry": "Financial Services",
-  "location": "Austin, Texas, United States",
-  "size": "23"
-}, {
-  "company_name": "MaintainX",
-  "industry": "Software Development",
-  "location": "San Francisco, California, United States",
-  "size": "111"
-}, {
-  "company_name": "MANTA",
-  "industry": "IT Services and IT Consulting",
-  "location": "Tampa, Florida, United States",
-  "size": "143"
-}, {
-  "company_name": "Mathison",
-  "industry": "Software Development",
-  "location": "New York, New York, United States",
-  "size": "63"
-}, {
-  "company_name": "Max Tech Talent",
-  "industry": "Staffing and Recruiting",
-  "location": "Chicago, Illinois, United States",
-  "size": "3"
-}, {
-  "company_name": "MessageGears",
-  "industry": "Software Development",
-  "location": "Atlanta, Georgia, United States",
-  "size": "97"
-}, {
-  "company_name": "Midaxo",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "52"
-}, {
-  "company_name": "Millennial Tech",
-  "industry": "IT Services and IT Consulting",
-  "location": "San Diego, California, United States",
-  "size": "2"
-}, {
-  "company_name": "Mistplay",
-  "industry": "Computer Games",
-  "location": "Montreal, Quebec, Canada",
-  "size": "95"
-}, {
-  "company_name": "Mobot",
-  "industry": "Software Development",
-  "location": "New York, New York, United States",
-  "size": "36"
-}, {
-  "company_name": "MobSquad",
-  "industry": "IT Services and IT Consulting",
-  "location": "Calgary, Alberta, Canada",
-  "size": "30"
-}, {
-  "company_name": "Mojo Trek",
-  "industry": "Staffing and Recruiting",
-  "location": "Chicago, Illinois, United States",
-  "size": "15"
-}, {
-  "company_name": "Morgan 6 LLC",
-  "industry": "IT Services and IT Consulting",
-  "location": "Charleston, South Carolina, United States",
-  "size": "23"
-}, {
-  "company_name": "Moves",
-  "industry": "Financial Services",
-  "location": "Toronto, Ontario, Canada",
-  "size": "41"
-}, {
-  "company_name": "Multiple, Inc.",
-  "industry": "Design Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "20"
-}, {
-  "company_name": "MWResource, Inc.",
-  "industry": "Utilities",
-  "location": "Allentown, Pennsylvania, United States",
-  "size": "37"
-}, {
-  "company_name": "Nebo Agency",
-  "industry": "Advertising Services",
-  "location": "Atlanta, Georgia, United States",
-  "size": "132"
-}, {
-  "company_name": "Neural Magic",
-  "industry": "Software Development",
-  "location": "Somerville, Massachusetts, United States",
-  "size": "35"
-}, {
-  "company_name": "NewSeat",
-  "industry": "Technology, Information and Internet",
-  "location": "New York, New York, United States",
-  "size": "5"
-}, {
-  "company_name": "NextCapital",
-  "industry": "Financial Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "141"
-}, {
-  "company_name": "Ninety.io - Software for EOS",
-  "industry": "Software Development",
-  "location": "Atlanta, Georgia, United States",
-  "size": "62"
-}, {
-  "company_name": "Noble Capital Group",
-  "industry": "Investment Management",
-  "location": "Austin, Texas, United States",
-  "size": "39"
-}, {
-  "company_name": "NorthPoint Search Group",
-  "industry": "Staffing and Recruiting",
-  "location": "Alpharetta, Georgia, United States",
-  "size": "11"
-}, {
-  "company_name": "NowPow (Now part of Unite Us)",
-  "industry": "IT Services and IT Consulting",
-  "location": "Chicago, Illinois, United States",
-  "size": "33"
-}, {
-  "company_name": "nventive",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "131"
-}, {
-  "company_name": "Nvizzio Creations Inc.",
-  "industry": "Computer Games",
-  "location": "Montreal, Quebec, Canada",
-  "size": "61"
-}, {
-  "company_name": "Nöord Technologies",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "4"
-}, {
-  "company_name": "OmegaHires",
-  "industry": "Staffing and Recruiting",
-  "location": "Herndon, Virginia, United States",
-  "size": "21"
-}, {
-  "company_name": "oneZero Financial Systems",
-  "industry": "IT Services and IT Consulting",
-  "location": "Worcester, Massachusetts, United States",
-  "size": "116"
-}, {
-  "company_name": "OpenFin",
-  "industry": "Financial Services",
-  "location": "New York, New York, United States",
-  "size": "102"
-}, {
-  "company_name": "Operatic Agency",
-  "industry": "Advertising Services",
-  "location": "Hamilton, Ontario, Canada",
-  "size": "45"
-}, {
-  "company_name": "Outgo Expériences",
-  "industry": "Technology, Information and Internet",
-  "location": "Canada",
-  "size": "9"
-}, {
-  "company_name": "Owl Practice",
-  "industry": "IT Services and IT Consulting",
-  "location": "Toronto, Ontario, Canada",
-  "size": "26"
-}, {
-  "company_name": "Panalgo",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "86"
-}, {
-  "company_name": "Paperless Parts",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "119"
-}, {
-  "company_name": "Payment Approved",
-  "industry": "Financial Services",
-  "location": "Austin, Texas, United States",
-  "size": "17"
-}, {
-  "company_name": "Pelcro",
-  "industry": "Software Development",
-  "location": "Montreal, Quebec, Canada",
-  "size": "43"
-}, {
-  "company_name": "PeopleCaddie",
-  "industry": "Technology, Information and Internet",
-  "location": "Des Plaines, Illinois, United States",
-  "size": "34"
-}, {
-  "company_name": "PETADATA",
-  "industry": "IT Services and IT Consulting",
-  "location": "Fremont, California, United States",
-  "size": "28"
-}, {
-  "company_name": "Peterson Technology Partners",
-  "industry": "Staffing and Recruiting",
-  "location": "Park Ridge, Illinois, United States",
-  "size": "63"
-}, {
-  "company_name": "Petram Search Group",
-  "industry": "Staffing and Recruiting",
-  "location": "Roswell, Georgia, United States",
-  "size": "5"
-}, {
-  "company_name": "Pixlee TurnTo",
-  "industry": "Software Development",
-  "location": "San Francisco, California, United States",
-  "size": "110"
-}, {
-  "company_name": "Plnar",
-  "industry": "Software Development",
-  "location": "Austin, Texas, United States",
-  "size": "26"
-}, {
-  "company_name": "PostHog",
-  "industry": "Software Development",
-  "location": "San Francisco, California, United States",
-  "size": "29"
-}, {
-  "company_name": "Prairie Consulting Services",
-  "industry": "Staffing and Recruiting",
-  "location": "Naperville, Illinois, United States",
-  "size": "21"
-}, {
-  "company_name": "Prevalent - Third-Party Risk Management",
-  "industry": "Software Development",
-  "location": "Phoenix, Arizona, United States",
-  "size": "114"
-}, {
-  "company_name": "Prodigy Resources",
-  "industry": "Staffing and Recruiting",
-  "location": "Denver, Colorado, United States",
-  "size": "42"
-}, {
-  "company_name": "Profisee",
-  "industry": "Software Development",
-  "location": "Alpharetta, Georgia, United States",
-  "size": "106"
-}, {
-  "company_name": "Progress Labs",
-  "industry": "Software Development",
-  "location": "New York, New York, United States",
-  "size": "5"
-}, {
-  "company_name": "Prolucid Technologies",
-  "industry": "Software Development",
-  "location": "Mississauga, Ontario, Canada",
-  "size": "19"
-}, {
-  "company_name": "Promet Source",
-  "industry": "IT Services and IT Consulting",
-  "location": "Chicago, Illinois, United States",
-  "size": "53"
-}, {
-  "company_name": "Purohit Navigation, Inc.",
-  "industry": "Advertising Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "57"
-}, {
-  "company_name": "Pushnami",
-  "industry": "Technology, Information and Internet",
-  "location": "Austin, Texas, United States",
-  "size": "51"
-}, {
-  "company_name": "Pyxai",
-  "industry": "Human Resources Services",
-  "location": "New Boston, Massachusetts, United States",
-  "size": "7"
-}, {
-  "company_name": "Quad Analytix | Now Wiser Solutions, Inc.",
-  "industry": "Technology, Information and Internet",
-  "location": "San Mateo, California, United States",
-  "size": "3"
-}, {
-  "company_name": "Quantitative Systems",
-  "industry": "IT Services and IT Consulting",
-  "location": "New York, New York, United States",
-  "size": "33"
-}, {
-  "company_name": "Quantix, Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Denver, Colorado, United States",
-  "size": "37"
-}, {
-  "company_name": "Quip",
-  "industry": "Software Development",
-  "location": "San Francisco, California, United States",
+  "location": "San Pedro, California, United States",
   "size": "67"
 }, {
-  "company_name": "Rad Hires",
+  "company_name": "Aegistech",
   "industry": "Staffing and Recruiting",
   "location": "New York, New York, United States",
-  "size": "5"
+  "size": "48"
 }, {
-  "company_name": "Raft",
+  "company_name": "AgileMD",
   "industry": "IT Services and IT Consulting",
-  "location": "Reston, Virginia, United States",
-  "size": "85"
+  "location": "San Francisco, California, United States",
+  "size": "14"
 }, {
-  "company_name": "Red Thread Innovations",
+  "company_name": "AiCure",
   "industry": "Software Development",
-  "location": "Toronto, Ontario, Canada",
-  "size": "28"
+  "location": "New York, New York, United States",
+  "size": "113"
 }, {
-  "company_name": "Richmond Staffing",
-  "industry": "Staffing and Recruiting",
-  "location": "Richmond Hill, Ontario, Canada",
-  "size": "9"
-}, {
-  "company_name": "RiverPoint Group",
+  "company_name": "Airbiquity",
   "industry": "IT Services and IT Consulting",
-  "location": "Overland Park, Kansas, United States",
-  "size": "60"
+  "location": "Seattle, Washington, United States",
+  "size": "87"
 }, {
-  "company_name": "RoadSync",
-  "industry": "Financial Services",
-  "location": "Atlanta, Georgia, United States",
-  "size": "97"
-}, {
-  "company_name": "Roberts Recruiting, LLC",
-  "industry": "Staffing and Recruiting",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "4"
-}, {
-  "company_name": "Roy Talman & Associates, Inc.",
-  "industry": "Staffing and Recruiting",
-  "location": "Chicago, Illinois, United States",
-  "size": "21"
-}, {
-  "company_name": "Satoshi Energy",
-  "industry": "Renewable Energy Semiconductor Manufacturing",
-  "location": "Houston, Texas, United States",
-  "size": "9"
-}, {
-  "company_name": "Sayva Solutions",
-  "industry": "Staffing and Recruiting",
-  "location": "San Diego, California, United States",
+  "company_name": "Airdev",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
   "size": "78"
 }, {
-  "company_name": "Scientific Systems",
-  "industry": "Defense and Space Manufacturing",
-  "location": "Woburn, Massachusetts, United States",
-  "size": "115"
-}, {
-  "company_name": "Screencastify",
+  "company_name": "All Athlete, Inc.",
   "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "77"
-}, {
-  "company_name": "Shakepay",
-  "industry": "Financial Services",
-  "location": "Montreal, Quebec, Canada",
-  "size": "81"
-}, {
-  "company_name": "Shantel And Bramble Co",
-  "industry": "Staffing and Recruiting",
-  "location": "Alpharetta, Georgia, United States",
-  "size": "2"
-}, {
-  "company_name": "Sierra ITS",
-  "industry": "Staffing and Recruiting",
-  "location": "Chicago, Illinois, United States",
-  "size": "17"
-}, {
-  "company_name": "Simplified IT Solutions",
-  "industry": "IT Services and IT Consulting",
-  "location": "Richmond, Texas, United States",
-  "size": "3"
-}, {
-  "company_name": "SiteCare",
-  "industry": "Advertising Services",
-  "location": "Atlanta, Georgia, United States",
-  "size": "17"
-}, {
-  "company_name": "Skyrocket Ventures",
-  "industry": "Staffing and Recruiting",
-  "location": "San Mateo, California, United States",
-  "size": "29"
-}, {
-  "company_name": "Smartz Inc",
-  "industry": "Software Development",
-  "location": "Champaign, Illinois, United States",
-  "size": "13"
-}, {
-  "company_name": "Sock Club",
-  "industry": "Advertising Services",
-  "location": "Austin, Texas, United States",
-  "size": "41"
-}, {
-  "company_name": "SOLTECH",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "115"
-}, {
-  "company_name": "St-Amour",
-  "industry": "Staffing and Recruiting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "19"
-}, {
-  "company_name": "STACE",
-  "industry": "Software Development",
-  "location": "Dallas, Texas, United States",
-  "size": "2"
-}, {
-  "company_name": "Staff Financial Group",
-  "industry": "Staffing and Recruiting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "60"
-}, {
-  "company_name": "Steady Vision",
-  "industry": "Technology, Information and Internet",
-  "location": "Boston, Massachusetts, United States",
-  "size": "3"
-}, {
-  "company_name": "Stellar Professionals",
-  "industry": "Staffing and Recruiting",
-  "location": "Lewes, Delaware, United States",
-  "size": "17"
-}, {
-  "company_name": "Stellar Software LLC",
-  "industry": "Maritime Transportation",
-  "location": "Atlanta, Georgia, United States",
-  "size": "12"
-}, {
-  "company_name": "Stochastic",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "12"
-}, {
-  "company_name": "Storyhunter",
-  "industry": "Internet Marketplace Platforms",
-  "location": "New York, New York, United States",
-  "size": "50"
-}, {
-  "company_name": "Stratfield Consulting",
-  "industry": "Business Consulting and Services",
-  "location": "Atlanta, Georgia, United States",
-  "size": "75"
-}, {
-  "company_name": "Strike",
-  "industry": "Technology, Information and Internet",
-  "location": "Remote, Oregon, United States",
-  "size": "105"
-}, {
-  "company_name": "SynapOne",
-  "industry": "IT Services and IT Consulting",
-  "location": "McLean, Virginia, United States",
-  "size": "50"
-}, {
-  "company_name": "Synaptech",
-  "industry": "Defense and Space Manufacturing",
-  "location": "Colorado Springs, Colorado, United States",
-  "size": "38"
-}, {
-  "company_name": "TackleAI",
-  "industry": "Software Development",
-  "location": "Schaumburg, Illinois, United States",
-  "size": "25"
-}, {
-  "company_name": "Tagup, Inc.",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "16"
-}, {
-  "company_name": "Talent 360 Solutions",
-  "industry": "Staffing and Recruiting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "5"
-}, {
-  "company_name": "Teltech Group",
-  "industry": "Telecommunications",
-  "location": "Frisco, Texas, United States",
-  "size": "88"
-}, {
-  "company_name": "Tenjin",
-  "industry": "Software Development",
-  "location": "San Francisco, California, United States",
-  "size": "33"
-}, {
-  "company_name": "Textio",
-  "industry": "Software Development",
-  "location": "Seattle, Washington, United States",
-  "size": "138"
-}, {
-  "company_name": "The Accurate",
-  "industry": "IT Services and IT Consulting",
-  "location": "Seattle, Washington, United States",
-  "size": "138"
-}, {
-  "company_name": "The Bivium Group",
-  "industry": "Staffing and Recruiting",
-  "location": "Belmont, Massachusetts, United States",
-  "size": "4"
-}, {
-  "company_name": "The Nationwide Group",
-  "industry": "IT Services and IT Consulting",
-  "location": "Markham, Ontario, Canada",
-  "size": "67"
-}, {
-  "company_name": "The Plum Tree Group",
-  "industry": "Advertising Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "61"
-}, {
-  "company_name": "The Plumtree Group Global",
-  "industry": "Advertising Services",
-  "location": "Elk Grove Village, Illinois, United States",
-  "size": "8"
-}, {
-  "company_name": "Third Eye Software",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "13"
-}, {
-  "company_name": "Thoughtful",
-  "industry": "Software Development",
-  "location": "Chicago, Illinois, United States",
-  "size": "48"
-}, {
-  "company_name": "TileDB, Inc.",
-  "industry": "Software Development",
-  "location": "Cambridge, Massachusetts, United States",
-  "size": "43"
-}, {
-  "company_name": "Tin Roof Software",
-  "industry": "Software Development",
-  "location": "Atlanta, Georgia, United States",
-  "size": "88"
-}, {
-  "company_name": "Tink",
-  "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "148"
-}, {
-  "company_name": "Track Group, Inc.",
-  "industry": "Public Safety",
-  "location": "Naperville, Illinois, United States",
-  "size": "108"
-}, {
-  "company_name": "Transfinder",
-  "industry": "Software Development",
-  "location": "Schenectady, New York, United States",
-  "size": "111"
-}, {
-  "company_name": "Trefis",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "24"
-}, {
-  "company_name": "Tucker-Rose Associates, LLC",
-  "industry": "IT Services and IT Consulting",
-  "location": "New Braunfels, Texas, United States",
-  "size": "21"
-}, {
-  "company_name": "TV2 Consulting",
-  "industry": "IT Services and IT Consulting",
-  "location": "Palo Alto, California, United States",
-  "size": "34"
-}, {
-  "company_name": "UGROUPMEDIA INC",
-  "industry": "Technology, Information and Internet",
-  "location": "Montreal, Quebec, Canada",
-  "size": "33"
-}, {
-  "company_name": "UncommonX",
-  "industry": "Computer and Network Security",
-  "location": "Chicago, Illinois, United States",
-  "size": "37"
-}, {
-  "company_name": "Unorthodox Ventures",
-  "industry": "Venture Capital and Private Equity Principals",
-  "location": "Austin, Texas, United States",
-  "size": "26"
-}, {
-  "company_name": "Upptic",
-  "industry": "Advertising Services",
-  "location": "Livingston, Texas, United States",
-  "size": "22"
-}, {
-  "company_name": "UpShift Creative Group",
-  "industry": "Advertising Services",
-  "location": "Chicago, Illinois, United States",
-  "size": "8"
-}, {
-  "company_name": "VeeAR Projects Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Pleasanton, California, United States",
-  "size": "98"
-}, {
-  "company_name": "Vegatron Systems",
-  "industry": "IT Services and IT Consulting",
-  "location": "Sheridan, Wyoming, United States",
-  "size": "6"
-}, {
-  "company_name": "Velir",
-  "industry": "Advertising Services",
-  "location": "Somerville, Massachusetts, United States",
-  "size": "130"
-}, {
-  "company_name": "Verifacto Inc.",
-  "industry": "IT Services and IT Consulting",
-  "location": "Atlanta, Georgia, United States",
-  "size": "21"
-}, {
-  "company_name": "Vermonster",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
+  "location": "Los Angeles, California, United States",
   "size": "11"
 }, {
-  "company_name": "Vertalo",
-  "industry": "Financial Services",
-  "location": "Austin, Texas, United States",
-  "size": "31"
-}, {
-  "company_name": "Vidrovr",
-  "industry": "Information Services",
+  "company_name": "Amazee Global Ventures Inc",
+  "industry": "IT Services and IT Consulting",
   "location": "New York, New York, United States",
+  "size": "5"
+}, {
+  "company_name": "Amerit Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "San Ramon, California, United States",
+  "size": "67"
+}, {
+  "company_name": "Amida Technology Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "64"
+}, {
+  "company_name": "AnaVation LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Chantilly, Virginia, United States",
+  "size": "134"
+}, {
+  "company_name": "Appetize - Now Part of SpotOn",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "118"
+}, {
+  "company_name": "Apploi",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "129"
+}, {
+  "company_name": "Assembled",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "69"
+}, {
+  "company_name": "Atlys",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
   "size": "13"
 }, {
-  "company_name": "vSync",
-  "industry": "Software Development",
-  "location": "Columbus, Ohio, United States",
-  "size": "12"
-}, {
-  "company_name": "VUI, Inc.",
-  "industry": "Software Development",
-  "location": "Boston, Massachusetts, United States",
-  "size": "52"
-}, {
-  "company_name": "We Jace IT Recrutement",
-  "industry": "Human Resources Services",
-  "location": "Montréal-Est, Quebec, Canada",
-  "size": "4"
-}, {
-  "company_name": "Weezie",
-  "industry": "Retail Luxury Goods and Jewelry",
-  "location": "Atlanta, Georgia, United States",
+  "company_name": "Averity",
+  "industry": "Staffing and Recruiting",
+  "location": "Stamford, Connecticut, United States",
   "size": "26"
 }, {
-  "company_name": "WHIM",
-  "industry": "IT Services and IT Consulting",
-  "location": "New York, New York, United States",
-  "size": "18"
+  "company_name": "Avochato",
+  "industry": "Technology, Information and Internet",
+  "location": "Mill Valley, California, United States",
+  "size": "29"
 }, {
-  "company_name": "Wingsoft Consulting",
+  "company_name": "AvodahMed",
   "industry": "IT Services and IT Consulting",
-  "location": "Plainsboro, New Jersey, United States",
+  "location": "Southlake, Texas, United States",
   "size": "17"
 }, {
-  "company_name": "Wise Skulls",
-  "industry": "Staffing and Recruiting",
-  "location": "Burbank, California, United States",
-  "size": "58"
-}, {
-  "company_name": "Wrk",
+  "company_name": "Axle",
   "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "117"
+  "location": "New York, Iowa, United States",
+  "size": "89"
 }, {
-  "company_name": "X2O Media",
+  "company_name": "Axle Informatics",
   "industry": "IT Services and IT Consulting",
-  "location": "Montreal, Quebec, Canada",
-  "size": "68"
+  "location": "Rockville, Maryland, United States",
+  "size": "197"
 }, {
-  "company_name": "xiBOSS Corporation",
+  "company_name": "BCMC, LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Falls Church, Virginia, United States",
+  "size": "89"
+}, {
+  "company_name": "BEMO",
+  "industry": "IT Services and IT Consulting",
+  "location": "Redmond, Washington, United States",
+  "size": "55"
+}, {
+  "company_name": "Bizzy Labs",
+  "industry": "Software Development",
+  "location": "Irving, Texas, United States",
+  "size": "9"
+}, {
+  "company_name": "BLACKBIRD.AI",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "44"
+}, {
+  "company_name": "Blep Technologies",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "11"
+}, {
+  "company_name": "Blue Ocean Ventures",
   "industry": "Staffing and Recruiting",
-  "location": "Toronto, Ontario, Canada",
-  "size": "15"
+  "location": "Atlanta, Georgia, United States",
+  "size": "110"
 }, {
-  "company_name": "Xperti",
+  "company_name": "BrickRed Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bellevue, Washington, United States",
+  "size": "182"
+}, {
+  "company_name": "Bright Pattern",
+  "industry": "Software Development",
+  "location": "South San Francisco, California, United States",
+  "size": "75"
+}, {
+  "company_name": "BTI360",
+  "industry": "Software Development",
+  "location": "Herndon, Virginia, United States",
+  "size": "243"
+}, {
+  "company_name": "Bucephalus Tech",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "4"
+}, {
+  "company_name": "BuildOps",
+  "industry": "Software Development",
+  "location": "Santa Monica, California, United States",
+  "size": "129"
+}, {
+  "company_name": "Burnt Finance",
   "industry": "Technology, Information and Internet",
-  "location": "Pearland, Texas, United States",
-  "size": "13"
+  "location": "New York, New York, United States",
+  "size": "8"
 }, {
-  "company_name": "Yellowjacketinc.com",
-  "industry": "Outsourcing and Offshoring Consulting",
-  "location": "Los Gatos, California, United States",
-  "size": "7"
+  "company_name": "Buxton",
+  "industry": "Software Development",
+  "location": "Fort Worth, Texas, United States",
+  "size": "212"
 }, {
-  "company_name": "Zenoss",
+  "company_name": "ByteLion",
+  "industry": "Software Development",
+  "location": "Hunt Valley, Maryland, United States",
+  "size": "3"
+}, {
+  "company_name": "Camden Kelly Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "Richardson, Texas, United States",
+  "size": "46"
+}, {
+  "company_name": "Centrical",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "178"
+}, {
+  "company_name": "Chartboost",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "157"
+}, {
+  "company_name": "CivicActions",
+  "industry": "Technology, Information and Internet",
+  "location": "Lafayette, California, United States",
+  "size": "121"
+}, {
+  "company_name": "Clarity Technology Partners",
   "industry": "IT Services and IT Consulting",
-  "location": "Austin, Texas, United States",
-  "size": "114"
-}, {
-  "company_name": "Zodient",
-  "industry": "IT Services and IT Consulting",
-  "location": "Austin, Texas, United States",
+  "location": "Pacifica, California, United States",
   "size": "28"
 }, {
-  "company_name": "Zortech Solutions",
+  "company_name": "CoinList",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "136"
+}, {
+  "company_name": "CommandLink",
+  "industry": "Software Development",
+  "location": "Bellevue, Washington, United States",
+  "size": "44"
+}, {
+  "company_name": "CompStak®",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "124"
+}, {
+  "company_name": "Comtech LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "64"
+}, {
+  "company_name": "ConsultNet",
+  "industry": "Staffing and Recruiting",
+  "location": "South Jordan, Utah, United States",
+  "size": "206"
+}, {
+  "company_name": "CoreWeave",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New Mexico, United States",
+  "size": "45"
+}, {
+  "company_name": "CorSource",
+  "industry": "IT Services and IT Consulting",
+  "location": "Portland, Oregon, United States",
+  "size": "72"
+}, {
+  "company_name": "COVET IT inc",
+  "industry": "Staffing and Recruiting",
+  "location": "Newark, California, United States",
+  "size": "61"
+}, {
+  "company_name": "Cypress HCM",
+  "industry": "Staffing and Recruiting",
+  "location": "Walnut Creek, California, United States",
+  "size": "221"
+}, {
+  "company_name": "Da Vinci",
+  "industry": "Software Development",
+  "location": "Anaheim, California, United States",
+  "size": "25"
+}, {
+  "company_name": "Data Society",
+  "industry": "Information Services",
+  "location": "Washington, District of Columbia, United States",
+  "size": "62"
+}, {
+  "company_name": "Dataherald (YC W21)",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "15"
+}, {
+  "company_name": "Delve Professionals LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "St Petersburg, Florida, United States",
+  "size": "18"
+}, {
+  "company_name": "1 List",
+  "industry": "IT Services and IT Consulting",
+  "location": "United States",
+  "size": "8"
+}, {
+  "company_name": "Digital Infuzion",
+  "industry": "Software Development",
+  "location": "Gaithersburg, Maryland, United States",
+  "size": "111"
+}, {
+  "company_name": "DigitalCrafts",
+  "industry": "IT Services and IT Consulting",
+  "location": "Atlanta, Georgia, United States",
+  "size": "116"
+}, {
+  "company_name": "DIMO",
+  "industry": "Technology, Information and Internet",
+  "location": "Brooklyn, New York, United States",
+  "size": "19"
+}, {
+  "company_name": "Diversio",
+  "industry": "IT Services and IT Consulting",
+  "location": "Toronto, Ontario, Canada",
+  "size": "50"
+}, {
+  "company_name": "Docugami",
+  "industry": "IT Services and IT Consulting",
+  "location": "Kirkland, Washington, United States",
+  "size": "29"
+}, {
+  "company_name": "Donatech Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "Fairfield, Iowa, United States",
+  "size": "80"
+}, {
+  "company_name": "Drank",
+  "industry": "Technology, Information and Internet",
+  "location": "Reno, Nevada, United States",
+  "size": "3"
+}, {
+  "company_name": "Dumpa Consulting LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "Brandon, Florida, United States",
+  "size": "15"
+}, {
+  "company_name": "Duro",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "33"
+}, {
+  "company_name": "E-volve Technology Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "National Harbor, Maryland, United States",
+  "size": "36"
+}, {
+  "company_name": "Effectual",
+  "industry": "IT Services and IT Consulting",
+  "location": "Jersey City, New Jersey, United States",
+  "size": "149"
+}, {
+  "company_name": "Electrosoft",
+  "industry": "Computer and Network Security",
+  "location": "Reston, Virginia, United States",
+  "size": "82"
+}, {
+  "company_name": "Elegant Themes",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "98"
+}, {
+  "company_name": "Eleven Recruiting",
+  "industry": "Staffing and Recruiting",
+  "location": "Los Angeles, California, United States",
+  "size": "14"
+}, {
+  "company_name": "Eluvio",
+  "industry": "Software Development",
+  "location": "Berkeley, California, United States",
+  "size": "39"
+}, {
+  "company_name": "eNamix",
+  "industry": "Staffing and Recruiting",
+  "location": "Laguna Hills, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Enfec",
+  "industry": "IT Services and IT Consulting",
+  "location": "Redmond, Washington, United States",
+  "size": "81"
+}, {
+  "company_name": "Enterprize Software",
+  "industry": "Software Development",
+  "location": "Ashburn, Virginia, United States",
+  "size": "7"
+}, {
+  "company_name": "Enveil",
+  "industry": "Software Development",
+  "location": "Fulton, Maryland, United States",
+  "size": "55"
+}, {
+  "company_name": "ERPMARK INC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Princeton, New Jersey, United States",
+  "size": "93"
+}, {
+  "company_name": "eStaffing Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "New Brunswick, New Jersey, United States",
+  "size": "49"
+}, {
+  "company_name": "Euclid Innovations",
+  "industry": "IT Services and IT Consulting",
+  "location": "Charlotte, North Carolina, United States",
+  "size": "157"
+}, {
+  "company_name": "Evans & Chambers Technology",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "38"
+}, {
+  "company_name": "Everyrealm Inc.",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "55"
+}, {
+  "company_name": "Excyl, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Troy, Michigan, United States",
+  "size": "36"
+}, {
+  "company_name": "Experis",
+  "industry": "Staffing and Recruiting",
+  "location": "Milwaukee, Wisconsin, United States",
+  "size": "5,902"
+}, {
+  "company_name": "Exsilio Solutions",
+  "industry": "Software Development",
+  "location": "Irvine, California, United States",
+  "size": "31"
+}, {
+  "company_name": "Extremely Heavy",
+  "industry": "Software Development",
+  "location": "Larchmont, New York, United States",
+  "size": "13"
+}, {
+  "company_name": "Facet💎",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "14"
+}, {
+  "company_name": "Fearless",
+  "industry": "Software Development",
+  "location": "Baltimore, Maryland, United States",
+  "size": "195"
+}, {
+  "company_name": "Feathery",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "13"
+}, {
+  "company_name": "Fidelity TalentSource",
+  "industry": "Staffing and Recruiting",
+  "location": "Boston, Massachusetts, United States",
+  "size": "227"
+}, {
+  "company_name": "Finys",
+  "industry": "IT Services and IT Consulting",
+  "location": "Troy, Michigan, United States",
+  "size": "52"
+}, {
+  "company_name": "Flocknote",
+  "industry": "Software Development",
+  "location": "Spring, Texas, United States",
+  "size": "29"
+}, {
+  "company_name": "FullDeck",
+  "industry": "Staffing and Recruiting",
+  "location": "Los Angeles, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Fusion Cell",
+  "industry": "Staffing and Recruiting",
+  "location": "Windham, New Hampshire, United States",
+  "size": "21"
+}, {
+  "company_name": "GameOn Technology",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "44"
+}, {
+  "company_name": "Genies",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "148"
+}, {
+  "company_name": "Genuent is becoming INSPYR Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Houston, Texas, United States",
+  "size": "237"
+}, {
+  "company_name": "GliaCell Technologies",
+  "industry": "Software Development",
+  "location": "Columbia, Maryland, United States",
+  "size": "18"
+}, {
+  "company_name": "Goodshuffle",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "22"
+}, {
+  "company_name": "Gradle Inc.",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "119"
+}, {
+  "company_name": "Grindr",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "232"
+}, {
+  "company_name": "GTN Technical Staffing and Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "104"
+}, {
+  "company_name": "Harp Talent Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Pipersville, Pennsylvania, United States",
+  "size": "5"
+}, {
+  "company_name": "Hayden AI",
+  "industry": "Software Development",
+  "location": "Oakland, California, United States",
+  "size": "67"
+}, {
+  "company_name": "Heirloom",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "7"
+}, {
+  "company_name": "Heitmeyer Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "Westerville, Ohio, United States",
+  "size": "114"
+}, {
+  "company_name": "Helium",
+  "industry": "Technology, Information and Internet",
+  "location": "Gig Harbor, Washington, United States",
+  "size": "9"
+}, {
+  "company_name": "Hexadus Corp",
+  "industry": "IT Services and IT Consulting",
+  "location": "North Brunswick, New Jersey, United States",
+  "size": "28"
+}, {
+  "company_name": "Hostwinds",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "23"
+}, {
+  "company_name": "Humanly (humanly.io)",
   "industry": "Human Resources Services",
-  "location": "Mississauga, Ontario, Canada",
-  "size": "42"
+  "location": "Seattle, Washington, United States",
+  "size": "38"
+}, {
+  "company_name": "Huntress Talent",
+  "industry": "Staffing and Recruiting",
+  "location": "Seattle, Washington, United States",
+  "size": "38"
+}, {
+  "company_name": "I.T. Solutions, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Mateo, California, United States",
+  "size": "62"
+}, {
+  "company_name": "i360",
+  "industry": "IT Services and IT Consulting",
+  "location": "Arlington, Virginia, United States",
+  "size": "112"
+}, {
+  "company_name": "Inceed",
+  "industry": "Staffing and Recruiting",
+  "location": "Tulsa, Oklahoma, United States",
+  "size": "175"
+}, {
+  "company_name": "Incredible Health",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "111"
+}, {
+  "company_name": "InfoPeople Corporation",
+  "industry": "Staffing and Recruiting",
+  "location": "New York, New York, United States",
+  "size": "48"
+}, {
+  "company_name": "Innosoft Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "Windsor Mill, Maryland, United States",
+  "size": "28"
+}, {
+  "company_name": "Innovative Object Solutions, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "7"
+}, {
+  "company_name": "IntelliShift",
+  "industry": "Software Development",
+  "location": "Commack, New York, United States",
+  "size": "128"
+}, {
+  "company_name": "Interapt",
+  "industry": "IT Services and IT Consulting",
+  "location": "Louisville, Kentucky, United States",
+  "size": "165"
+}, {
+  "company_name": "InterSources Inc : SBA Certified, Minority & Women-Owned Certified Enterprise.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Fremont, California, United States",
+  "size": "54"
+}, {
+  "company_name": "Intrinsic",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bellevue, Washington, United States",
+  "size": "16"
+}, {
+  "company_name": "involve.ai",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "61"
+}, {
+  "company_name": "iRecruit Tech",
+  "industry": "Staffing and Recruiting",
+  "location": "New York, New York, United States",
+  "size": "7"
+}, {
+  "company_name": "Johnson Service Group, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Westmont, Illinois, United States",
+  "size": "596"
+}, {
+  "company_name": "JOON",
+  "industry": "Human Resources Services",
+  "location": "Beverly Hills, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Just Slide Media",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "31"
+}, {
+  "company_name": "Kaiyo",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "63"
+}, {
+  "company_name": "KORE1",
+  "industry": "Staffing and Recruiting",
+  "location": "Irvine, California, United States",
+  "size": "164"
+}, {
+  "company_name": "Koverse, Inc., An SAIC Company",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "49"
+}, {
+  "company_name": "Kubient",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "39"
+}, {
+  "company_name": "KWI",
+  "industry": "Software Development",
+  "location": "Greenvale, New York, United States",
+  "size": "199"
+}, {
+  "company_name": "Leverege",
+  "industry": "Software Development",
+  "location": "Rockville, Maryland, United States",
+  "size": "47"
+}, {
+  "company_name": "Lime FinTech LLC",
+  "industry": "Technology, Information and Internet",
+  "location": "Bellevue, Washington, United States",
+  "size": "54"
+}, {
+  "company_name": "Magnus Technology Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Hayward, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Marathon TS",
+  "industry": "IT Services and IT Consulting",
+  "location": "Sterling, Virginia, United States",
+  "size": "139"
+}, {
+  "company_name": "MealPal",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "37"
+}, {
+  "company_name": "Miles",
+  "industry": "Technology, Information and Internet",
+  "location": "Redwood City, California, United States",
+  "size": "79"
+}, {
+  "company_name": "Millennial Software",
+  "industry": "IT Services and IT Consulting",
+  "location": "Aldie, Virginia, United States",
+  "size": "7"
+}, {
+  "company_name": "Mindsize",
+  "industry": "IT Services and IT Consulting",
+  "location": "Burleson, Texas, United States",
+  "size": "9"
+}, {
+  "company_name": "MindSource",
+  "industry": "IT Services and IT Consulting",
+  "location": "Milpitas, California, United States",
+  "size": "95"
+}, {
+  "company_name": "Mix.com",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "13"
+}, {
+  "company_name": "Motesque",
+  "industry": "Software Development",
+  "location": "Brooklyn, New York, United States",
+  "size": "19"
+}, {
+  "company_name": "Mozart",
+  "industry": "IT Services and IT Consulting",
+  "location": "Santa Monica, California, United States",
+  "size": "52"
+}, {
+  "company_name": "Nations Info Corp",
+  "industry": "Technology, Information and Internet",
+  "location": "Santa Barbara, California, United States",
+  "size": "86"
+}, {
+  "company_name": "Network Optix",
+  "industry": "IT Services and IT Consulting",
+  "location": "Burbank, California, United States",
+  "size": "104"
+}, {
+  "company_name": "NHN Global",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "142"
+}, {
+  "company_name": "Ninth Wave",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "46"
+}, {
+  "company_name": "Northbeam",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "nuArch",
+  "industry": "Software Development",
+  "location": "Pound Ridge, New York, United States",
+  "size": "8"
+}, {
+  "company_name": "Olla",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "20"
+}, {
+  "company_name": "Omm IT Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Columbia, Maryland, United States",
+  "size": "55"
+}, {
+  "company_name": "ONYX Design",
+  "industry": "Software Development",
+  "location": "Los Angeles, California, United States",
+  "size": "8"
+}, {
+  "company_name": "OPTnation",
+  "industry": "Technology, Information and Internet",
+  "location": "Boston, Massachusetts, United States",
+  "size": "28"
+}, {
+  "company_name": "OscarMike",
+  "industry": "IT Services and IT Consulting",
+  "location": "Southlake, Texas, United States",
+  "size": "17"
+}, {
+  "company_name": "Outpay",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "3"
+}, {
+  "company_name": "Paladin Consulting",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "225"
+}, {
+  "company_name": "Paradyme Management Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "131"
+}, {
+  "company_name": "Pastel Network",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "11"
+}, {
+  "company_name": "PeopleSERVE, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Boston, Massachusetts, United States",
+  "size": "29"
+}, {
+  "company_name": "Perceptive Recruiting, LLC",
+  "industry": "Staffing and Recruiting",
+  "location": "Greenville, South Carolina, United States",
+  "size": "7"
+}, {
+  "company_name": "PerformYard",
+  "industry": "Software Development",
+  "location": "Arlington, Virginia, United States",
+  "size": "61"
+}, {
+  "company_name": "Photon Commerce",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Pipe17",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "21"
+}, {
+  "company_name": "Planet Technology",
+  "industry": "Staffing and Recruiting",
+  "location": "Bedford, Massachusetts, United States",
+  "size": "272"
+}, {
+  "company_name": "Player First Games",
+  "industry": "Computer Games",
+  "location": "Los Angeles, California, United States",
+  "size": "41"
+}, {
+  "company_name": "Popchew",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "6"
+}, {
+  "company_name": "Presence Product Group, LLC",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "39"
+}, {
+  "company_name": "Procentrix, LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Herndon, Virginia, United States",
+  "size": "197"
+}, {
+  "company_name": "Prolegis",
+  "industry": "Technology, Information and Internet",
+  "location": "Washington, District of Columbia, United States",
+  "size": "16"
+}, {
+  "company_name": "Protingent",
+  "industry": "Staffing and Recruiting",
+  "location": "Bellevue, Washington, United States",
+  "size": "151"
+}, {
+  "company_name": "Proven Recruiting",
+  "industry": "Staffing and Recruiting",
+  "location": "San Diego, California, United States",
+  "size": "119"
+}, {
+  "company_name": "Proxim Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "15"
+}, {
+  "company_name": "Pulumi Corporation",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "84"
+}, {
+  "company_name": "PWV Consultants",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "17"
+}, {
+  "company_name": "Pythonwise Inc",
+  "industry": "IT Services and IT Consulting",
+  "location": "Seattle, Washington, United States",
+  "size": "8"
+}, {
+  "company_name": "Qrypt",
+  "industry": "Computer and Network Security",
+  "location": "New York, Iowa, United States",
+  "size": "41"
+}, {
+  "company_name": "Quadrint, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Falls Church, Virginia, United States",
+  "size": "103"
+}, {
+  "company_name": "RackTop Systems",
+  "industry": "IT Services and IT Consulting",
+  "location": "Fulton, Maryland, United States",
+  "size": "57"
+}, {
+  "company_name": "Raya",
+  "industry": "Technology, Information and Internet",
+  "location": "West Hollywood, California, United States",
+  "size": "81"
+}, {
+  "company_name": "Reality AI",
+  "industry": "Software Development",
+  "location": "Columbia, Maryland, United States",
+  "size": "19"
+}, {
+  "company_name": "Rec Room",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "240"
+}, {
+  "company_name": "Red Arch Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "Columbia, Maryland, United States",
+  "size": "48"
+}, {
+  "company_name": "Red Oak Technologies",
+  "industry": "Staffing and Recruiting",
+  "location": "San Jose, California, United States",
+  "size": "152"
+}, {
+  "company_name": "Request Technology, LLC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Naperville, Illinois, United States",
+  "size": "22"
+}, {
+  "company_name": "Riccione Resources, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "6"
+}, {
+  "company_name": "RightStone",
+  "industry": "Staffing and Recruiting",
+  "location": "Plano, Texas, United States",
+  "size": "36"
+}, {
+  "company_name": "RightWorks",
+  "industry": "Staffing and Recruiting",
+  "location": "Austin, Texas, United States",
+  "size": "60"
+}, {
+  "company_name": "Risk Focus (A Ness Company)",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New York, United States",
+  "size": "72"
+}, {
+  "company_name": "RiVi Consulting Group L.L.C",
+  "industry": "IT Services and IT Consulting",
+  "location": "Alpharetta, Georgia, United States",
+  "size": "45"
+}, {
+  "company_name": "Robust Intelligence",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "63"
+}, {
+  "company_name": "Rooster Park",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "36"
+}, {
+  "company_name": "Roundhouse Recruiting",
+  "industry": "Staffing and Recruiting",
+  "location": "Cincinnati, Ohio, United States",
+  "size": "8"
+}, {
+  "company_name": "Runway",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "20"
+}, {
+  "company_name": "Sahara Cloud",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "4"
+}, {
+  "company_name": "Sandstone",
+  "industry": "Technology, Information and Internet",
+  "location": "Los Angeles, California, United States",
+  "size": "8"
+}, {
+  "company_name": "Screencast-O-Matic",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "18"
+}, {
+  "company_name": "SeekOut",
+  "industry": "Software Development",
+  "location": "Bellevue, Washington, United States",
+  "size": "203"
+}, {
+  "company_name": "Servsys Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "Irving, Texas, United States",
+  "size": "117"
+}, {
+  "company_name": "Shift5",
+  "industry": "Software Development",
+  "location": "Arlington, Virginia, United States",
+  "size": "88"
+}, {
+  "company_name": "Signature Consultants",
+  "industry": "Staffing and Recruiting",
+  "location": "Fort Lauderdale, Florida, United States",
+  "size": "1,613"
+}, {
+  "company_name": "SimpleCircle",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "10"
+}, {
+  "company_name": "Singuli",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "11"
+}, {
+  "company_name": "Skillr",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "68"
+}, {
+  "company_name": "Skipify",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "40"
+}, {
+  "company_name": "SM Diversity",
+  "industry": "Staffing and Recruiting",
+  "location": "Seattle, Washington, United States",
+  "size": "18"
+}, {
+  "company_name": "Smartrr",
+  "industry": "IT Services and IT Consulting",
+  "location": "New York, New York, United States",
+  "size": "24"
+}, {
+  "company_name": "Smith Hanley Associates",
+  "industry": "Staffing and Recruiting",
+  "location": "Southport, Connecticut, United States",
+  "size": "89"
+}, {
+  "company_name": "SpiceOrb",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
+  "size": "18"
+}, {
+  "company_name": "Spot AI",
+  "industry": "Software Development",
+  "location": "Burlingame, California, United States",
+  "size": "84"
+}, {
+  "company_name": "SpringbokIT",
+  "industry": "Staffing and Recruiting",
+  "location": "Dallas, Texas, United States",
+  "size": "13"
+}, {
+  "company_name": "Staffing Theory",
+  "industry": "Staffing and Recruiting",
+  "location": "Raleigh, North Carolina, United States",
+  "size": "21"
+}, {
+  "company_name": "Stateset",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "10"
+}, {
+  "company_name": "Stellent IT",
+  "industry": "Staffing and Recruiting",
+  "location": "St Augustine, Florida, United States",
+  "size": "70"
+}, {
+  "company_name": "Storetasker",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "65"
+}, {
+  "company_name": "Storytime",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "2"
+}, {
+  "company_name": "StraitSys",
+  "industry": "IT Services and IT Consulting",
+  "location": "Owens Crossroads, Alabama, United States",
+  "size": "15"
+}, {
+  "company_name": "Strategic Employment Partners (SEP)",
+  "industry": "Staffing and Recruiting",
+  "location": "Los Angeles, California, United States",
+  "size": "110"
+}, {
+  "company_name": "Strategic Resource Partners, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "Manhattan Beach, California, United States",
+  "size": "8"
+}, {
+  "company_name": "Streamline",
+  "industry": "IT Services and IT Consulting",
+  "location": "Bothell, Washington, United States",
+  "size": "10"
+}, {
+  "company_name": "StrongArm Tech",
+  "industry": "IT Services and IT Consulting",
+  "location": "Brooklyn, New York, United States",
+  "size": "127"
+}, {
+  "company_name": "Submittable",
+  "industry": "Software Development",
+  "location": "Missoula, Montana, United States",
+  "size": "185"
+}, {
+  "company_name": "Summit2Sea Consulting",
+  "industry": "IT Services and IT Consulting",
+  "location": "Arlington, Virginia, United States",
+  "size": "76"
+}, {
+  "company_name": "Supplyframe",
+  "industry": "Software Development",
+  "location": "Pasadena, California, United States",
+  "size": "211"
+}, {
+  "company_name": "Swenson He",
+  "industry": "Software Development",
+  "location": "Beverly Hills, California, United States",
+  "size": "30"
+}, {
+  "company_name": "Sydata Inc",
+  "industry": "Staffing and Recruiting",
+  "location": "San Diego, California, United States",
+  "size": "95"
+}, {
+  "company_name": "Syren Technologies",
+  "industry": "Software Development",
+  "location": "Bellevue, Washington, United States",
+  "size": "143"
+}, {
+  "company_name": "Tachyon Technologies",
+  "industry": "IT Services and IT Consulting",
+  "location": "Southlake, Texas, United States",
+  "size": "283"
+}, {
+  "company_name": "Tahzoo",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "75"
+}, {
+  "company_name": "Tales",
+  "industry": "Computer Games",
+  "location": "San Francisco, California, United States",
+  "size": "75"
+}, {
+  "company_name": "TaxDome",
+  "industry": "Technology, Information and Internet",
+  "location": "Brooklyn, New York, United States",
+  "size": "39"
+}, {
+  "company_name": "Tech Firefly",
+  "industry": "IT Services and IT Consulting",
+  "location": "Santa Clara, California, United States",
+  "size": "215"
+}, {
+  "company_name": "TechFlow, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Diego, California, United States",
+  "size": "177"
+}, {
+  "company_name": "TechWish",
+  "industry": "IT Services and IT Consulting",
+  "location": "Vienna, Virginia, United States",
+  "size": "50"
+}, {
+  "company_name": "Temboo",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "10"
+}, {
+  "company_name": "Terafuze",
+  "industry": "IT Services and IT Consulting",
+  "location": "Reston, Virginia, United States",
+  "size": "2"
+}, {
+  "company_name": "The Rockridge Group",
+  "industry": "Staffing and Recruiting",
+  "location": "Bellevue, Washington, United States",
+  "size": "1,282"
+}, {
+  "company_name": "The Squires Group, Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Annapolis, Maryland, United States",
+  "size": "52"
+}, {
+  "company_name": "The TIE",
+  "industry": "Information Services",
+  "location": "New York, New York, United States",
+  "size": "40"
+}, {
+  "company_name": "Therma°",
+  "industry": "IT Services and IT Consulting",
+  "location": "San Francisco, California, United States",
+  "size": "55"
+}, {
+  "company_name": "Thinkfind Corporation",
+  "industry": "IT Services and IT Consulting",
+  "location": "Richardson, Texas, United States",
+  "size": "10"
+}, {
+  "company_name": "Thunkable",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "37"
+}, {
+  "company_name": "TITAN TECHNOLOGIES INC",
+  "industry": "IT Services and IT Consulting",
+  "location": "Pittsburgh, Pennsylvania, United States",
+  "size": "98"
+}, {
+  "company_name": "Topology",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "30"
+}, {
+  "company_name": "Torii Studio",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "3"
+}, {
+  "company_name": "Traction Guest",
+  "industry": "Software Development",
+  "location": "Burnaby, British Columbia, Canada",
+  "size": "93"
+}, {
+  "company_name": "Trillion Technology Solutions, Inc",
+  "industry": "Software Development",
+  "location": "Reston, Virginia, United States",
+  "size": "83"
+}, {
+  "company_name": "Triplenet Technologies Inc",
+  "industry": "Staffing and Recruiting",
+  "location": "Seattle, Washington, United States",
+  "size": "11"
+}, {
+  "company_name": "Truebase",
+  "industry": "Software Development",
+  "location": "Seattle, Washington, United States",
+  "size": "16"
+}, {
+  "company_name": "TrueFoundry",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "24"
+}, {
+  "company_name": "Trybe",
+  "industry": "Technology, Information and Internet",
+  "location": "San Francisco, California, United States",
+  "size": "5"
+}, {
+  "company_name": "Twine Labs",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "8"
+}, {
+  "company_name": "Uniswap Labs",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "107"
+}, {
+  "company_name": "Unit21",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "151"
+}, {
+  "company_name": "Urban Insight",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "27"
+}, {
+  "company_name": "Ursus, Inc.",
+  "industry": "Staffing and Recruiting",
+  "location": "United States",
+  "size": "89"
+}, {
+  "company_name": "US Tech Solutions",
+  "industry": "Staffing and Recruiting",
+  "location": "Jersey City, New Jersey, United States",
+  "size": "1,884"
+}, {
+  "company_name": "UtilizeCore.com",
+  "industry": "Technology, Information and Internet",
+  "location": "New York, New York, United States",
+  "size": "86"
+}, {
+  "company_name": "Verifi Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Los Angeles, California, United States",
+  "size": "174"
+}, {
+  "company_name": "Verse",
+  "industry": "Software Development",
+  "location": "New York, New York, United States",
+  "size": "14"
+}, {
+  "company_name": "Vexterra Group",
+  "industry": "Computer and Network Security",
+  "location": "Reston, Virginia, United States",
+  "size": "17"
+}, {
+  "company_name": "Vidoori Inc.",
+  "industry": "IT Services and IT Consulting",
+  "location": "Silver Spring, Maryland, United States",
+  "size": "91"
+}, {
+  "company_name": "VincentBenjamin",
+  "industry": "Staffing and Recruiting",
+  "location": "Phoenix, Arizona, United States",
+  "size": "135"
+}, {
+  "company_name": "Virtru",
+  "industry": "IT Services and IT Consulting",
+  "location": "Washington, District of Columbia, United States",
+  "size": "188"
+}, {
+  "company_name": "Vitally.io",
+  "industry": "Software Development",
+  "location": "Brooklyn, New York, United States",
+  "size": "46"
+}, {
+  "company_name": "Vodastra Technologies",
+  "industry": "IT Services and IT Consulting",
+  "location": "Dallas, Texas, United States",
+  "size": "32"
+}, {
+  "company_name": "Vontive",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "65"
+}, {
+  "company_name": "Waldo",
+  "industry": "Software Development",
+  "location": "Brooklyn, New York, United States",
+  "size": "32"
+}, {
+  "company_name": "Whop",
+  "industry": "Technology, Information and Internet",
+  "location": "Brooklyn, New York, United States",
+  "size": "15"
+}, {
+  "company_name": "WinMax",
+  "industry": "Staffing and Recruiting",
+  "location": "Milpitas, California, United States",
+  "size": "86"
+}, {
+  "company_name": "Wonderverse",
+  "industry": "Computer Games",
+  "location": "Milpitas, California, United States",
+  "size": "86"
+}, {
+  "company_name": "WUWTA",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "7"
+}, {
+  "company_name": "Xcelerate Solutions",
+  "industry": "IT Services and IT Consulting",
+  "location": "McLean, Virginia, United States",
+  "size": "212"
+}, {
+  "company_name": "zenapse",
+  "industry": "Technology, Information and Internet",
+  "location": "Westport, Connecticut, United States",
+  "size": "10"
+}, {
+  "company_name": "Zip",
+  "industry": "Software Development",
+  "location": "San Francisco, California, United States",
+  "size": "130"
 }]

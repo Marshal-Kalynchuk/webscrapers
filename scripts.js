@@ -6,6 +6,7 @@ const axios = require('axios')
 
 // Import bots
 const Bots = require('./bots.js');
+const { linkedin_config } = require('./bots.js');
 
 /** Used to define the data structure of the companies*/
 class Company {
@@ -46,12 +47,12 @@ class UrlSet {
 };
 
 /** Used to define the data structure of the email templates */
-class EmailTemplate {
-  constructor(company_name, email_template, verified, template_score) {
+class EmailFormat {
+  constructor(company_name, format, verified, score) {
     this.company_name = company_name,
-    this.email_template = email_template,
+    this.format = format,
     this.verified = verified,
-    this.template_score = template_score
+    this.score = score
   };
 };
 
@@ -65,9 +66,9 @@ const files = {
   contacts_save_file: "./files/contacts_save_file.json",
   contacts_text_file: "./files/contacts_text_file.txt",
 
-  linkedin_match_file: "./files/linkedinMatchResults.json",
+  linkedin_match_file: "./raw_files/Bulk+Import+4_match_results.json",
 
-  email_templates_file: "./files/email_templates_file.json",
+  formats_file: "./files/formats_file.json",
 
   trimmed_contacts_file: "./files/trimmed_contacts.json",
 
@@ -113,7 +114,7 @@ async function main() {
       case "companies":
         /** Processing company text data:*/
         const company_text_data = fs.readFileSync(files.companies_text_file).toString().split("\n");
-        const processed_companies = await processCompanies(company_text_data)
+        const processed_companies = await process_companies(company_text_data)
         const new_companies = processed_companies.filter(function (company) {
           if (!saved_company_names.includes(company.company_name)) {
             saved_company_names.push(company.company_name)
@@ -126,7 +127,7 @@ async function main() {
       case "contacts":
         /** Processing contact text data */
         const contact_text_data = fs.readFileSync(files.contacts_text_file).toString().split("\n");
-        const processed_contacts = await processContacts(contact_text_data)
+        const processed_contacts = await process_contacts(contact_text_data)
         for (let new_contact of processed_contacts) {
           let is_in = false
           for (let saved_contact of saved_contacts) {
@@ -145,11 +146,11 @@ async function main() {
         console.log(`Adding ${c} new contacts to the save file`)
         break
       case "emails":
-        saved_contacts = await generateEmails(saved_contacts)
+        saved_contacts = await generate_emails(saved_contacts)
         break
       case "urls":
         const linkedin_match_data = JSON.parse(fs.readFileSync(files.linkedin_match_file))
-        const processed_urls = await processUrls(linkedin_match_data)
+        const processed_urls = await process_urls(linkedin_match_data)
         for (let url_set of processed_urls) {
           for (let contact of saved_contacts) {
             if (contact.company_name == url_set.company_name) {
@@ -163,21 +164,35 @@ async function main() {
               }
             }
           }
-          /**Add code to add urls to the companies */
         }
+          /**Add code to add urls to the companies */
+          for (let url_set of processed_urls) {
+            for (let company of saved_companies) {
+              if (company.company_name == url_set.company_name) {
+                if (company.website_url == undefined) {
+                  company.website_url = url_set.website_url
+                  c++
+                }
+                if (company.linkedin_url == undefined) {
+                  company.linkedin_url = url_set.linkedin_url
+                  b++
+                }
+              }
+            }
+          }
         console.log(`${c} website urls added, ${b} linkedin urls added.`)
         break
       case "scrape":
-        const linkedin_bot = new Bots.LinkedinBot()
+        const linkedin_bot = new Bots.Puppet()
         await linkedin_bot.init()
         for (let location of locations) {
           for (let keyword of keywords) {
             console.log(`Searching for ${keyword} in ${location}...`)
             scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
             newly_scraped_companies = await JSON.parse(fs.readFileSync(files.newly_scraped_companies_file))
-            const results = await linkedin_bot.scrape({field_1: keyword, field_2: location})
+            const results = await linkedin_bot.scrape(linkedin_config, {field_1: keyword, field_2: location})
             for (let res of results) {
-              if (!await checkCompany(scraped_companies, res.company_name)) {
+              if (!await check_company(scraped_companies, res.company_name)) {
                 scraped_companies.push(res)
                 newly_scraped_companies.push(res)
                 console.log(`Adding new company: ${res.company_name}`)
@@ -216,7 +231,7 @@ async function main() {
 };
 
 // Checks if the company is already in the saved companies file
-async function checkCompany(saved_companies, company_name) {
+async function check_company(saved_companies, company_name) {
   for (var i = 0; i < saved_companies.length; i++) {
     if (saved_companies[i].company_name == company_name) {
       return true
@@ -231,7 +246,7 @@ const regex_for_company = /\([^(a-zA-Z)]*\)/g
 /**Takes in a raw text from the linkedin sales navigator contact leads 
  * list and turns it into a list of contacts objects. 
  * To-Do - Impliment system to remove none names like PhD and emojis*/
-async function processContacts(text_data) {
+async function process_contacts(text_data) {
 
   // Init
   let new_contacts = []
@@ -261,7 +276,7 @@ async function processContacts(text_data) {
        *  "first_name, last_name" because of the comma. Can not handle weird cases 
        *  like "R. Cog-Spa" for Cognitive Space. It will log that so be warned */
 
-      name = cleanString(name)
+      name = clean_string(name)
       name = name
         .replace(regex_for_name, "")
         .replace("'", "")
@@ -282,7 +297,7 @@ async function processContacts(text_data) {
 };
 
 // Removed unwanted charaters from string
-function cleanString(input) {
+function clean_string(input) {
   var output = "";
   for (var i = 0; i < input.length; i++) {
     if (input.charCodeAt(i) <= 127) {
@@ -298,13 +313,12 @@ function cleanString(input) {
  * 
  * Impliment system to ignore contacts with initials for their last name 
  * Impliment system to ignore none names like PhD*/
-async function generateEmails(contacts) {
+async function generate_emails(contacts) {
 
   console.log(`Starting Email Generation.\n\rIf a contact is skipped during template validaty analysis, re-run the program after to apply found templates to them.`)
 
   const whoisxmlapi_api_key = "at_mp0pXIJFeZBYXnzgopWktb7uBBTbf"
   const api_calls_allowed = false
-
   const most_common_format = "first_name.last_name"
   
   /**Create Email bot instance */
@@ -319,11 +333,11 @@ async function generateEmails(contacts) {
   loop_1: for (let contact of contacts) {
     
     console.log("--------------------------------------------------------------------------------")
-    console.log(`Evaluating: `, contact)
+    console.log(`Evaluating ${contact.first_name} ${contact.last_name}, ${contact.company_name}`)
     if (contact.email == undefined &&
       contact.company_name != undefined) {
       
-      let email_templates = await JSON.parse(fs.readFileSync(files.email_templates_file))
+      let formats = await JSON.parse(fs.readFileSync(files.formats_file))
 
       const name = {
         first_name: contact.first_name ? contact.first_name.length > 2 ? contact.first_name : undefined : undefined, 
@@ -332,113 +346,110 @@ async function generateEmails(contacts) {
         last_initial: contact.last_name ? contact.last_name[0] : undefined}
    
       // Try to find exsiting template
-      let template = {}
-      for (let i = 0; i < email_templates.length; i++) {
-        if (email_templates[i].company_name == contact.company_name) {
-          template = email_templates[i]
+      let format = {}
+      for (let i = 0; i < formats.length; i++) {
+        if (formats[i].company_name == contact.company_name) {
+          format = formats[i]
         }
       }
 
-      switch (template.verified) {
+      switch (format.verified) {
         case true:
+          console.log("Found existing format")
+          console.log(`Format: ${format.format}, Score: ${format.score}`)
           // Generate email
-
-          let temp_email = generateEmail(template.email_template, name)
+          let temp_email = generate_email(format.format, name)
           if (temp_email){
             contact.email = temp_email
-            console.log("Applying template: ", template)
-            console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
+            console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}.`)
           } else {
             contact.email = undefined
-            console.log(`Could not apply template ${template.email_template} to ${contact.first_name} ${contact.last_name}`)
+            console.log(`Could not apply format to ${contact.first_name} ${contact.last_name}.`)
           }
           break
         case undefined:
           // Look for email
 
-          /**Use EmailBot to search for email template. Max results set to 1 to limit api calling*/
-          const results = await email_bot.find(contact.company_name)
+          // Use EmailBot to search for email template.
+          // Maybe replace company_name with "domain"?
+          const result = await email_bot.get_email(contact.company_name)
+
           let verified = false
           let best_score = -1
-          let best_template = undefined
+          let best_format = undefined
           let company_name = contact.company_name
           let contact_email = undefined
 
-          /**If email format was found */
-          if (results) {
-            for (let result of results) {
+          // If email format was found 
+          if (result) {
+      
+            console.log(`Format: ${result.format}, Score: ${result.score}`)
 
-              let should_break = false
-              if (result.template_score > best_score) {
-                best_score = result.template_score
-                best_template = result.email_template
-              }
-              let temp_email = generateEmail(result.email_template, name)
-              if (temp_email){
-                console.log(`Validating email format ${result.email_template}...`)
-                // Perform verification
-                // Using percent chance of the email being valid:
-                if (result.template_score > 50) {
-                  console.log("Email score above 50.")
-                  console.log(`Email format ${result.email_template} is verified`)
-                  verified = true
-                  best_score = result.template_score
-                  best_template = result.email_template
-                  contact_email = temp_email
-                  should_break = true
-                } else if (api_calls_allowed) {
-                  console.log("Calling verification API...")
-                  await axios.get(`https://emailverification.whoisxmlapi.com/api/v2?apiKey=${whoisxmlapi_api_key}&emailAddress=${temp_email}`).then(resp=>{
+            // Impliment domain checking. Require website urls first?
+            
+            if (result.score > best_score) {
+              best_score = result.score
+              best_format = result.format
+            }
 
-                    let data = resp.data
-                    const {mxRecords, audit, ...display} = data
-                    console.log(`Response:`, display)
+            let temp_email = generate_email(result.format, name)
+            if (temp_email){
+              // Perform verification
+              // Using percent chance of the email being valid:
+              if (result.score > 50) {
+                console.log(`Email format is verified`)
+                verified = true
+                best_score = result.score
+                best_format = result.format
+                contact_email = temp_email
 
-                    // Evaluate the response
-                    if (data.smtpCheck == 'true' && data.formatCheck == 'true'){
-                      console.log(`Email format ${result.email_template} is verified`)
-                      verified = true
-                      best_score = result.template_score
-                      best_template = result.email_template
-                      contact_email = temp_email
-                      should_break = true
-                    } else{
-                      console.log(`Email format ${result.email_template} is invalid.`)
-                    }
-                  })
-                }
-                if (should_break){break}
+
+              } else if (api_calls_allowed) {
+                console.log("Calling verification API...")
+                await axios.get(`https://emailverification.whoisxmlapi.com/api/v2?apiKey=${whoisxmlapi_api_key}&emailAddress=${temp_email}`).then(resp=>{
+
+                  let data = resp.data
+                  const {mxRecords, audit, ...display} = data
+                  console.log(`Response:`, display)
+
+                  // Evaluate the response
+                  if (data.smtpCheck == 'true' && data.formatCheck == 'true'){
+                    console.log(`Email format is verified`)
+                    verified = true
+                    best_score = result.score
+                    best_format = result.format
+                    contact_email = temp_email
+   
+
+                  } else{
+                    console.log(`Email format is invalid.`)
+                  }
+                })
               } else {
-                console.log(`Could not apply template ${template.email_template} to ${contact.first_name} ${contact.last_name}`)
-                console.log(`Skipping contact due to bad candidate for validity anaylsis.`)
-                save(email_templates, files.email_templates_file)
-                continue loop_1
+                console.log(`Email format is invalid`)
               }
               
+            } else {
+              console.log(`Skipping contact and email format due to bad validity anaylsis.`)
+              console.log(`Could not apply format to ${contact.first_name} ${contact.last_name}`)
+              save(formats, files.formats_file)
+              continue loop_1
             }
           }
-          template = new EmailTemplate(
-            company_name,
-            best_template,
-            verified,
-            best_score)
-
+          format = new EmailFormat(company_name, best_format, verified, best_score)
           contact.email = contact_email
-          email_templates.push(template)
-
-          console.log("Adding new", template)
+          formats.push(format)
           console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
-
           break
         case false:
           // Email Template does not work
-          console.log(`Found existing template:`, template)
-          console.log(`Email format was defined as invalid from null searches or low validation score.`)
+          console.log(`Found existing format. Format: ${format.format}, Score: ${format.score}`)
+          console.log(`Email format is invalid from null searches or low validation score.`)
           break
       }
-      save(email_templates, files.email_templates_file)
+      save(formats, files.formats_file)
     } else{
-      console.log(`Skipping contact because it failed to pass the health check`)
+      console.log(`Skipping contact because they failed to pass the health check`)
     }
   }
   console.log("Finished")
@@ -446,7 +457,7 @@ async function generateEmails(contacts) {
   return contacts
 };
 
-function generateEmail(template, name) {
+function generate_email(template, name) {
 
 
   /**  Return undefined for names like St.Marie
@@ -499,7 +510,7 @@ function generateEmail(template, name) {
 
 /**Takes in raw text from the linkedin sales navigator company leads
  * list and turns it into a list of company objects */
-async function processCompanies(text_data) {
+async function process_companies(text_data) {
 
   let new_companies = []
   let company_name, industry, location, size = undefined
@@ -524,8 +535,8 @@ async function processCompanies(text_data) {
 
 /**Processes the linkedin match results and returns a list of linkedin 
  * urls, company urls and company names*/
-async function processUrls(linkedin_match_data) {
-  return linkedin_match_data.map(data => new UrlSet(data.company, data.linkedinUrl.split("?")[0], data.websiteUrl))
+async function process_urls(linkedin_match_data) {
+  return linkedin_match_data.map(data => new UrlSet(data.company_name, data.linkedin_url.split("?")[0], data.websiteUrl))
 };
 
 /** Filters the companies based of a given criteria 
@@ -541,10 +552,11 @@ function is_good_company(company) {
     'Transportation, Logistics, Supply Chain and Storage', 'Higher Education', 'Retail Motor Vehicles', 'Biotechnology Research', 'Computers and Electronics Manufacturing',
     'Hospitals and Health Care', 'Government Administration', 'Truck Transportation']
 
-  const include_industry = ["Human Resources Services", "Staffing and Recruiting"]
+  const always = ["Human Resources Services", "Staffing and Recruiting"]
+  const maybe = ["Software Development", "Technology, Information and Internet", "IT Services and IT Consulting", "Computer and Network Security", "Computer Games", "Information Services"]
 
-  if (!exclude_industry.includes(company.industry) && (company.location.includes("United States") || company.location.includes("Canada"))
-  && (parseInt(company.size.replaceAll(",", "")) < 150 || include_industry.includes(company.indusrty))) {
+  if ((company.location.includes("United States") || company.location.includes("Canada")) 
+  && ((always.includes(company.industry) || (parseInt(company.size.replaceAll(",", "")) <= 300 && maybe.includes(company.industry))))) {
     return true
   } else {
     return false
@@ -643,8 +655,8 @@ async function zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile = 
   }
 };
 async function zipAndProcess(companiesTxtFile, companiesFile, linkedinMatchFile, urlsFile, contactTemplateFile, companyContactFile) {
-  await processCompanies(companiesTxtFile, companiesFile)
-  await processUrls(linkedinMatchFile, urlsFile)
+  await process_companies(companiesTxtFile, companiesFile)
+  await process_urls(linkedinMatchFile, urlsFile)
   await zipCompanyFiles(companiesFile, companyContactFile, urlsFile, contactTemplateFile)
 };
 /**Depreciated code ^^^ */
