@@ -315,198 +315,77 @@ function clean_string(input) {
  * Impliment system to ignore none names like PhD*/
 async function generate_emails(contacts) {
 
-  console.log(`Starting Email Generation.\n\rIf a contact is skipped during template validaty analysis, re-run the program after to apply found templates to them.`)
+  console.log(`Starting Email Generation.\n\rIf a contact is skipped during template validaty analysis, re-run the program after to apply found templates to them.`);
 
-  const whoisxmlapi_api_key = "at_mp0pXIJFeZBYXnzgopWktb7uBBTbf"
-  const api_calls_allowed = false
-  const most_common_format = "first_name.last_name"
-  
   /**Create Email bot instance */
-  console.log("Starting email bot...")
-  const email_bot = new Bots.EmailBot(true)
-  await email_bot.init()
+  console.log("Starting email bot...");
+  const email_bot = new Bots.EmailBot(false);
+  await email_bot.init();
 
   /**Cycle through list of contacts 
    * Skips contacts that with names including "."
    * For instance: St.Marie or John M.
   */
-  loop_1: for (let contact of contacts) {
+  for (let contact of contacts) {
     
-    console.log("--------------------------------------------------------------------------------")
-    console.log(`Evaluating ${contact.first_name} ${contact.last_name}, ${contact.company_name}`)
+    console.log("--------------------------------------------------------------------------------");
+    console.log(`Evaluating ${contact.first_name} ${contact.last_name}, ${contact.company_name}`);
+
     if (contact.email == undefined &&
       contact.company_name != undefined) {
       
-      let formats = await JSON.parse(fs.readFileSync(files.formats_file))
-
       const name = {
         first_name: contact.first_name ? contact.first_name.length > 2 ? contact.first_name : undefined : undefined, 
         first_initial: contact.first_name ? contact.first_name[0] : undefined, 
         last_name: contact.last_name ? contact.last_name.length > 2 ? contact.last_name : undefined : undefined, 
-        last_initial: contact.last_name ? contact.last_name[0] : undefined}
-   
-      // Try to find exsiting template
-      let format = {}
-      for (let i = 0; i < formats.length; i++) {
-        if (formats[i].company_name == contact.company_name) {
-          format = formats[i]
-        }
-      }
+        last_initial: contact.last_name ? contact.last_name[0] : undefined};
+      const format = await email_bot.generate_format(contact.company_name);
+      console.log(`Format: ${format.format}, Score: ${format.score}`);
 
-      switch (format.verified) {
-        case true:
-          console.log("Found existing format")
-          console.log(`Format: ${format.format}, Score: ${format.score}`)
-          // Generate email
-          let temp_email = generate_email(format.format, name)
-          if (temp_email){
-            contact.email = temp_email
-            console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}.`)
-          } else {
-            contact.email = undefined
-            console.log(`Could not apply format to ${contact.first_name} ${contact.last_name}.`)
-          }
-          break
-        case undefined:
-          // Look for email
-
-          // Use EmailBot to search for email template.
-          // Maybe replace company_name with "domain"?
-          const result = await email_bot.get_email(contact.company_name)
-
-          let verified = false
-          let best_score = -1
-          let best_format = undefined
-          let company_name = contact.company_name
-          let contact_email = undefined
-
-          // If email format was found 
-          if (result) {
-      
-            console.log(`Format: ${result.format}, Score: ${result.score}`)
-
-            // Impliment domain checking. Require website urls first?
-            
-            if (result.score > best_score) {
-              best_score = result.score
-              best_format = result.format
-            }
-
-            let temp_email = generate_email(result.format, name)
-            if (temp_email){
-              // Perform verification
-              // Using percent chance of the email being valid:
-              if (result.score > 50) {
-                console.log(`Email format is verified`)
-                verified = true
-                best_score = result.score
-                best_format = result.format
-                contact_email = temp_email
-
-
-              } else if (api_calls_allowed) {
-                console.log("Calling verification API...")
-                await axios.get(`https://emailverification.whoisxmlapi.com/api/v2?apiKey=${whoisxmlapi_api_key}&emailAddress=${temp_email}`).then(resp=>{
-
-                  let data = resp.data
-                  const {mxRecords, audit, ...display} = data
-                  console.log(`Response:`, display)
-
-                  // Evaluate the response
-                  if (data.smtpCheck == 'true' && data.formatCheck == 'true'){
-                    console.log(`Email format is verified`)
-                    verified = true
-                    best_score = result.score
-                    best_format = result.format
-                    contact_email = temp_email
-   
-
-                  } else{
-                    console.log(`Email format is invalid.`)
-                  }
-                })
-              } else {
-                console.log(`Email format is invalid`)
-              }
-              
+      if (format.score > 50){
+        // Applying format
+        contact.email = apply_format(format.format);
+        function apply_format(format) {
+          if (format.includes("first_initial")) {
+            if (name.first_initial != undefined) {
+              format = format.replace("first_initial", name.first_initial);
             } else {
-              console.log(`Skipping contact and email format due to bad validity anaylsis.`)
-              console.log(`Could not apply format to ${contact.first_name} ${contact.last_name}`)
-              save(formats, files.formats_file)
-              continue loop_1
-            }
-          }
-          format = new EmailFormat(company_name, best_format, verified, best_score)
-          contact.email = contact_email
-          formats.push(format)
-          console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}`)
-          break
-        case false:
-          // Email Template does not work
-          console.log(`Found existing format. Format: ${format.format}, Score: ${format.score}`)
-          console.log(`Email format is invalid from null searches or low validation score.`)
-          break
-      }
-      save(formats, files.formats_file)
-    } else{
-      console.log(`Skipping contact because they failed to pass the health check`)
-    }
-  }
-  console.log("Finished")
-  await email_bot.quit()
-  return contacts
+              return undefined;
+            };
+          } else if (format.includes("first_name")) {
+            if (name.first_name != undefined) {
+              format = format.replace("first_name", name.first_name);
+            } else {
+            return undefined;
+            };
+          };
+          if (format.includes("last_initial")) {
+            if (name.last_initial != undefined) {
+              name.last_initial = name.last_initial.replace(".", "");
+              format = format.replace("last_initial", name.last_initial);
+            } else {
+            return undefined;
+            };
+          } else if (format.includes("last_name")) {
+            if (name.last_name != undefined) {
+              format = format.replace("last_name", name.last_name);
+            } else {
+              return undefined;
+            };
+          };
+          return format.toLowerCase();
+        };
+      };
+      console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}.`);
+    } else {
+      console.log(`Skipping contact because they failed to pass the health check`);
+    };
+  };
+  console.log("Finished");
+  await email_bot.quit();
+  return contacts;
 };
 
-function generate_email(template, name) {
-
-
-  /**  Return undefined for names like St.Marie
-  if (name_properties.first_name != undefined){
-    if (name_properties.first_name.toUpperCase().includes("ST.")){
-      return undefined
-    }
-  }
-  if (name_properties.last_name != undefined){
-    if (name_properties.last_name.toUpperCase().includes("ST.")){
-      return undefined
-    }
-  }
-  */
-  // Return undefined for templates that require information that is not given
-
-  if (template.includes("first_initial")){
-    if (name.first_initial != undefined){
-      template = template.replace("first_initial", name.first_initial)
-    } else {
-      return undefined
-    }
-  } 
-  else if (template.includes("first_name")) {
-    if (name.first_name != undefined){
-      template = template.replace("first_name", name.first_name)
-    } else {
-     return undefined
-    }
-  }
-    
-  if (template.includes("last_initial")) {
-    if (name.last_initial != undefined){
-      name.last_initial = name.last_initial.replace(".", "")
-      template = template.replace("last_initial", name.last_initial)
-    } else {
-    return undefined
-    }
-  }
-  else if (template.includes("last_name")) {
-    if (name.last_name != undefined) {
-      template = template.replace("last_name", name.last_name)
-    } else {
-      return undefined
-    }
-  }
-
-  return template.toLowerCase()
-};
 
 /**Takes in raw text from the linkedin sales navigator company leads
  * list and turns it into a list of company objects */
