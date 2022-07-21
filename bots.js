@@ -1,8 +1,76 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const { config } = require('process');
+const { v4: uuidv4 } = require('uuid');
+const { resetLevel } = require('email-deep-validator/lib/logger');
 
+class DataStore {
+  constructor(path, data_model) {
+    this.path = path;
+    this.data_model = data_model;
+    this.data = JSON.parse(fs.readFileSync(path));
+  };
+  create() {
+    return this.data_model;
+  };
+  get(field, query, max_results) {
+    let results = [];
+    for (let obj of this.data) {
+      if (obj[field] === query){
+        results.push(obj);
+      };
+    };
+    return results;
+  };
+  put(objs) {
+    // enable naming protection off model.
+    objs = objs.map(function(obj){obj.id = uuidv4(); return obj})
+    // Add duplicate protection
+    this.data.push(...objs)
+    fs.writeFileSync(this.path, JSON.stringify(this.data), function (err) {
+    if (err) {
+      console.log(err);
+      }
+    });
+    this.data = JSON.parse(fs.readFileSync(this.path))
+    return objs
+    
+  };
+  post(id, field, value) {
+    let changed = undefined
+    for (let obj of this.data){
+      if (obj.id === id){
+        obj[field] = value
+        changed = obj
+        break
+      }
+    }
+    fs.writeFileSync(this.path, JSON.stringify(this.data), function (err) {
+    if (err) {
+      console.log(err);
+      }
+    });
+    this.data = JSON.parse(fs.readFileSync(this.path))
+    return changed
+  };
+  delete(id) {
+    let deleted = undefined
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i].id === id) {
+        deleted = this.data.splice(i, 1)
+      }
+    }
+    fs.writeFileSync(this.path, JSON.stringify(this.data), function (err) {
+      if (err) {
+        console.log(err);
+        }
+      });
+    this.data = JSON.parse(fs.readFileSync(this.path))
+    return deleted
+  }
+
+}
 class Puppet {
+  
   constructor(devMode = false) {
     /**Configuration of puppeteer */
     this.browserArgs = {
@@ -34,17 +102,19 @@ class Puppet {
     page.setDefaultNavigationTimeout(0);
     //Skip images/styles/fonts loading for performance
     await page.setRequestInterception(true);
+
     page.on('request', (req) => {
-      if ((req.resourceType() == 'image') ||
-        (req.resourceType() == 'stylesheet') ||
-        (req.resourceType() == 'font') ||
-        (req.resourceType() == 'gif')
+      if ((req.resourceType() == 'ximage') ||
+        (req.resourceType() == 'xstylesheet') ||
+        (req.resourceType() == 'xfont') ||
+        (req.resourceType() == 'xgif')
       ) {
         req.abort();
       } else {
         req.continue();
       };
     });
+    
     await page.evaluateOnNewDocument(() => {
       // Pass webdriver check
       Object.defineProperty(navigator, 'webdriver', {
@@ -181,12 +251,11 @@ class Puppet {
     // Do nothing. Will just re-navigate to search url.
   };
 };
-
 class GoogleBot extends Puppet {
   constructor(devMode = false) {
     super(devMode)
     this.google_config = {
-      navigation_delay: 7000,
+      navigation_delay: 30000,
       search_url: "https://google.com/search?q=field_1",
       card_sel: "div.jtfYYd",
       card_fields: {
@@ -197,12 +266,11 @@ class GoogleBot extends Puppet {
     };
   };
 };
-
 class EmailBot extends GoogleBot {
   constructor(devMode = false) {
     super(devMode);
     this.rocket_config = {
-      navigation_delay: 5000,
+      navigation_delay: 12000,
       card_sel: "tbody tr",
       card_fields: {
         format: ["td:nth-child(2)", "innerText"],
@@ -210,7 +278,7 @@ class EmailBot extends GoogleBot {
       }
     };
     this.signalhire_config = {
-      navigation_delay: 5000,
+      navigation_delay: 12000,
       card_sel: "tbody > tr",
       card_fields: {
         format: ["td:nth-child(2) > a", "innerText"],
@@ -218,7 +286,7 @@ class EmailBot extends GoogleBot {
       }
     };
     this.webspotter_config = {
-      navigation_delay: 5000,
+      navigation_delay: 10000,
       card_sel: "tbody > tr",
       card_fields: {
         format: ["td:nth-child(1)", "innerText"],
@@ -231,8 +299,6 @@ class EmailBot extends GoogleBot {
       last_name: "last_name",
       last_initial: "last_initial"
     };
-    this.formats_file = "./files/formats_file.json";
-    this.api_key = "at_mp0pXIJFeZBYXnzgopWktb7uBBTbf";
     this.format_model = {
       company_name: undefined,
       type: undefined,
@@ -243,182 +309,134 @@ class EmailBot extends GoogleBot {
       personal: "personal",
       general: "general"
     };
+    this.formats_file = "./files/formats_file.json";
+    this.api_key = "at_mp0pXIJFeZBYXnzgopWktb7uBBTbf";
+    this.general_formats = ["info", "hello"]
+
+    this.datastore = new DataStore(this.formats_file, this.format_model)
   };
-  async generate_format(company_name, website = undefined) {
+  async verify(email){
+    // Verify
+    return true || false
+  }
+  async general_format(company_name, website){
+    let results = []
+    const domain = website.split("//")[1].split("/")[0].replace("www.", "")
+    let general_format = String
+    let is_valid = Boolean
+    let format = Object
+    for (let prefix of this.general_formats){
+      general_format = prefix + "@" + domain
+      is_valid = await this.verify(general_email)
+      format = {company_name: company_name, format: general_format, type: this.type_identifiers.general, valid: is_valid}
+      if (is_valid){
+        format.score = 100
+        results.push(format)
+        break
+      } else {
+        format.score = 0
+      }
+      results.push(format)
+    }
+    return results
+  }
 
-    console.log("Searching for email formats...");
-    let format = this.get_format(company_name) || Object.create(this.format_model);
+  async get_format(company_name, website = undefined, {overwrite_undefined = false, api_calls = false} = {}){
+
+    let results = this.datastore.get("company_name", company_name, 30);
+    if (!results.length) {
+      results = await this.scrape_formats(company_name, website);
+      if (results[0].format == undefined && website && api_calls){
+        results = this.general_format(company_name, website)
+      }
+      this.datastore.put(results);
+    } else if (results[0].format == undefined && overwrite_undefined && website && api_calls){
+      const delete_id = results[0].id
+      this.datastore.delete(delete_id)
+      results = this.general_format(company_name, website)
+      this.datastore.put(results);
+    }
     
-    // Found existing format
-    if (format.company_name != undefined) {
-      return format;
+    if (results[0].format == undefined){
+      return undefined;
+    } else {
+      return results.filter(res=>res.origin == 'rocketreach').sort(function (a, b) {
+        return (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0)})[0] ||
+      results.filter(res=>res.origin == 'signalhire').sort(function (a, b) {
+        return (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0)})[0] ||
+      results.filter(res=>res.type == 'general' && res.is_valid == true)[0] || undefined;
     };
-    format.company_name = company_name;
-
+  };
+  async scrape_formats(company_name, website = undefined, opt = {api_calls: false}) {
+    // Check that company name is given:
+    if (company_name == undefined){ throw "Company name not given." }
+    // Extract website domain if given:
+    const website_domain = website ? website.split("//")[1].split("/")[0].replace("www.", "").split(".")[0] : undefined
+    // Remove chars for clean comparison:
     const remove_lite = ["(", ")", "{", "}", " '", "' ", "'"];
-    const remove_full = ["CORP", "INC", "LTD", /\([^()]*\)/g, "(", ")", "{", "}", "'", ".", ",", " "];
-    function format_string(string, args){
-      string = string.toUpperCase();
-      args.forEach(arg=>string = string.replaceAll(arg, ""));
-      return string.trim();
-    };
-
-    // Get search results from google
-    const search_query = company_name.replaceAll(" ", "+")+'+email+format';
+    const remove_full = ["CORP", "INC", "LTD", "LLC", /\([^()]*\)/g, "(", ")", "{", "}", "'", ".", ",", " ", "-", 
+    "AGENCY", "TECHNOLOGIES", "SOLUTIONS", "SERVICES", "CORPORATION", "CONSULTING", "GROUP", "SYSTEMS", "TECHNOLOGY", "PARTNERS", /[^a-zA-Z\d\s:\u00C0-\u00FF]/g];
+    // Get search results from google:
+    console.log("Searching for email formats...");
+    const search_query = (website_domain ? '"'+website_domain+'"' : company_name.replaceAll(" ", "+"))+'+email+format';
     const search_results = await this.scrape(this.google_config, { field_1: search_query });
-    /**
-     * Removes all search results that do not contain the company name and that are not titled "email format"
-     * Formats the title and discription for later processing
-     */
-    let formatted_results = search_results.map(function(res){
+    // Scrape relavent pages: 
+    let scraped_formats = []
+    let title, compare_title, compare_name, description = ""
+    for (let res of search_results){
       if (res.description && res.title){
-        const title = res.title.toUpperCase();
-        const compare_title = format_string(title.split("EMAIL FORMAT")[0].split(":")[0], remove_full);
-        const compare_name = format_string(company_name.toUpperCase().split(":")[0], remove_full);
-        if (compare_title == compare_name && title.includes("EMAIL FORMAT")){
-          return {
-            title: title,
-            url: res.url,
-            description: format_string(res.description, remove_lite),
-          };
+        title = res.title.toUpperCase();
+        compare_title = this.format_string(title.split("EMAIL FORMAT")[0].split(":")[0], remove_full);
+        compare_name = this.format_string(company_name.toUpperCase().split(":")[0], remove_full);
+        description = res.description.toUpperCase()
+        if (compare_title == compare_name && title.includes("EMAIL FORMAT") && !description.includes("0 EMAIL FORMATS")){
+          if (res.url.includes("rocketreach")){
+            scraped_formats.push(...(await this.scrape(this.rocket_config, {url: res.url})).map(function(obj){obj.origin = "rocketreach"; return obj}));
+          } else if (res.url.includes("signalhire")){
+            scraped_formats.push(...(await this.scrape(this.signalhire_config, {url: res.url})).map(function(obj){obj.origin = "signalhire"; return obj}));
+          } /**else if (res.url.includes("webspotter")){
+            scraped_formats.push(...(await this.scrape(this.webspotter_config, {url: res.url})).map(function(obj){obj.origin = "webspotter"; return obj}));
+          };  ### Detrimental bug with selectors selecting unwanted data. No uniqness among js selectors on webspotters.com. */
         };
       };
-    }).filter( Boolean );
-
-    /**
-     * Looks through the formatted search results, removing the ones that it analysis. 
-     * If it finds an email format, it will move on to the next section. 
-     * The order of analysis is: Rocket Reach > Signal Hire > Webspotter > Aeroleads > Company Page (if given) > Any
-     */
-    // Rocket Reach
-    for (let i = 0; i < formatted_results.length && format.format == undefined; i++){
-      const res = formatted_results[i];
-      if (res.url.includes("rocketreach")){
-        // Try get Format and score from description 
-        const extracted_formats = this.extract_emails(res.description);
-        if (extracted_formats) {
-          format.format = extracted_formats[0];
-          const words = res.description.split(" ");
-          for (let j = 0; j < words.length; j++) {
-            if (words[j].includes("%")) {
-              format.score = parseInt(words[j]);
-            } else if (words[j].includes("PERCENT")) {
-              format.score = parseInt(words[j - 1]);
-            }
-          }
-        }
-        if (format.format == undefined || format.score == 0){
-          // Get Format and Score from Rocket Reach
-          console.log("Searching Rocket Reach for format");
-          const page_results = await this.scrape(this.rocket_config, { url: res.url });
-          if (page_results) {
-            const page_res = this.reduce(page_results);
-            format.format = page_res.format;
-            format.score = page_res.score;
-            format.type = this.type_identifiers.personal;
-          } 
-        }
-        formatted_results.splice(i, 1);
-      }
-    }
-    // Signal Hire
-    for (let i = 0; i < formatted_results.length && format.format == undefined; i++){
-      const res = formatted_results[i];
-      if (res.url.includes("signalhire")){
-        console.log("Searching Signal Hire for format");
-        const page_results = await this.scrape(this.signalhire_config, { url: res.url });
-        if (page_results) {
-          const page_res = this.reduce(page_results);
-          format.format = page_res.format;
-          format.score = page_res.score;
-          format.type = this.type_identifiers.personal;
-        }
-        formatted_results.splice(i, 1);
-      }
-    }
-    // Webspotter
-    for (let i = 0; i < formatted_results.length && format.format == undefined; i++){
-      const res = formatted_results[i];
-      if (res.url.includes("webspotter")){
-        console.log("Searching Webspotter for format");
-        const page_results = await this.scrape(this.webspotter_config, { url: res.url });
-        if (page_results) {
-          const page_res = this.reduce(page_results);
-          page_res.format = page_res.format.replaceAll("{", "").replaceAll("}", "");
-          format.format = page_res.format;
-          format.score = page_res.score;
-          format.type = this.type_identifiers.personal;
-        }
-        formatted_results.splice(i, 1);
-      }
-    }
-    // Aeroleads
-    for (let i = 0; i < formatted_results.length && format.format == undefined; i++){
-      const res = formatted_results[i];
-      if (res.url.includes("aeroleads")){
-        console.log("Aeroleads analysis is incomplete");
-      }
-    }
-    if (website && format.format == undefined){
-      // Get company email off company website and api check as last resort
-      console.log("Website analysis is incompelet");
-    }
-
-    // If the format was found
-    if (format.format) {
-      // Replaces *Uppercase letters with *Lowercase identifiers
-      const domain = format.format.split("@")[1];
-      const user_format = format.format
-        .split("@")[0]
-        .toUpperCase()
-        .replace("FIRST", this.format_identifiers.first_name)
-        .replace("LAST", this.format_identifiers.last_name)
-        .replace("F", this.format_identifiers.first_initial)
-        .replace("L", this.format_identifiers.last_initial)
-        .replace("JANE", this.format_identifiers.first_name)
-        .replace("JOHN", this.format_identifiers.first_name)
-        .replace("J", this.format_identifiers.first_initial)
-        .replace("DOE", this.format_identifiers.last_name)
-        .replace("D", this.format_identifiers.last_initial);
-
-      // Putting email together:
-      format.format = (user_format + "@" + domain).toLowerCase();
-    }
-    this.put_format(format);
-    return format;
-  };
-  get_format(company_name) {
-    const formats = JSON.parse(fs.readFileSync(this.formats_file));
-    for (const format of formats) {
-      if (format.company_name == company_name) {
-        return format;
-      };
     };
-    return undefined;
+    // Format formats into usable form:
+    const formatted_formats = scraped_formats.map(format=>{
+      if (format.format && !format.format.includes("//")) {
+        const email_domain = format.format.split("@")[1];
+        if (website_domain ? website_domain == email_domain.split(".")[0] : true){
+          const user_format = format.format
+          .split("@")[0]
+          .toUpperCase()
+          .replaceAll("{", "")
+          .replaceAll("}", "")
+          .replace("FIRST", this.format_identifiers.first_name)
+          .replace("LAST", this.format_identifiers.last_name)
+          .replace("F", this.format_identifiers.first_initial)
+          .replace("L", this.format_identifiers.last_initial)
+          .replace("JANE", this.format_identifiers.first_name)
+          .replace("JOHN", this.format_identifiers.first_name)
+          .replace("J", this.format_identifiers.first_initial)
+          .replace("DOE", this.format_identifiers.last_name)
+          .replace("D", this.format_identifiers.last_initial);
+          // Putting email together:
+          format.format = (user_format + "@" + email_domain).toLowerCase();
+          format.score = parseInt(format.score)
+          format.company_name = company_name
+        } else {
+          return undefined
+        }
+      } else {
+        return undefined
+      }
+      return format
+    }).filter( Boolean )
+    return formatted_formats.length ? formatted_formats : [{company_name: company_name, format: undefined}]
   };
-  put_format(format){
-    if (format.company_name == undefined){
-      throw "Company name is undefined!";
-    }
-    let formats = JSON.parse(fs.readFileSync(this.formats_file));
-    formats.push(format);
-    fs.writeFileSync(this.formats_file, JSON.stringify(formats), function (err) {
-      if (err) {
-        console.log(err);
-      };
-    });
-  };
-  reduce(formats) {
-    formats = formats.map(format => ({
-      format: format.format,
-      score: parseInt(format.score)
-    }));
-    // Sort Array based on scores
-    formats.sort(function (a, b) {
-      return (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0);
-    });
-    // Return best result
-    return formats[0];
+  format_string(string, args){
+    string = string.toUpperCase();
+    args.forEach(arg=>string = string.replaceAll(arg, ""));
+    return string.trim();
   };
   extract_emails(text) {
     return text.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi);
@@ -444,5 +462,7 @@ function delay(time) {
 module.exports = {
   Puppet: Puppet,
   EmailBot: EmailBot,
+  DataStore: DataStore,
   linkedin_config: linkedin_config,
 };
+

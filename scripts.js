@@ -6,7 +6,9 @@ const axios = require('axios')
 
 // Import bots
 const Bots = require('./bots.js');
-const { linkedin_config } = require('./bots.js');
+const {
+  linkedin_config
+} = require('./bots.js');
 
 /** Used to define the data structure of the companies*/
 class Company {
@@ -50,9 +52,9 @@ class UrlSet {
 class EmailFormat {
   constructor(company_name, format, verified, score) {
     this.company_name = company_name,
-    this.format = format,
-    this.verified = verified,
-    this.score = score
+      this.format = format,
+      this.verified = verified,
+      this.score = score
   };
 };
 
@@ -66,7 +68,7 @@ const files = {
   contacts_save_file: "./files/contacts_save_file.json",
   contacts_text_file: "./files/contacts_text_file.txt",
 
-  linkedin_match_file: "./raw_files/Bulk+Import+4_match_results.json",
+  linkedin_match_file: "./raw_files/match_results_composit.json",
 
   formats_file: "./files/formats_file.json",
 
@@ -83,8 +85,7 @@ const keywords = ["Angular Developer", "Frontend Developer", "Backend Developer"
 let locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada", "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
 
 const canada_locations = ["Montreal, Quebec, Canada", "Halifax, Nova Scotia, Canada", "Quebec City, Quebec, Canada", "Hamilton, Ontario, Canada"]
-const united_states_locations = ["Atlanta, GA", "Austin, TX", "Boston, MA", "Chicago, IL", "Colorado, CO", "Dallas-Ft. Worth, TX", "Los Angeles, CA", "New York City, NY", "San Francisco, CA", "Seattle, WA", "Washington, D.C.",
-]
+const united_states_locations = ["Atlanta, GA", "Austin, TX", "Boston, MA", "Chicago, IL", "Colorado, CO", "Dallas-Ft. Worth, TX", "Los Angeles, CA", "New York City, NY", "San Francisco, CA", "Seattle, WA", "Washington, D.C.", ]
 locations = united_states_locations
 /**Main CLI function. Runs all other functions and manages the data 
  * 
@@ -104,6 +105,8 @@ async function main() {
     // Counters, no function outside of displaying amounts added:
     let c = 0
     let b = 0
+    let d = 0
+    let e = 0
     const input = prompt("Select Action: ")
 
     // Main CLI
@@ -165,22 +168,23 @@ async function main() {
             }
           }
         }
-          /**Add code to add urls to the companies */
-          for (let url_set of processed_urls) {
-            for (let company of saved_companies) {
-              if (company.company_name == url_set.company_name) {
-                if (company.website_url == undefined) {
-                  company.website_url = url_set.website_url
-                  c++
-                }
-                if (company.linkedin_url == undefined) {
-                  company.linkedin_url = url_set.linkedin_url
-                  b++
-                }
+        /**Add code to add urls to the companies */
+        for (let url_set of processed_urls) {
+          for (let company of saved_companies) {
+            if (company.company_name == url_set.company_name) {
+              if (company.website_url == undefined) {
+                company.website_url = url_set.website_url
+                d++
+              }
+              if (company.linkedin_url == undefined) {
+                company.linkedin_url = url_set.linkedin_url
+                e++
               }
             }
           }
-        console.log(`${c} website urls added, ${b} linkedin urls added.`)
+        }
+        console.log(`Contacts: ${c} website urls added, ${b} linkedin urls added.`)
+        console.log(`Companies: ${d} website urls added, ${e} linkedin urls added.`)
         break
       case "scrape":
         const linkedin_bot = new Bots.Puppet()
@@ -190,7 +194,10 @@ async function main() {
             console.log(`Searching for ${keyword} in ${location}...`)
             scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
             newly_scraped_companies = await JSON.parse(fs.readFileSync(files.newly_scraped_companies_file))
-            const results = await linkedin_bot.scrape(linkedin_config, {field_1: keyword, field_2: location})
+            const results = await linkedin_bot.scrape(linkedin_config, {
+              field_1: keyword,
+              field_2: location
+            })
             for (let res of results) {
               if (!await check_company(scraped_companies, res.company_name)) {
                 scraped_companies.push(res)
@@ -209,7 +216,7 @@ async function main() {
         break
       case "trim":
         trimmed_contacts = saved_contacts.filter(function (contact) {
-          if (/**contact.website_url != undefined && */contact.email != undefined) {
+          if ( contact.website_url != undefined && contact.email != undefined) {
             return contact
           }
         })
@@ -223,7 +230,6 @@ async function main() {
         console.log("Invalid Input. For help type help")
     }
   }
-
   // Saving the files
   save(saved_companies, files.companies_save_file)
   save(saved_contacts, files.contacts_save_file)
@@ -319,73 +325,74 @@ async function generate_emails(contacts) {
 
   /**Create Email bot instance */
   console.log("Starting email bot...");
-  const email_bot = new Bots.EmailBot(false);
+  const email_bot = new Bots.EmailBot(true);
   await email_bot.init();
 
   /**Cycle through list of contacts 
    * Skips contacts that with names including "."
    * For instance: St.Marie or John M.
-  */
+   */
   for (let contact of contacts) {
-    
-    console.log("--------------------------------------------------------------------------------");
-    console.log(`Evaluating ${contact.first_name} ${contact.last_name}, ${contact.company_name}`);
+    if (contact.company_name != undefined && contact.email == undefined) {
 
-    if (contact.email == undefined &&
-      contact.company_name != undefined) {
-      
+      console.log("--------------------------------------------------------------------------------");
+      console.log(`Evaluating ${contact.first_name} ${contact.last_name}, ${contact.company_name}`);
       const name = {
-        first_name: contact.first_name ? contact.first_name.length > 2 ? contact.first_name : undefined : undefined, 
-        first_initial: contact.first_name ? contact.first_name[0] : undefined, 
-        last_name: contact.last_name ? contact.last_name.length > 2 ? contact.last_name : undefined : undefined, 
-        last_initial: contact.last_name ? contact.last_name[0] : undefined};
-      const format = await email_bot.generate_format(contact.company_name);
-      console.log(`Format: ${format.format}, Score: ${format.score}`);
-
-      if (format.score > 50){
-        // Applying format
-        contact.email = apply_format(format.format);
-        function apply_format(format) {
-          if (format.includes("first_initial")) {
-            if (name.first_initial != undefined) {
-              format = format.replace("first_initial", name.first_initial);
-            } else {
-              return undefined;
-            };
-          } else if (format.includes("first_name")) {
-            if (name.first_name != undefined) {
-              format = format.replace("first_name", name.first_name);
-            } else {
-            return undefined;
-            };
-          };
-          if (format.includes("last_initial")) {
-            if (name.last_initial != undefined) {
-              name.last_initial = name.last_initial.replace(".", "");
-              format = format.replace("last_initial", name.last_initial);
-            } else {
-            return undefined;
-            };
-          } else if (format.includes("last_name")) {
-            if (name.last_name != undefined) {
-              format = format.replace("last_name", name.last_name);
-            } else {
-              return undefined;
-            };
-          };
-          return format.toLowerCase();
-        };
+        first_name: contact.first_name ? contact.first_name.length > 2 ? contact.first_name : undefined : undefined,
+        first_initial: contact.first_name ? contact.first_name[0] : undefined,
+        last_name: contact.last_name ? contact.last_name.length > 2 ? contact.last_name : undefined : undefined,
+        last_initial: contact.last_name ? contact.last_name[0] : undefined
       };
+
+      const format = await email_bot.get_format(contact.company_name, contact.website_url);
+      console.log(format)
+      if (format) {
+        console.log(`Format: ${format.format}, Score: ${format.score}`);
+        if (format.score > 50) {
+          // Applying format
+          contact.email = apply_format(format.format);
+
+          function apply_format(format) {
+            if (format.includes("first_initial")) {
+              if (name.first_initial != undefined) {
+                format = format.replace("first_initial", name.first_initial);
+              } else {
+                return undefined;
+              };
+            } else if (format.includes("first_name")) {
+              if (name.first_name != undefined) {
+                format = format.replace("first_name", name.first_name);
+              } else {
+                return undefined;
+              };
+            };
+            if (format.includes("last_initial")) {
+              if (name.last_initial != undefined) {
+                name.last_initial = name.last_initial.replace(".", "");
+                format = format.replace("last_initial", name.last_initial);
+              } else {
+                return undefined;
+              };
+            } else if (format.includes("last_name")) {
+              if (name.last_name != undefined) {
+                format = format.replace("last_name", name.last_name);
+              } else {
+                return undefined;
+              };
+            };
+            return format.toLowerCase();
+          };
+        }
+      } else {
+        console.log("No Format Found")
+      }
       console.log(`Email for ${contact.first_name} ${contact.last_name} is ${contact.email}.`);
-    } else {
-      console.log(`Skipping contact because they failed to pass the health check`);
-    };
+    }
   };
   console.log("Finished");
   await email_bot.quit();
   return contacts;
 };
-
 
 /**Takes in raw text from the linkedin sales navigator company leads
  * list and turns it into a list of company objects */
@@ -415,8 +422,13 @@ async function process_companies(text_data) {
 /**Processes the linkedin match results and returns a list of linkedin 
  * urls, company urls and company names*/
 async function process_urls(linkedin_match_data) {
-  return linkedin_match_data.map(data => new UrlSet(data.company_name, data.linkedin_url.split("?")[0], data.websiteUrl))
-};
+  return linkedin_match_data.map(function (data) {
+    return new UrlSet(
+      (data["company_name"] || data["company"] || data["Account Name"]),
+      (data["linkedin_url"] || data["Linkedin Compnay URL"] || data["linkedinUrl"]),
+      (data["Matched Company Url"]))
+  })
+}
 
 /** Filters the companies based of a given criteria 
  * To-Do - reformat naming conventing and improve filter
@@ -427,15 +439,16 @@ function is_good_company(company) {
     "Online Audio and Video Media", "Motor Vehicle Manufacturing", "E-Learning Providers", "Real Estate", "Travel Arrangements", "Printing Services",
     "Government Relations Services", "Food and Beverage Services", "Wholesale", "Appliances, Electrical, and Electronics Manufacturing",
     "Automation Machinery Manufacturing", 'Computer Hardware Manufacturing', 'Manufacturing', 'Hospitality', 'Furniture and Home Furnishings Manufacturing',
-    'Fundraising', 'Musicians', 'Aviation and Aerospace Component Manufacturing', 'Measuring and Control Instrument Manufacturing', 'Executive Offices', 
+    'Fundraising', 'Musicians', 'Aviation and Aerospace Component Manufacturing', 'Measuring and Control Instrument Manufacturing', 'Executive Offices',
     'Transportation, Logistics, Supply Chain and Storage', 'Higher Education', 'Retail Motor Vehicles', 'Biotechnology Research', 'Computers and Electronics Manufacturing',
-    'Hospitals and Health Care', 'Government Administration', 'Truck Transportation']
+    'Hospitals and Health Care', 'Government Administration', 'Truck Transportation'
+  ]
 
   const always = ["Human Resources Services", "Staffing and Recruiting"]
   const maybe = ["Software Development", "Technology, Information and Internet", "IT Services and IT Consulting", "Computer and Network Security", "Computer Games", "Information Services"]
 
-  if ((company.location.includes("United States") || company.location.includes("Canada")) 
-  && ((always.includes(company.industry) || (parseInt(company.size.replaceAll(",", "")) <= 300 && maybe.includes(company.industry))))) {
+  if ((company.location.includes("United States") || company.location.includes("Canada")) &&
+    ((always.includes(company.industry) || (parseInt(company.size.replaceAll(",", "")) <= 300 && maybe.includes(company.industry))))) {
     return true
   } else {
     return false
@@ -452,7 +465,6 @@ function save(data, path) {
     }
   });
 };
-
 
 /**Depreciated code: */
 async function zipCompanyFiles(companiesFile, companiesCompleteFile, urlsFile = undefined, contactTemplateFile = undefined, companyContactFile = undefined) {
