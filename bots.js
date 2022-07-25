@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-const { resetLevel } = require('email-deep-validator/lib/logger');
+const axios = require('axios')
 
 class DataStore {
   constructor(path, data_model) {
@@ -31,9 +31,7 @@ class DataStore {
       console.log(err);
       }
     });
-    this.data = JSON.parse(fs.readFileSync(this.path))
-    return objs
-    
+    return objs  
   };
   post(id, field, value) {
     let changed = undefined
@@ -64,7 +62,6 @@ class DataStore {
         console.log(err);
         }
       });
-    this.data = JSON.parse(fs.readFileSync(this.path))
     return deleted
   }
 
@@ -315,49 +312,47 @@ class EmailBot extends GoogleBot {
 
     this.datastore = new DataStore(this.formats_file, this.format_model)
   };
-  async verify(email){
-    // Verify
-    return true || false
-  }
   async general_format(company_name, website){
     let results = []
     const domain = website.split("//")[1].split("/")[0].replace("www.", "")
     let general_format = String
-    let is_valid = Boolean
     let format = Object
+    let api_data = Object
     for (let prefix of this.general_formats){
       general_format = prefix + "@" + domain
-      is_valid = await this.verify(general_email)
-      format = {company_name: company_name, format: general_format, type: this.type_identifiers.general, valid: is_valid}
-      if (is_valid){
-        format.score = 100
-        results.push(format)
-        break
-      } else {
-        format.score = 0
-      }
+      format = {company_name: company_name, format: general_format, type: this.type_identifiers.general, score: 0, is_valid: false, api_data: undefined}
+      console.log("Calling API...")
+      await axios.get(`https://emailverification.whoisxmlapi.com/api/v2?apiKey=${this.api_key}&emailAddress=${general_format}`).then((resp)=>{
+        format.api_data = resp.data
+        if (resp.data.smtpCheck == 'true'){
+          format.is_valid = true
+          format.score = 100
+        }
+      })
       results.push(format)
+      if (format.is_valid){
+        break
+      }
     }
     return results
-  }
-
+  };
   async get_format(company_name, website = undefined, {overwrite_undefined = false, api_calls = false} = {}){
 
     let results = this.datastore.get("company_name", company_name, 30);
     if (!results.length) {
       results = await this.scrape_formats(company_name, website);
       if (results[0].format == undefined && website && api_calls){
-        results = this.general_format(company_name, website)
+        results = await this.general_format(company_name, website)
       }
       this.datastore.put(results);
     } else if (results[0].format == undefined && overwrite_undefined && website && api_calls){
       const delete_id = results[0].id
+
       this.datastore.delete(delete_id)
-      results = this.general_format(company_name, website)
-      this.datastore.put(results);
+      results = await this.general_format(company_name, website)
+      this.datastore.put(results)
     }
-    
-    if (results[0].format == undefined){
+    if (results.length && results[0].format == undefined){
       return undefined;
     } else {
       return results.filter(res=>res.origin == 'rocketreach').sort(function (a, b) {
@@ -423,6 +418,7 @@ class EmailBot extends GoogleBot {
           format.format = (user_format + "@" + email_domain).toLowerCase();
           format.score = parseInt(format.score)
           format.company_name = company_name
+          format.type = this.type_identifiers.personal
         } else {
           return undefined
         }

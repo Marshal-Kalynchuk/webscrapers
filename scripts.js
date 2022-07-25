@@ -343,11 +343,9 @@ async function generate_emails(contacts) {
         last_name: contact.last_name ? contact.last_name.length > 2 ? contact.last_name : undefined : undefined,
         last_initial: contact.last_name ? contact.last_name[0] : undefined
       };
-
-      const format = await email_bot.get_format(contact.company_name, contact.website_url);
-      console.log(format)
+      const format =  await email_bot.get_format(contact.company_name, contact.website_url, {overwrite_undefined: true, api_calls: true})
       if (format) {
-        console.log(`Format: ${format.format}, Score: ${format.score}`);
+        console.log(`Format: ${format.format}, Score: ${format.score}, Type: ${format.type}, `);
         if (format.score > 50) {
           // Applying format
           contact.email = apply_format(format.format);
