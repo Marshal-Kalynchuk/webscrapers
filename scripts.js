@@ -6,9 +6,7 @@ const axios = require('axios')
 
 // Import bots
 const Bots = require('./bots.js');
-const {
-  linkedin_config
-} = require('./bots.js');
+
 
 /** Used to define the data structure of the companies*/
 class Company {
@@ -79,14 +77,8 @@ const files = {
   filtered_companies_file: "./files/filtered_companies.json"
 };
 
-/** Defines the search terms for the linkedin scraper */
-const keywords = ["Angular Developer", "Frontend Developer", "Backend Developer", "Devops Developer", "Full Stack Web Developer", "Full Stack App Developer", "PHP Developer", "Java Developer", "Python Developer", "React Developer", "Vue Developer", "Node JS Developer", "Ruby Developer", /**  "Machine Learing", "AI Developer", "Express js Developer", "UI/UX Developer", "Flutter Developer", "Website Developer", "Website Engineer", "UI/UX Engineer", "Backend Engineer", "Frontend Engineer"*/ ]
 
-let locations = ["Calgary Alberta Canada", "Edmonton Alberta Canada", "Vancouver British Columbia Canada", "Winnipeg Manitoba Canada", "Victoria British Columbia", "Saskatoon Saskatchwan Canada", "Regina Saskatchewan Canada", "Toronto Ontario Canada", "California United States", "Ottawa Ontario Canada", "New York United States", "Houston Texas United States", "Nova Scotia Canada", "New Brunswick Canada"]
 
-const canada_locations = ["Montreal, Quebec, Canada", "Halifax, Nova Scotia, Canada", "Quebec City, Quebec, Canada", "Hamilton, Ontario, Canada"]
-const united_states_locations = ["Atlanta, GA", "Austin, TX", "Boston, MA", "Chicago, IL", "Colorado, CO", "Dallas-Ft. Worth, TX", "Los Angeles, CA", "New York City, NY", "San Francisco, CA", "Seattle, WA", "Washington, D.C.", ]
-locations = united_states_locations
 /**Main CLI function. Runs all other functions and manages the data 
  * 
  * To-Do Impliment handling for blank json files
@@ -187,32 +179,9 @@ async function main() {
         console.log(`Companies: ${d} website urls added, ${e} linkedin urls added.`)
         break
       case "scrape":
-        const linkedin_bot = new Bots.Puppet()
-        await linkedin_bot.init()
-        for (let location of locations) {
-          for (let keyword of keywords) {
-            console.log(`Searching for ${keyword} in ${location}...`)
-            scraped_companies = await JSON.parse(fs.readFileSync(files.scraped_companies_file))
-            newly_scraped_companies = await JSON.parse(fs.readFileSync(files.newly_scraped_companies_file))
-            const results = await linkedin_bot.scrape(linkedin_config, {
-              field_1: keyword,
-              field_2: location
-            })
-            for (let res of results) {
-              if (!await check_company(scraped_companies, res.company_name)) {
-                scraped_companies.push(res)
-                newly_scraped_companies.push(res)
-                console.log(`Adding new company: ${res.company_name}`)
-              } else {
-                console.log(`Already logged ${res.company_name}`)
-              }
-            }
-            // Ensures minimal data loss if error occures in long operation
-            save(scraped_companies, files.scraped_companies_file)
-            save(newly_scraped_companies, files.newly_scraped_companies_file)
-          }
-        }
-        console.log("Finished")
+        const job_bot = new Bots.JobBot(true)
+        await job_bot.init()
+        await job_bot.scrape_companies()
         break
       case "trim":
         trimmed_contacts = saved_contacts.filter(function (contact) {
@@ -234,16 +203,6 @@ async function main() {
   save(saved_companies, files.companies_save_file)
   save(saved_contacts, files.contacts_save_file)
   save(trimmed_contacts, files.trimmed_contacts_file)
-};
-
-// Checks if the company is already in the saved companies file
-async function check_company(saved_companies, company_name) {
-  for (var i = 0; i < saved_companies.length; i++) {
-    if (saved_companies[i].company_name == company_name) {
-      return true
-    }
-  }
-  return false
 };
 
 const regex_for_name = /\([^()]*\)/g
