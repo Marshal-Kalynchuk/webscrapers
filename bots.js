@@ -34,7 +34,7 @@ class DataStore {
     let should_post = true;
     if (unique_keys.length){
       let match = false;
-      for (let d of data){
+      for (let d of this.data){
         match = true;
         for (let key of unique_keys){
           if (d[key] != obj[key]){
@@ -269,6 +269,7 @@ class Puppet {
         attempts += 1;
       };
     };
+    data = data.filter((obj)=>Object.keys(obj).length != 0)
     if (config.origin) {
       data = data.map((a => {
         a.origin = config.origin;
@@ -519,31 +520,31 @@ class JobBot extends Puppet {
     super(devMode, undefined)
 
     this.indeed_config = {
-      navigation_delay: 90000,
+      navigation_delay: 50000,
       action_delay: 15000,
       initial_url: "https://ca.indeed.com/",
       search_url: "https://ca.indeed.com/jobs?q=field_1&l=field_2&start=0",
       card_sel: ".jobsearch-ResultsList > li",
       card_fields: {
-        posting: ["", ""],
+        posting: [".jobTitle", "innerText"],
         company_name: [".companyName", "innerText"],
-        location: ["", ""],
-        posting_date: ["", ""]
+        location: [".companyLocation", "innerText"],
+        posting_date: [".date", "innerText"]
       },
       origin: "indeed"
     };
 
     this.linkedin_config = {
-      navigation_delay: 90000,
+      navigation_delay: 50000,
       action_delay: 15000,
       initial_url: "https://www.linkedin.com",
       search_url: "https://www.linkedin.com/jobs/search?keywords=field_1&location=field_2&start=25",
       card_sel: ".base-card",
       card_fields: {
-        posting: ["", ""],
+        posting: [".base-search-card__title", "innerText"],
         company_name: [".hidden-nested-link", "innerText"],
-        location: ["", ""],
-        posting_date: ["", ""],
+        location: [".job-search-card__location", "innerText"],
+        posting_date: [".job-search-card__listdate", "innerText"],
         linkedin_url: [".hidden-nested-link", "href"]
       },
       origin: "linkedin"
@@ -607,11 +608,12 @@ class JobBot extends Puppet {
         await Promise.all([indeed_results, linkedin_results]).then((results) => {
 
           results = results.flat()
+          
           new_companies = this.scraped_companies.multi_post(results, ['company_name'])
           this.newly_scraped_companies.multi_post(new_companies)
           this.scraped_postings.multi_post(results, ['company_name', 'posting', 'origin'])
           console.log(new_companies)
-
+          
         });
       };
     };
